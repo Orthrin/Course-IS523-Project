@@ -1,8 +1,11 @@
-package ui;
+package view;
 
 import javax.swing.*;
+import model.Store;
 
-public class InteractionFrame {
+public class UserInterface {
+
+    // Variables Decleration - Do Not Modify
     private JPanel InteractionPanel;
     private JButton manageProductListener;
     private JButton manageSuppliersListener;
@@ -16,4 +19,5 @@ public class InteractionFrame {
     private JTextField maxStockField;
     private JTextField currentStockField;
     private JTextArea descriptionField;
+    // End - Variables Decleration
 }
