@@ -2,6 +2,7 @@
 import model.Description;
 import model.ProductDescription;
 import model.SupplierDescription;
+import model.OrderDescription;
 //import view.UIFacade;
 
 public class Main {
@@ -30,6 +31,11 @@ public class Main {
           supplier1.create();
           System.out.println(supplier1.getProductId());
           System.out.println(supplier1.getName());
+          
+          OrderDescription order1 = new OrderDescription();
+          order1.create();
+          System.out.println(order1.getSupplierId());
+          System.out.println(order1.getDate());
         
 //        UIFacade.getInastance();
         

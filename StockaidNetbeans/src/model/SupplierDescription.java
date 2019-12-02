@@ -37,5 +37,4 @@ public class SupplierDescription extends Description {
         return name;
     }
 
-
 }
