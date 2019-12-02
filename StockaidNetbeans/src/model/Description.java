@@ -1,20 +1,25 @@
 package model;
 
 abstract public class Description {
+    
     // Variables
     int productId;
 
-    // Command Functions
+    // Constructor
     public Description(int productId) {
         this.productId = productId;
     }
 
+    // Command Functions
+    
     // Query Functions
     public int getProductId() {
         return productId;
     }
+    
     // Abstract Functions
-//    abstract public void create(instance);
-//    abstract public void update(instance);
-//    abstract public void delete(instance);
+    abstract public void create();
+//    abstract public void update(Description item);
+//    abstract public void delete(Description item);
+    
 }

@@ -1,4 +1,5 @@
 //import model.Store;
+import model.Description;
 import model.ProductDescription;
 //import view.UIFacade;
 
@@ -8,8 +9,14 @@ public class Main {
         
         // Instantiate Classes
 //        Store inventory = new Store();
-        ProductDescription product = new ProductDescription();
-        product.create("max");
+
+        Description description;
+        description = new ProductDescription();
+        description.create();
+        System.out.println(description.getProductId());
+
+//          ProductDescription product = new ProductDescription();
+//          product.create();
         
 //        UIFacade.getInastance();
         

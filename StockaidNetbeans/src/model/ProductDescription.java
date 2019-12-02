@@ -1,14 +1,25 @@
 package model;
 
-public class ProductDescription {
+public class ProductDescription extends Description {
 
     // Variables
     String description;
     int minimumStockLevel;
     int maximumStockLevel;
     int currentStockLevel;
+    
+    // Constructor
+    public ProductDescription() {
+        super(1);
+    }
+    
+    // Command Functions
+    @Override
+    public void create() {
+        System.out.println("Poly");
+    }
 
-    // Query Functions
+    // Query Functions   
     public String getDescription() {
         return description;
     }
@@ -23,11 +34,6 @@ public class ProductDescription {
 
     public int getCurrentStockLevel() {
         return currentStockLevel;
-    }
-
-    // Command Functions
-    public void create(String test) {
-        System.out.println(test);
     }
 
 }
