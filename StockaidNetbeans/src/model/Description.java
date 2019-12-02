@@ -19,7 +19,6 @@ abstract public class Description {
     
     // Abstract Functions
     abstract public void create();
-//    abstract public void update(Description item);
-//    abstract public void delete(Description item);
-    
+    abstract public void update();
+    abstract public void delete();
 }
