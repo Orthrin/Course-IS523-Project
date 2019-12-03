@@ -6,7 +6,7 @@ public class UIFacade {
 
     static UIFacade instance;
 
-    synchronized public static UIFacade getInstance() {
+    synchronized public static UIFacade getInastance() {
         if (instance == null) {
             instance = new UIFacade();
         }
@@ -22,7 +22,6 @@ public class UIFacade {
         mainWindow = new MainWindow(inventory);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                mainWindow.setTitle("stockAid - Inventory Management System");
                 mainWindow.setVisible(true);
             }
         });
@@ -32,15 +31,15 @@ public class UIFacade {
         return mainWindow;
     }
 
-    public void clearLog() {
-        if (mainWindow != null) {
-            mainWindow.clearLog();
-        }
-    }
-
-    public void addLog(String log) {
-        if (mainWindow != null) {
-            mainWindow.addLog(log);
-        }
-    }
+//    public void clearLog() {
+//        if (mainWindow != null) {
+//            mainWindow.clearLog();
+//        }
+//    }
+//
+//    public void addLog(String log) {
+//        if (mainWindow != null) {
+//            mainWindow.addLog(log);
+//        }
+//    }
 }

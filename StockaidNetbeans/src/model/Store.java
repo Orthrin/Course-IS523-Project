@@ -2,11 +2,30 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-//import view.UIFacade;
+import view.UIFacade;
 
 public class Store {
     
-    ProductCatalog productCatalog = new ProductCatalog();
-    ProductDescription product = new ProductDescription();
+    // Variables
+    String name;
+    // Instantiation
+    ProductCatalog catalog;
+    UIFacade ui = UIFacade.getInstance();
+    
+    // Constructor
+    public Store() {
+        catalog = new ProductCatalog();
+    }
+    
+    // Command Functions
+    public void manageProducts() {
+        System.out.println("Now the output is redirected!");
+        ui.addLog(catalog.getProductDescription("1").getDescription());
+    }
+    
+    // Query Functions
+    public ProductCatalog getCatalog() {
+        return catalog;
+    }
 }
 

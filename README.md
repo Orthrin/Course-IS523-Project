@@ -2,27 +2,45 @@
 Course Assignment Repository  
 Created at 30-Nov-2019
 
-# Dependencies
-swing
 
 # Nomenclature
 UI 
     Frame >> InteractionFrame
     Container >> <>Container
-    Input Component >> <unit>IC
+    Input Unity >> <unit>IU
     Input Field >> <unit>IF
-    Output Component >> <unit>OC
-    Interactive Unit >> <unit>IU
-    Static Component >> <unit>SC
-
+    Output Component >> <unit> OC
+    Interactive Component >> <unit>IC
+    Static Component >> <unit> SC
 Domain 
     Controller -> <domanclass> / <useCase>Controller
 
 
-    window builder pro 
-    eclipse ide
-    visual guide swing components
-    visual guide swing layouts
+# Class Templates
+- Variables >> variable of classses
+- Instantiation >> instantiation of clasases
+- Constructor >> constructor
+- Command Functions >> variable modification functions
+- Query Functions >> return vaalue functions
+- Abstract Functions >> polymorphic operatin identifier
+- Procedure >> Main code line
+// Variables
+// Instantiation
+// Constructor
+// Command Functions
+// Query Functions
+
+
+
+# Keywords
+window builder pro 
+eclipse ide
+visual guide swing components
+visual guide swing layouts
+
+# Todo
+- Icon Ekle https://stackoverflow.com/questions/209812/how-do-i-change-the-default-application-icon-in-java
+- 
 
 
 

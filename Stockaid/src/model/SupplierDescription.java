@@ -8,7 +8,7 @@ public class SupplierDescription extends Description {
 
     // Constructor
     public SupplierDescription() {
-        super("");
+        super(2);
         this.name = "kedi";
     }
 

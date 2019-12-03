@@ -3,17 +3,17 @@ package model;
 abstract public class Description {
     
     // Variables
-    int productId;
+    String productId;
 
     // Constructor
-    public Description(int productId) {
+    public Description(String productId) {
         this.productId = productId;
     }
 
     // Command Functions
     
     // Query Functions
-    public int getProductId() {
+    public String getProductId() {
         return productId;
     }
     

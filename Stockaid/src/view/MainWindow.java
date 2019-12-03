@@ -3,7 +3,10 @@ package view;
 import javax.swing.*;
 import model.Store;
 
-public class UserInterface {
+import java.awt.event.ActionEvent;
+
+public class MainWindow {
+
 
     // Variables Decleration - Do Not Modify
     private JPanel InteractionPanel;

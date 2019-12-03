@@ -9,9 +9,17 @@ public class ProductDescription extends Description {
     int currentStockLevel;
 
     // Constructor
-    public ProductDescription() {
-        super(1);
-        this.description = "lalla";
+    public ProductDescription(
+            String productId, 
+            String description,
+            int minimumStockLevel, 
+            int maximumStockLevel,
+            int currentStockLevel) {
+        super(productId);
+        this.description = description;
+        this.minimumStockLevel = minimumStockLevel;
+        this.maximumStockLevel = maximumStockLevel;
+        this.currentStockLevel = currentStockLevel;
     }
 
     // Command Functions

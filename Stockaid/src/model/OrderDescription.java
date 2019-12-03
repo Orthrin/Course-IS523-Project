@@ -1,15 +1,18 @@
 package model;
+import java.util.Date;
 
-public class SupplierDescription extends Description {
+public class OrderDescription extends Description {
 
     // Variables
     int supplierId;
-    String name;
+    int quantity;
+    Date date;
 
     // Constructor
-    public SupplierDescription() {
-        super("");
-        this.name = "kedi";
+    public OrderDescription() {
+        super(3);
+        this.supplierId = 3;
+        this.date = new Date();
     }
 
     // Command Functions
@@ -33,8 +36,12 @@ public class SupplierDescription extends Description {
         return supplierId;
     }
     
-    public String getName() {
-        return name;
+    public int getQuantity() {
+        return quantity;
+    }
+    
+    public Date getDate() {
+        return date;
     }
 
 }

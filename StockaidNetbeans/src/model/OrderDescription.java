@@ -10,7 +10,7 @@ public class OrderDescription extends Description {
 
     // Constructor
     public OrderDescription() {
-        super(3);
+        super("");
         this.supplierId = 3;
         this.date = new Date();
     }
