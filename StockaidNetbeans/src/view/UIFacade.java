@@ -4,20 +4,15 @@ import model.Store;
 
 public class UIFacade {
 
+    // Instantiation
     static UIFacade instance;
+    MainWindow mainWindow;
 
-    synchronized public static UIFacade getInstance() {
-        if (instance == null) {
-            instance = new UIFacade();
-        }
-        return instance;
-    }
-
+    // Constructor
     private UIFacade() {
     }
 
-    MainWindow mainWindow;
-
+    // Command Functions
     public void start(Store inventory) {
         mainWindow = new MainWindow(inventory);
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -26,10 +21,6 @@ public class UIFacade {
                 mainWindow.setVisible(true);
             }
         });
-    }
-
-    public MainWindow getMainWindow() {
-        return mainWindow;
     }
 
     public void clearLog() {
@@ -42,5 +33,23 @@ public class UIFacade {
         if (mainWindow != null) {
             mainWindow.addLog(log);
         }
+    }
+    
+    public void addCatalog(String item) {
+        if (mainWindow != null) {
+            mainWindow.addCatalog(item);
+        }
+    }
+    
+    // Query Functions
+    synchronized public static UIFacade getInstance() {
+        if (instance == null) {
+            instance = new UIFacade();
+        }
+        return instance;
+    }
+    
+    public MainWindow getMainWindow() {
+        return mainWindow;
     }
 }

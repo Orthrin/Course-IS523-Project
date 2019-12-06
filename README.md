@@ -16,6 +16,9 @@ Domain
     Controller -> <domanclass> / <useCase>Controller
 
 
+# Problems
+- UI facade is not fitting in class templatess
+
 # Class Templates
 - Variables >> variable of classses
 - Instantiation >> instantiation of clasases

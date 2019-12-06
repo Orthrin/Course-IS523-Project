@@ -23,7 +23,7 @@ public class ProductCatalog {
         for (int iii = 1; iii <= 10; ++iii) {
             // load a product record from database create a product description
             String id = "" + iii;
-            String description = "Value";
+            String description = "Product " + iii;
             int minimumStockLevel = 1;
             int maximumStockLevel = 10;
             int currentStockLevel = 5;

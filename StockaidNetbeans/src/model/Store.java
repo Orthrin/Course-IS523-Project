@@ -20,7 +20,7 @@ public class Store {
     // Command Functions
     public void manageProducts() {
         System.out.println("Now the output is redirected!");
-        ui.addLog(catalog.getProductDescription("1").getDescription());
+        ui.addCatalog(catalog.getProductDescription("1").getDescription());
     }
     
     // Query Functions

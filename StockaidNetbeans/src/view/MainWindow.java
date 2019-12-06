@@ -1,17 +1,21 @@
 package view;
 
 import model.Store;
+import javax.swing.*;
 
 public class MainWindow extends javax.swing.JFrame {
 
     // Instatantiation
     Store inventory;
+    DefaultListModel catalog = new DefaultListModel();
 
     // Constructor
     public MainWindow(Store inventory) {
         initComponents();
         this.inventory = inventory;
+        this.catalogIC.setModel(catalog);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -148,14 +152,18 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     // Command Functions
+    // Command Functions
     public void clearLog() {
 //        catalogIC.setText("");
     }
 
     public void addLog(String log) {
         jTextArea1.append(log + "\n");
-    }       
+    }
+
+    public void addCatalog(String item) {
+        catalog.addElement(item);
+    }
 
     private void manageProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageProductActionPerformed
         manageOrdersIU.setEnabled(true);

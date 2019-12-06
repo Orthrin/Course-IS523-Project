@@ -1,4 +1,5 @@
 
+import static com.sun.glass.ui.Cursor.setVisible;
 import model.MonopolyGame;
 import view.UIFacade;
 
