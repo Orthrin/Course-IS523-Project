@@ -7,17 +7,16 @@ import java.util.Map;
 import view.UIFacade;
 
 public class ProductCatalog {
-    
-    
+
     // Instantiation
     Map<String, ProductDescription> descriptions;
-    
+
     // Constructor
     public ProductCatalog() {
         descriptions = new HashMap<>();
         loadProductDescriptions();
     }
-    
+
     // Command Methods
     public void loadProductDescriptions() {
         for (int iii = 1; iii <= 10; ++iii) {
@@ -32,10 +31,14 @@ public class ProductCatalog {
             descriptions.put(id, pd);
         }
     }
-    
+
     // Query Methods
     public ProductDescription getProductDescription(String itemId) {
         return descriptions.get(itemId);
+    }
+    
+    public int getCatalogSize() {
+        return descriptions.size();
     }
     
 }

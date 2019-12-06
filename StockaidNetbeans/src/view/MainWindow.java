@@ -154,7 +154,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     // Command Functions
     public void clearLog() {
-//        catalogIC.setText("");
+        jTextArea1.setText("");
     }
 
     public void addLog(String log) {

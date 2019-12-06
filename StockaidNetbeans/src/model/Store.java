@@ -19,13 +19,15 @@ public class Store {
     
     // Command Functions
     public void manageProducts() {
-        System.out.println("Now the output is redirected!");
-        ui.addCatalog(catalog.getProductDescription("1").getDescription());
+        for (int iii = 1; iii <=10; ++iii) {
+           ui.addCatalog(catalog.getProductDescription("" + iii).getDescription()); 
+        }
     }
     
     // Query Functions
     public ProductCatalog getCatalog() {
         return catalog;
     }
+    
 }
 

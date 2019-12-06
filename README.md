@@ -2,6 +2,8 @@
 Course Assignment Repository  
 Created at 30-Nov-2019
 
+# Log state
+System.out.println("Now the output is redirected!" + iii);
 
 # Nomenclature
 UI 
