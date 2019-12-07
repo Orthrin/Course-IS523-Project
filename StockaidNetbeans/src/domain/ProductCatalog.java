@@ -17,22 +17,22 @@ public class ProductCatalog {
     }
 
     // Command Methods
-    public void loadProductDescriptions() {
-        for (int iii = 1; iii <= 10; ++iii) {
-            // load a product record from database create a product description
-            String id = "" + iii;
-            String description = "Product " + iii;
-            int minimumStockLevel = 1;
-            int maximumStockLevel = 10;
-            int currentStockLevel = 5;
-            ProductDescription pd = new ProductDescription(id, description,
-                    minimumStockLevel, maximumStockLevel, currentStockLevel);
-            descriptions.put(id, pd);
-        }
-    }
+//    public void loadProductDescriptions() {
+//        for ( iii = 1; iii <= 10; ++iii) {
+//            // load a product record from database create a product description
+//            String id = "" + iii;
+//            String description = "Product " + iii;
+//            int minimumStockLevel = 1;
+//            int maximumStockLevel = 10;
+//            int currentStockLevel = 5;
+//            ProductDescription pd = new ProductDescription(id, description,
+//                    minimumStockLevel, maximumStockLevel, currentStockLevel);
+//            descriptions.put(id, pd);
+//        }
+//    }
 
     public void createItem(String s1, String s2, String s3, String s4, String s5) {
-        s2 = s2.replaceAll(" ", "");
+        s2 = s2.substring(1);
         int min = Integer.parseInt(s3.replaceAll(" ", ""));
         int max = Integer.parseInt(s4.replaceAll(" ", ""));
         int cur = Integer.parseInt(s5.replaceAll(" ", ""));
@@ -40,10 +40,8 @@ public class ProductCatalog {
         descriptions.put(s1, pd);
     }
 
-    public void deleteItem(int item) {
-        item = item + 1;
-        String core = "" + item;
-        descriptions.remove(core);
+    public void deleteItem(String item) {
+        descriptions.remove(getProducts(item).getProductId());
     }
 
     // Query Methods

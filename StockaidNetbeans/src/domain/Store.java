@@ -19,8 +19,8 @@ public class Store {
     // Command Functions
     public void manageProducts() {
         // !! it is initializing again on repetitive click fix it
-        for (int iii = 1; iii <= catalog.getCatalogSize(); ++iii) {
-            ui.addCatalog(catalog.getProducts("" + iii).getDescription());
+        for (String key : catalog.descriptions.keySet()) {
+            ui.addCatalog(catalog.getProducts(key).getProductId());
         }
     }
 
@@ -36,15 +36,16 @@ public class Store {
         }
     }
 
-    public void deleteItem(int items) {
+    public void deleteItem(String item) {
         try {
-            catalog.deleteItem(items);
+            System.out.println(item);
+            catalog.deleteItem(item);
         } catch (Exception e) {
             //  Block of code to handle errors
         }
         // Delete elements from display list
         ui.purgeCatalog();
-//        manageProducts();
+        manageProducts();
         ui.inform("Selected Items are successfully deleted");
     }
 

@@ -243,7 +243,7 @@ public class MainWindow extends javax.swing.JFrame {
         catalogModel.removeAllElements();
     }
     
-    public void addDetails(String id, String desc, int min, int max, int current) {
+    public void presentDetails(String id, String desc, int min, int max, int current) {
         commandSC.setText("Selected Item: " + id);
         idSC.setText("" + id);
         descriptionIA.setText(desc);
@@ -263,8 +263,8 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_manageSuppliersIUActionPerformed
 
     private void deleteIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteIUActionPerformed
-        int items = catalogIC.getSelectedIndex();
-        inventory.deleteItem(items);
+        String item = catalogIC.getSelectedValue();
+        inventory.deleteItem(item);
     }//GEN-LAST:event_deleteIUActionPerformed
 
     private void updateIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateIUActionPerformed
