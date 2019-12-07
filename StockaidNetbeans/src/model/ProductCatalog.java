@@ -9,7 +9,7 @@ import view.UIFacade;
 public class ProductCatalog {
 
     // Instantiation
-    Map<String, ProductDescription> descriptions;
+        Map<String, ProductDescription> descriptions;
 
     // Constructor
     public ProductCatalog() {

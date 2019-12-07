@@ -19,6 +19,7 @@ public class Store {
     
     // Command Functions
     public void manageProducts() {
+        // !! it is initializing again on repetitive click fix it
         for (int iii = 1; iii <=10; ++iii) {
            ui.addCatalog(catalog.getProductDescription("" + iii).getDescription()); 
         }
