@@ -1,12 +1,15 @@
 import java.io.*;
+import domain.Store;
 
 public class Main {
 
-    public static final String fileName = "objects.txt";
-    public static Root root;
+    public static final String fileName = "product.txt";
+    public static Store store = new Store();
 
     public static void main(String[] args) throws Exception {
         loadData();
+        saveData();
+        
 // initialize and run your application here....
 // do not forget to call saveData() before exiting!!!
     }
@@ -48,6 +51,13 @@ public class Main {
             // Or we could just do this: 
             // ex.printStackTrace();
         }
+        catch(ArrayIndexOutOfBoundsException ex) {
+            System.out.println(
+                "Error reading file '" 
+                + fileName + "'");                  
+            // Or we could just do this: 
+            // ex.printStackTrace();
+        }
     }
 
     public static void saveData() {
@@ -61,13 +71,8 @@ public class Main {
                 new BufferedWriter(fileWriter);
 
             // Note that write() does not automatically
-            // append a newline character.
-            bufferedWriter.write("Hello there,");
-            bufferedWriter.write(" here is some text.");
-            bufferedWriter.newLine();
-            bufferedWriter.write("We are writing");
-            bufferedWriter.write(" the text to the file.");
-
+            // append a newline character.bufferedWriter.write("Hello there,");
+            bufferedWriter.write(store.getWriteData()); // BURAYA YAZILACAK
             // Always close files.
             bufferedWriter.close();
         }
