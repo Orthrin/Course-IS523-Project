@@ -1,4 +1,4 @@
-import model.Store;
+import domain.Store;
 import view.UIFacade;
 
 public class Main {

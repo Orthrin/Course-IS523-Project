@@ -1,4 +1,4 @@
-package model;
+package domain;
 
 abstract public class Catalog {
     

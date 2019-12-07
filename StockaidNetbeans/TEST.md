@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         //Get File Path
-        URL path = Main.class.getResource("../objects.txt");
+        URL path = Main.class.getResource("products.txt");
 
         //Initialize objects
         File productsFile = new File(path.getFile());

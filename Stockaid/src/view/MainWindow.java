@@ -1,9 +1,6 @@
 package view;
 
 import javax.swing.*;
-import model.Store;
-
-import java.awt.event.ActionEvent;
 
 public class MainWindow {
 

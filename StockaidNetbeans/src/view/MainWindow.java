@@ -1,6 +1,6 @@
 package view;
 
-import model.Store;
+import domain.Store;
 import javax.swing.*;
 
 public class MainWindow extends javax.swing.JFrame {
@@ -223,6 +223,10 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Command Functions
+    public void inform(String info) {
+        commandSC.setText(info);
+    }
+    
     public void clearLog() {
         descriptionIA.setText("");
     }
@@ -233,6 +237,10 @@ public class MainWindow extends javax.swing.JFrame {
 
     public void addCatalog(String item) {
         catalogModel.addElement(item);
+    }
+    
+    public void purgeCatalog() {
+        catalogModel.removeAllElements();
     }
     
     public void addDetails(String id, String desc, int min, int max, int current) {
@@ -255,14 +263,8 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_manageSuppliersIUActionPerformed
 
     private void deleteIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteIUActionPerformed
-        int items[] = catalogIC.getSelectedIndices();
-        for (int iii = 0; iii < items.length; iii++) {
-            try {
-                catalogModel.removeElementAt(items[iii]);
-            } catch (Exception e) {
-                //  Block of code to handle errors
-            }
-        }
+        int items = catalogIC.getSelectedIndex();
+        inventory.deleteItem(items);
     }//GEN-LAST:event_deleteIUActionPerformed
 
     private void updateIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateIUActionPerformed

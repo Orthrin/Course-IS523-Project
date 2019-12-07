@@ -1,4 +1,4 @@
-package model;
+package domain;
 
 public class SupplierDescription extends Description {
 
@@ -8,7 +8,7 @@ public class SupplierDescription extends Description {
 
     // Constructor
     public SupplierDescription() {
-        super(2);
+        super("");
         this.name = "kedi";
     }
 

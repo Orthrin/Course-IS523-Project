@@ -1,10 +1,10 @@
-package model;
+package domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
-import view.UIFacade;
+//import view.UIFacade;
 
 public class ProductCatalog {
 
@@ -13,7 +13,7 @@ public class ProductCatalog {
 
     // Constructor
     public ProductCatalog() {
-        descriptions = new HashMap<>(); 
+        descriptions = new HashMap<>();
         loadProductDescriptions();
     }
 
@@ -32,13 +32,19 @@ public class ProductCatalog {
         }
     }
 
+    public void deleteItem(int item) {
+        item = item+1;
+        String core = "" + item;
+        descriptions.remove(core);
+    }
+
     // Query Methods
     public ProductDescription getProducts(String itemId) {
         return descriptions.get(itemId);
     }
-    
+
     public int getCatalogSize() {
         return descriptions.size();
     }
-    
+
 }

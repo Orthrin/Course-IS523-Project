@@ -1,4 +1,4 @@
-package model;
+package domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +35,18 @@ public class Store {
                     catalog.getProducts("" + index).getCurrentStockLevel()
             );
         }
+    }
+
+    public void deleteItem(int items) {
+        try {
+            catalog.deleteItem(items);
+        } catch (Exception e) {
+            //  Block of code to handle errors
+        }
+        // Delete elements from display list
+        ui.purgeCatalog();
+//        manageProducts();
+        ui.inform("Selected Items are successfully deleted");
     }
 
     // Query Functions

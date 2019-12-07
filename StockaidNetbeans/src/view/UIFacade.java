@@ -1,6 +1,6 @@
 package view;
 
-import model.Store;
+import domain.Store;
 
 public class UIFacade {
 
@@ -22,6 +22,12 @@ public class UIFacade {
             }
         });
     }
+    
+    public void inform(String info) {
+        if (mainWindow != null) {
+            mainWindow.inform(info);
+        }
+    }
 
     public void clearLog() {
         if (mainWindow != null) {
@@ -38,6 +44,12 @@ public class UIFacade {
     public void addCatalog(String item) {
         if (mainWindow != null) {
             mainWindow.addCatalog(item);
+        }
+    }
+    
+    public void purgeCatalog() {
+        if (mainWindow != null) {
+            mainWindow.purgeCatalog();
         }
     }
     

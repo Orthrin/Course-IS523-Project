@@ -1,7 +1,7 @@
-package model;
+package domain;
 
 abstract public class Description {
-    
+
     // Variables
     String productId;
 
@@ -11,12 +11,12 @@ abstract public class Description {
     }
 
     // Command Functions
-    
+
     // Query Functions
     public String getProductId() {
         return productId;
     }
-    
+
     // Abstract Functions
     abstract public void create();
     abstract public void update();

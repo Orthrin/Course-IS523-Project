@@ -1,4 +1,4 @@
-package model;
+package domain;
 import java.util.Date;
 
 public class OrderDescription extends Description {
@@ -10,7 +10,7 @@ public class OrderDescription extends Description {
 
     // Constructor
     public OrderDescription() {
-        super(3);
+        super("");
         this.supplierId = 3;
         this.date = new Date();
     }
