@@ -56,10 +56,10 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="updateIU" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="idIf1" alignment="1" max="32767" attributes="0"/>
+                          <Component id="minimumStockLevelIF" alignment="1" max="32767" attributes="0"/>
                           <Component id="maximumStockLevelSC" alignment="1" max="32767" attributes="0"/>
-                          <Component id="idIf2" alignment="1" max="32767" attributes="0"/>
-                          <Component id="idIf3" alignment="1" max="32767" attributes="0"/>
+                          <Component id="maximumStockLevelIF" alignment="1" max="32767" attributes="0"/>
+                          <Component id="currentStockLevelIF" alignment="1" max="32767" attributes="0"/>
                           <Component id="currentStockLevelSC" alignment="1" max="32767" attributes="0"/>
                           <Component id="minimumStockLevelSC" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -98,15 +98,15 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="minimumStockLevelSC" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="idIf1" min="-2" max="-2" attributes="0"/>
+                              <Component id="minimumStockLevelIF" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="maximumStockLevelSC" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="idIf2" min="-2" max="-2" attributes="0"/>
+                              <Component id="maximumStockLevelIF" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="currentStockLevelSC" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="idIf3" min="-2" max="-2" attributes="0"/>
+                              <Component id="currentStockLevelIF" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane3" min="-2" pref="395" max="-2" attributes="0"/>
                       </Group>
@@ -251,7 +251,7 @@
         <Property name="text" type="java.lang.String" value="Minimum Stock Level"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="idIf1">
+    <Component class="javax.swing.JTextField" name="minimumStockLevelIF">
       <Properties>
         <Property name="text" type="java.lang.String" value="Enter ID"/>
       </Properties>
@@ -261,12 +261,12 @@
         <Property name="text" type="java.lang.String" value="Maximum  Stock Level"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="idIf2">
+    <Component class="javax.swing.JTextField" name="maximumStockLevelIF">
       <Properties>
         <Property name="text" type="java.lang.String" value="Enter ID"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="idIf3">
+    <Component class="javax.swing.JTextField" name="currentStockLevelIF">
       <Properties>
         <Property name="text" type="java.lang.String" value="Enter ID"/>
       </Properties>

@@ -41,6 +41,12 @@ public class UIFacade {
         }
     }
     
+    public void addDetails(String id, String description, int min, int max, int current) {
+        if (mainWindow != null) {
+            mainWindow.addDetails(id, description, min, max, current);
+        }
+    }
+    
     // Query Functions
     synchronized public static UIFacade getInstance() {
         if (instance == null) {

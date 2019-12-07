@@ -9,11 +9,11 @@ import view.UIFacade;
 public class ProductCatalog {
 
     // Instantiation
-        Map<String, ProductDescription> descriptions;
+    Map<String, ProductDescription> descriptions;
 
     // Constructor
     public ProductCatalog() {
-        descriptions = new HashMap<>();
+        descriptions = new HashMap<>(); 
         loadProductDescriptions();
     }
 
@@ -33,7 +33,7 @@ public class ProductCatalog {
     }
 
     // Query Methods
-    public ProductDescription getProductDescription(String itemId) {
+    public ProductDescription getProducts(String itemId) {
         return descriptions.get(itemId);
     }
     

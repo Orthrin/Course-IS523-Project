@@ -41,10 +41,10 @@ public class MainWindow extends javax.swing.JFrame {
         getIU = new javax.swing.JButton();
         commandSC = new javax.swing.JLabel();
         minimumStockLevelSC = new javax.swing.JLabel();
-        idIf1 = new javax.swing.JTextField();
+        minimumStockLevelIF = new javax.swing.JTextField();
         maximumStockLevelSC = new javax.swing.JLabel();
-        idIf2 = new javax.swing.JTextField();
-        idIf3 = new javax.swing.JTextField();
+        maximumStockLevelIF = new javax.swing.JTextField();
+        currentStockLevelIF = new javax.swing.JTextField();
         currentStockLevelSC = new javax.swing.JLabel();
         idSC = new javax.swing.JLabel();
 
@@ -115,13 +115,13 @@ public class MainWindow extends javax.swing.JFrame {
 
         minimumStockLevelSC.setText("Minimum Stock Level");
 
-        idIf1.setText("Enter ID");
+        minimumStockLevelIF.setText("Enter ID");
 
         maximumStockLevelSC.setText("Maximum  Stock Level");
 
-        idIf2.setText("Enter ID");
+        maximumStockLevelIF.setText("Enter ID");
 
-        idIf3.setText("Enter ID");
+        currentStockLevelIF.setText("Enter ID");
 
         currentStockLevelSC.setText("Current Stock Level");
 
@@ -159,10 +159,10 @@ public class MainWindow extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(updateIU, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(idIf1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(minimumStockLevelIF, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(maximumStockLevelSC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(idIf2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(idIf3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(maximumStockLevelIF, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(currentStockLevelIF, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(currentStockLevelSC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(minimumStockLevelSC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
@@ -193,15 +193,15 @@ public class MainWindow extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(minimumStockLevelSC, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(idIf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(minimumStockLevelIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(maximumStockLevelSC, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(idIf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(maximumStockLevelIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(currentStockLevelSC, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(idIf3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(currentStockLevelIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -233,6 +233,15 @@ public class MainWindow extends javax.swing.JFrame {
 
     public void addCatalog(String item) {
         catalogModel.addElement(item);
+    }
+    
+    public void addDetails(String id, String desc, int min, int max, int current) {
+        commandSC.setText("Selected Item: " + id);
+        idSC.setText("" + id);
+        descriptionIA.setText(desc);
+        minimumStockLevelIF.setText("" + min);
+        maximumStockLevelIF.setText("" + max);
+        currentStockLevelIF.setText("" + current);
     }
 
     private void manageProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageProductActionPerformed
@@ -266,16 +275,8 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void getIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getIUActionPerformed
         int items[] = catalogIC.getSelectedIndices();
-        if (items.length == 1) {
-            if (catalogIC.getSelectedIndex() != -1) {
-                int index = catalogIC.getSelectedIndex() + 1;
-                commandSC.setText("Selected Item: " + index);
-                idSC.setText("" + index);
-                descriptionIA.setText(catalogIC.getSelectedValue());
-            }
-        } else {
-            commandSC.setText("Please select single item to update");
-        }
+        int index = catalogIC.getSelectedIndex() + 1;
+        inventory.getDetails(items, index);
     }//GEN-LAST:event_getIUActionPerformed
 
     /**
@@ -321,13 +322,11 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JList<String> catalogIC;
     private javax.swing.JLabel commandSC;
     private javax.swing.JButton createIU;
+    private javax.swing.JTextField currentStockLevelIF;
     private javax.swing.JLabel currentStockLevelSC;
     private javax.swing.JButton deleteIU;
     private javax.swing.JTextArea descriptionIA;
     private javax.swing.JButton getIU;
-    private javax.swing.JTextField idIf1;
-    private javax.swing.JTextField idIf2;
-    private javax.swing.JTextField idIf3;
     private javax.swing.JLabel idSC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -336,7 +335,9 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton manageOrdersIU;
     private javax.swing.JButton manageProductsIU;
     private javax.swing.JButton manageSuppliersIU;
+    private javax.swing.JTextField maximumStockLevelIF;
     private javax.swing.JLabel maximumStockLevelSC;
+    private javax.swing.JTextField minimumStockLevelIF;
     private javax.swing.JLabel minimumStockLevelSC;
     private javax.swing.JButton updateIU;
     // End of variables declaration//GEN-END:variables
