@@ -1,5 +1,6 @@
 import java.io.*;
 import domain.Store;
+import java.util.HashMap;
 
 public class Main {
 
@@ -26,14 +27,8 @@ public class Main {
                 new BufferedReader(fileReader);
 
             while((line = bufferedReader.readLine()) != null) {
-                int itemCounter = 1; 
-                String[] parameter = line.split(",");
-                System.out.println("Id: " + parameter[0]);
-                System.out.println("Desc: " + parameter[1]);
-                System.out.println("Min: " + parameter[2]);
-                System.out.println("Max: " + parameter[3]);
-                System.out.println("Curr: " + parameter[4]);
-                ++itemCounter;
+                String[] p = line.split(",");
+                store.loadMap(p[0], p[1], p[2], p[3], p[4]);
             }   
 
             // Always close files.
@@ -54,6 +49,13 @@ public class Main {
         catch(ArrayIndexOutOfBoundsException ex) {
             System.out.println(
                 "Error reading file '" 
+                + fileName + "'");                  
+            // Or we could just do this: 
+            // ex.printStackTrace();
+        }
+        catch(NumberFormatException ex) {
+            System.out.println(
+                "NumberFormatError '" 
                 + fileName + "'");                  
             // Or we could just do this: 
             // ex.printStackTrace();

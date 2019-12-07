@@ -4,6 +4,12 @@
  * and open the template in the editor.
  */
 package domain;
+import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  *
@@ -11,14 +17,21 @@ package domain;
  */
 public class Store {
     
+    public static final String fileName = "product.txt";
+    ProductCatalog catalog;
     
-    public String getWriteData() {
-    
-    return "1, Enriched Uranium, 1, 10, 5\n" +
-           "2, Supertensile Plastics, 1, 20, 12\n" +
-           "3, Viral Agent, 5, 32, 13\n" +
-           "4, Desc, 3, 7, 6";
-    
+    // Constructor
+    public Store() {
+        catalog = new ProductCatalog();
     }
     
+    // Command Functions
+    public void loadMap(String a, String b, String c, String d, String e) {
+        catalog.createItem(a, b, c, d, e);
+    }
+    
+    // Query Functions
+    public String getWriteData() {
+        return catalog.getSaveData();    
+    }
 }
