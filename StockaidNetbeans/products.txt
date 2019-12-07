@@ -1,4 +1,5 @@
-1, Enriched Uranium, 10, 100, 50
+1, Enriched Uranium, 25, 100, 50
 2, Supertensile Plastics, 50, 200, 75
-3, Viral Agent, 5, 32, 13
-4, Polytextiles, 3, 7, 6
+3, Viral Agent, 10, 32, 13
+4, Polytextile Structures, 30, 70, 45
+5, Gel-Matrix Biopaste, 20, 60, 44

@@ -1,11 +1,15 @@
 package domain;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import view.UIFacade;
 
 public class Store {
 
     // Variables
     String name;
+    public static final String fileName = "products.txt";
     
     // Instantiation
     ProductCatalog catalog;
@@ -38,7 +42,6 @@ public class Store {
 
     public void deleteItem(String item) {
         try {
-            System.out.println(item);
             catalog.deleteItem(item);
         } catch (Exception e) {
             //  Block of code to handle errors
@@ -46,11 +49,51 @@ public class Store {
         // Delete elements from display list
         ui.purgeCatalog();
         manageProducts();
-        ui.inform("Selected Items are successfully deleted");
+        saveData();
+    }
+    
+    public void updateItem(String a, String b, String c, String d, String e) {
+        try {
+            catalog.updateItem(a,b,c,d,e);
+        } catch (Exception ex) {
+            //  Block of code to handle errors
+        }
+        saveData();
     }
 
-    public void loadMap(String a, String b, String c, String d, String e) {
+    public void loadItems(String a, String b, String c, String d, String e) {
         catalog.createItem(a, b, c, d, e);
+    }
+    
+    public void addItem(String b, String c, String d, String e) {
+        catalog.addItem(b, c, d, e);
+        ui.purgeCatalog();
+        manageProducts();
+        saveData();
+    }
+    
+    public void saveData() {
+        try {
+            // Assume default encoding.
+            FileWriter fileWriter
+                    = new FileWriter(fileName);
+
+            // Always wrap FileWriter in BufferedWriter.
+            BufferedWriter bufferedWriter
+                    = new BufferedWriter(fileWriter);
+
+            // Note that write() does not automatically
+            // append a newline character.bufferedWriter.write("Hello there,");
+            bufferedWriter.write(getWriteData()); // BURAYA YAZILACAK
+            // Always close files.
+            bufferedWriter.close();
+        } catch (IOException ex) {
+            System.out.println(
+                    "Error writing to file '"
+                    + fileName + "'");
+            // Or we could just do this:
+            // ex.printStackTrace();
+        }
     }
 
     // Query Functions

@@ -224,6 +224,7 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="enter description about product&#xa;"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -253,8 +254,11 @@
     </Component>
     <Component class="javax.swing.JTextField" name="minimumStockLevelIF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Enter ID"/>
+        <Property name="text" type="java.lang.String" value="enter minimum stock level"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="minimumStockLevelIFActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="maximumStockLevelSC">
       <Properties>
@@ -263,12 +267,12 @@
     </Component>
     <Component class="javax.swing.JTextField" name="maximumStockLevelIF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Enter ID"/>
+        <Property name="text" type="java.lang.String" value="enter maximum stock level"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="currentStockLevelIF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Enter ID"/>
+        <Property name="text" type="java.lang.String" value="enter current stock level"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="currentStockLevelSC">

@@ -37,6 +37,22 @@ public class ProductDescription extends Description {
     public void delete() {
         System.out.println("this is delete");
     }
+    
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+    public void setMinimumStockLevel(String min) {
+        this.minimumStockLevel = Integer.parseInt(min);
+    }
+    
+    public void setMaximumStockLevel(String max) {
+        this.maximumStockLevel = Integer.parseInt(max);
+    }
+    
+    public void setCurrentStockLevel(String curr) {
+        this.currentStockLevel = Integer.parseInt(curr);
+    }
 
     // Query Functions
     public String getDescription() {

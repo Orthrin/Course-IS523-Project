@@ -16,7 +16,6 @@ public class Main {
         // Procedure
         loadData();
         UIFacade.getInstance().start(store);
-        saveData();
 
     }
 
@@ -34,7 +33,7 @@ public class Main {
 
             while ((line = bufferedReader.readLine()) != null) {
                 String[] p = line.split(",");
-                store.loadMap(p[0], p[1], p[2], p[3], p[4]);
+                store.loadItems(p[0], p[1], p[2], p[3], p[4]);
             }
 
             // Always close files.
@@ -58,27 +57,27 @@ public class Main {
         }
     }
 
-    public static void saveData() {
-        try {
-            // Assume default encoding.
-            FileWriter fileWriter
-                    = new FileWriter(fileName);
-
-            // Always wrap FileWriter in BufferedWriter.
-            BufferedWriter bufferedWriter
-                    = new BufferedWriter(fileWriter);
-
-            // Note that write() does not automatically
-            // append a newline character.bufferedWriter.write("Hello there,");
-            bufferedWriter.write(store.getWriteData()); // BURAYA YAZILACAK
-            // Always close files.
-            bufferedWriter.close();
-        } catch (IOException ex) {
-            System.out.println(
-                    "Error writing to file '"
-                    + fileName + "'");
-            // Or we could just do this:
-            // ex.printStackTrace();
-        }
-    }
+//    public static void saveData() {
+//        try {
+//            // Assume default encoding.
+//            FileWriter fileWriter
+//                    = new FileWriter(fileName);
+//
+//            // Always wrap FileWriter in BufferedWriter.
+//            BufferedWriter bufferedWriter
+//                    = new BufferedWriter(fileWriter);
+//
+//            // Note that write() does not automatically
+//            // append a newline character.bufferedWriter.write("Hello there,");
+//            bufferedWriter.write(store.getWriteData()); // BURAYA YAZILACAK
+//            // Always close files.
+//            bufferedWriter.close();
+//        } catch (IOException ex) {
+//            System.out.println(
+//                    "Error writing to file '"
+//                    + fileName + "'");
+//            // Or we could just do this:
+//            // ex.printStackTrace();
+//        }
+//    }
 }

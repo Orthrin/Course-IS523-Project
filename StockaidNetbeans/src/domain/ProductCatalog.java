@@ -1,10 +1,7 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
-import view.UIFacade;
 
 public class ProductCatalog {
 
@@ -31,17 +28,41 @@ public class ProductCatalog {
 //        }
 //    }
 
-    public void createItem(String s1, String s2, String s3, String s4, String s5) {
-        s2 = s2.substring(1);
-        int min = Integer.parseInt(s3.replaceAll(" ", ""));
-        int max = Integer.parseInt(s4.replaceAll(" ", ""));
-        int cur = Integer.parseInt(s5.replaceAll(" ", ""));
-        ProductDescription pd = new ProductDescription(s1, s2, min, max, cur);
-        descriptions.put(s1, pd);
+    public void createItem(String a, String b, String c, String d, String e) {
+        b = b.substring(1);
+        int min = Integer.parseInt(c.replaceAll(" ", ""));
+        int max = Integer.parseInt(d.replaceAll(" ", ""));
+        int cur = Integer.parseInt(e.replaceAll(" ", ""));
+        ProductDescription pd = new ProductDescription(a, b, min, max, cur);
+        descriptions.put(a, pd);
     }
 
     public void deleteItem(String item) {
         descriptions.remove(getProducts(item).getProductId());
+    }
+    
+    public void updateItem(String a, String b, String c, String d, String e) {
+        getProducts(a).setDescription(b);
+        getProducts(a).setMinimumStockLevel(c);
+        getProducts(a).setMaximumStockLevel(d);
+        getProducts(a).setCurrentStockLevel(e);
+    }
+    
+    public void addItem(String b, String c, String d, String e) {
+          String key = "";
+          boolean missing = false;
+          for(int iii=1; iii <= descriptions.size(); iii++) {
+              key = ""+ iii;
+              if(getProducts(key) == null) {
+                 missing = true;
+                 break; 
+              }
+          }
+          if (!missing) {
+              key = "" + (descriptions.size() + 1);
+          }
+          ProductDescription pn = new ProductDescription(key, "New Item", 1, 1, 1);
+          descriptions.put(key, pn); 
     }
 
     // Query Methods

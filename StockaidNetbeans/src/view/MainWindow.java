@@ -100,6 +100,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         descriptionIA.setColumns(20);
         descriptionIA.setRows(5);
+        descriptionIA.setText("enter description about product\n");
         jScrollPane1.setViewportView(descriptionIA);
 
         jLabel2.setText("Description");
@@ -115,13 +116,18 @@ public class MainWindow extends javax.swing.JFrame {
 
         minimumStockLevelSC.setText("Minimum Stock Level");
 
-        minimumStockLevelIF.setText("Enter ID");
+        minimumStockLevelIF.setText("enter minimum stock level");
+        minimumStockLevelIF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minimumStockLevelIFActionPerformed(evt);
+            }
+        });
 
         maximumStockLevelSC.setText("Maximum  Stock Level");
 
-        maximumStockLevelIF.setText("Enter ID");
+        maximumStockLevelIF.setText("enter maximum stock level");
 
-        currentStockLevelIF.setText("Enter ID");
+        currentStockLevelIF.setText("enter current stock level");
 
         currentStockLevelSC.setText("Current Stock Level");
 
@@ -268,11 +274,20 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteIUActionPerformed
 
     private void updateIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateIUActionPerformed
-        // TODO add your handling code here:
+        String a = idSC.getText();
+        String b = descriptionIA.getText();
+        String c = minimumStockLevelIF.getText();
+        String d = maximumStockLevelIF.getText();
+        String e = currentStockLevelIF.getText();
+        inventory.updateItem(a,b,c,d,e);
     }//GEN-LAST:event_updateIUActionPerformed
 
     private void createIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createIUActionPerformed
-        // TODO add your handling code here:
+        String b = descriptionIA.getText();
+        String c = minimumStockLevelIF.getText();
+        String d = maximumStockLevelIF.getText();
+        String e = currentStockLevelIF.getText();
+        inventory.addItem(b,c,d,e);
     }//GEN-LAST:event_createIUActionPerformed
 
     private void getIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getIUActionPerformed
@@ -280,6 +295,10 @@ public class MainWindow extends javax.swing.JFrame {
         int index = catalogIC.getSelectedIndex() + 1;
         inventory.getDetails(items, index);
     }//GEN-LAST:event_getIUActionPerformed
+
+    private void minimumStockLevelIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minimumStockLevelIFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_minimumStockLevelIFActionPerformed
 
     /**
      * @param args the command line arguments
