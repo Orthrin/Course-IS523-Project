@@ -36,17 +36,6 @@ public class ProductCatalog {
         ProductDescription pd = new ProductDescription(a, b, min, max, cur);
         descriptions.put(a, pd);
     }
-
-    public void deleteItem(String item) {
-        descriptions.remove(getProducts(item).getProductId());
-    }
-    
-    public void updateItem(String a, String b, String c, String d, String e) {
-        getProducts(a).setDescription(b);
-        getProducts(a).setMinimumStockLevel(c);
-        getProducts(a).setMaximumStockLevel(d);
-        getProducts(a).setCurrentStockLevel(e);
-    }
     
     public void addItem(String b, String c, String d, String e) {
           String key = "";
@@ -61,8 +50,18 @@ public class ProductCatalog {
           if (!missing) {
               key = "" + (descriptions.size() + 1);
           }
-          ProductDescription pn = new ProductDescription(key, "New Item", 1, 1, 1);
-          descriptions.put(key, pn); 
+          createItem(key, "New Item", "1", "1", "1");
+    }
+
+    public void deleteItem(String item) {
+        descriptions.remove(getProducts(item).getProductId());
+    }
+    
+    public void updateItem(String a, String b, String c, String d, String e) {
+        getProducts(a).setDescription(b);
+        getProducts(a).setMinimumStockLevel(c);
+        getProducts(a).setMaximumStockLevel(d);
+        getProducts(a).setCurrentStockLevel(e);
     }
 
     // Query Methods

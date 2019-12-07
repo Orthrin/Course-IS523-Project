@@ -10,7 +10,7 @@ public class Store {
     // Variables
     String name;
     public static final String fileName = "products.txt";
-    
+
     // Instantiation
     ProductCatalog catalog;
     UIFacade ui = UIFacade.getInstance();
@@ -22,7 +22,7 @@ public class Store {
 
     // Command Functions
     public void manageProducts() {
-        // !! it is initializing again on repetitive click fix it
+        ui.purgeCatalog();
         for (String key : catalog.descriptions.keySet()) {
             ui.addCatalog(catalog.getProducts(key).getProductId());
         }
@@ -40,6 +40,13 @@ public class Store {
         }
     }
 
+    public void addItem(String b, String c, String d, String e) {
+        catalog.addItem(b, c, d, e);
+        ui.purgeCatalog();
+        manageProducts();
+        saveData();
+    }
+
     public void deleteItem(String item) {
         try {
             catalog.deleteItem(item);
@@ -51,10 +58,10 @@ public class Store {
         manageProducts();
         saveData();
     }
-    
+
     public void updateItem(String a, String b, String c, String d, String e) {
         try {
-            catalog.updateItem(a,b,c,d,e);
+            catalog.updateItem(a, b, c, d, e);
         } catch (Exception ex) {
             //  Block of code to handle errors
         }
@@ -64,14 +71,7 @@ public class Store {
     public void loadItems(String a, String b, String c, String d, String e) {
         catalog.createItem(a, b, c, d, e);
     }
-    
-    public void addItem(String b, String c, String d, String e) {
-        catalog.addItem(b, c, d, e);
-        ui.purgeCatalog();
-        manageProducts();
-        saveData();
-    }
-    
+
     public void saveData() {
         try {
             // Assume default encoding.

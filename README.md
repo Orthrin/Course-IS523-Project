@@ -35,8 +35,6 @@ Domain
 // Command Functions
 // Query Functions
 
-
-
 # Keywords
 window builder pro 
 eclipse ide
@@ -44,10 +42,6 @@ visual guide swing components
 visual guide swing layouts
 
 # Todo
-- Icon Ekle https://stackoverflow.com/questions/209812/how-do-i-change-the-default-application-icon-in-java
-- 
-
-
 
 
 
