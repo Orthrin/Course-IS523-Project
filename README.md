@@ -2,6 +2,10 @@
 Course Assignment Repository  
 Created at 30-Nov-2019
 
+# Todo
+- jList queue
+- edit validation
+
 # Log state
 System.out.println("");
 
@@ -40,8 +44,6 @@ window builder pro
 eclipse ide
 visual guide swing components
 visual guide swing layouts
-
-# Todo
 
 
 

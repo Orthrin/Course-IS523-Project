@@ -13,21 +13,6 @@ public class ProductCatalog {
         descriptions = new HashMap<>();
     }
 
-    // Command Methods
-//    public void loadProductDescriptions() {
-//        for ( iii = 1; iii <= 10; ++iii) {
-//            // load a product record from database create a product description
-//            String id = "" + iii;
-//            String description = "Product " + iii;
-//            int minimumStockLevel = 1;
-//            int maximumStockLevel = 10;
-//            int currentStockLevel = 5;
-//            ProductDescription pd = new ProductDescription(id, description,
-//                    minimumStockLevel, maximumStockLevel, currentStockLevel);
-//            descriptions.put(id, pd);
-//        }
-//    }
-
     public void createItem(String a, String b, String c, String d, String e) {
         if (b.substring(0,1) == " "){ b = b.substring(1); }
         int min = Integer.parseInt(c.replaceAll(" ", ""));
