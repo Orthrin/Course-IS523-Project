@@ -29,7 +29,7 @@ public class ProductCatalog {
 //    }
 
     public void createItem(String a, String b, String c, String d, String e) {
-        b = b.substring(1);
+        if (b.substring(0,1) == " "){ b = b.substring(1); }
         int min = Integer.parseInt(c.replaceAll(" ", ""));
         int max = Integer.parseInt(d.replaceAll(" ", ""));
         int cur = Integer.parseInt(e.replaceAll(" ", ""));
