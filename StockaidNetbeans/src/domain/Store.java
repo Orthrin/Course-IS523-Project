@@ -1,13 +1,12 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.List;
 import view.UIFacade;
 
 public class Store {
 
     // Variables
     String name;
+    
     // Instantiation
     ProductCatalog catalog;
     UIFacade ui = UIFacade.getInstance();
@@ -20,7 +19,7 @@ public class Store {
     // Command Functions
     public void manageProducts() {
         // !! it is initializing again on repetitive click fix it
-        for (int iii = 1; iii <= 10; ++iii) {
+        for (int iii = 1; iii <= catalog.getCatalogSize(); ++iii) {
             ui.addCatalog(catalog.getProducts("" + iii).getDescription());
         }
     }
@@ -49,9 +48,17 @@ public class Store {
         ui.inform("Selected Items are successfully deleted");
     }
 
+    public void loadMap(String a, String b, String c, String d, String e) {
+        catalog.createItem(a, b, c, d, e);
+    }
+
     // Query Functions
     public ProductCatalog getCatalog() {
         return catalog;
+    }
+
+    public String getWriteData() {
+        return catalog.getSaveData();
     }
 
 }

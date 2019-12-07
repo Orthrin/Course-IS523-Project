@@ -10,9 +10,9 @@ public class ProductDescription extends Description {
 
     // Constructor
     public ProductDescription(
-            String productId, 
+            String productId,
             String description,
-            int minimumStockLevel, 
+            int minimumStockLevel,
             int maximumStockLevel,
             int currentStockLevel) {
         super(productId);

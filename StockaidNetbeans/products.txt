@@ -1,0 +1,4 @@
+1, EnrichedUranium, 1, 10, 5
+2, SupertensilePlastics, 1, 20, 12
+3, ViralAgent, 5, 32, 13
+4, Desc, 3, 7, 6
