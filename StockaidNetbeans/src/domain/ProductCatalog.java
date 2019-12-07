@@ -14,7 +14,8 @@ public class ProductCatalog {
     }
 
     public void createItem(String a, String b, String c, String d, String e) {
-        if (b.substring(0,1) == " "){ b = b.substring(1); }
+        a = a.trim();
+        b = b.trim();
         int min = Integer.parseInt(c.replaceAll(" ", ""));
         int max = Integer.parseInt(d.replaceAll(" ", ""));
         int cur = Integer.parseInt(e.replaceAll(" ", ""));
@@ -43,10 +44,10 @@ public class ProductCatalog {
     }
     
     public void updateItem(String a, String b, String c, String d, String e) {
-        getProducts(a).setDescription(b);
-        getProducts(a).setMinimumStockLevel(c);
-        getProducts(a).setMaximumStockLevel(d);
-        getProducts(a).setCurrentStockLevel(e);
+        getProducts(a).setDescription(b.trim());
+        getProducts(a).setMinimumStockLevel(c.trim());
+        getProducts(a).setMaximumStockLevel(d.trim());
+        getProducts(a).setCurrentStockLevel(e.trim());
     }
 
     // Query Methods
