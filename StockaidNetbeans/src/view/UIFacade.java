@@ -1,6 +1,7 @@
 package view;
 
 import domain.Store;
+import java.util.Date;
 
 public class UIFacade {
 
@@ -62,6 +63,12 @@ public class UIFacade {
     public void addSupplierDetails(String id, String name, String productId) {
         if (mainWindow != null) {
             mainWindow.presentSupplierDetails(id, name, productId);
+        }
+    }
+    
+    public void addOrderDetails(String id, int productId, int quantity, String date) {
+        if (mainWindow != null) {
+            mainWindow.presentOrderDetails(id, productId, quantity, date);
         }
     }
     

@@ -10,6 +10,7 @@ public class SupplierDescription extends Description {
     // Constructor
     public SupplierDescription(String supplierId, String name, String productId) {
         super(productId);
+        this.productId = productId;
         this.supplierId = supplierId;
         this.name = name;
 

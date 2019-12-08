@@ -1,7 +1,5 @@
-1, Tesla, 1
-2, Apple, 3
-3, Microsoft, 5
-4, Samsung, 4
-5, Mercedes, 6
-6, BMW, 7
-7, ABC, 3
+1, Apple, 3
+2, Microsoft, 4
+3, BMW, 7
+4, Mercedes, 5
+5, Google, 1

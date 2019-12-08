@@ -1,18 +1,38 @@
 package domain;
-import java.util.Date;
 
 public class OrderDescription extends Description {
 
     // Variables
+    String productId;
     int supplierId;
     int quantity;
-    Date date;
+    String date;
 
     // Constructor
-    public OrderDescription() {
+    public OrderDescription(String productId, int supplierId, int quantity, String date) {
         super("");
-        this.supplierId = 3;
-        this.date = new Date();
+        this.productId = productId;
+        this.supplierId = supplierId;
+        this.quantity = quantity;
+        this.date = date;
+    }
+    
+    // Command Functions
+    
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+    
+    public void setSupplierId(int supplierId) {
+        this.supplierId = supplierId;
+    }
+    
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
+    public void setOrderDate(String date) {
+        this.date = date;
     }
 
     // Query Functions
@@ -29,7 +49,7 @@ public class OrderDescription extends Description {
         return quantity;
     }
     
-    public Date getDate() {
+    public String getOrderDate() {
         return date;
     }
 

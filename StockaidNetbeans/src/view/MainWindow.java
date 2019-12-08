@@ -3,6 +3,7 @@ package view;
 import domain.Store;
 import javax.swing.*;
 import java.awt.Toolkit;
+import java.util.Date;
 import javax.sql.rowset.spi.SyncProvider;
 
 public class MainWindow extends javax.swing.JFrame {
@@ -16,6 +17,8 @@ public class MainWindow extends javax.swing.JFrame {
     
     boolean isManagingProducts = false;
     boolean isManagingSuppliers = false;
+    
+    int managementMode = 1;
     
     // Constructor
     public MainWindow(Store inventory) {
@@ -48,12 +51,12 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         getIU = new javax.swing.JButton();
         commandSC = new javax.swing.JLabel();
-        minimumStockLevelSC = new javax.swing.JLabel();
-        minimumStockLevelIF = new javax.swing.JTextField();
-        maximumStockLevelSC = new javax.swing.JLabel();
-        maximumStockLevelIF = new javax.swing.JTextField();
-        currentStockLevelIF = new javax.swing.JTextField();
-        currentStockLevelSC = new javax.swing.JLabel();
+        firstInputText = new javax.swing.JLabel();
+        firstInputField = new javax.swing.JTextField();
+        secondInputText = new javax.swing.JLabel();
+        secondInputField = new javax.swing.JTextField();
+        thirdInputField = new javax.swing.JTextField();
+        thirdInputText = new javax.swing.JLabel();
         idSC = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -128,22 +131,22 @@ public class MainWindow extends javax.swing.JFrame {
 
         commandSC.setText("Please select item(s)");
 
-        minimumStockLevelSC.setText("Minimum Stock Level");
+        firstInputText.setText("Minimum Stock Level");
 
-        minimumStockLevelIF.setText("enter minimum stock level");
-        minimumStockLevelIF.addActionListener(new java.awt.event.ActionListener() {
+        firstInputField.setText("enter minimum stock level");
+        firstInputField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                minimumStockLevelIFActionPerformed(evt);
+                firstInputFieldActionPerformed(evt);
             }
         });
 
-        maximumStockLevelSC.setText("Maximum  Stock Level");
+        secondInputText.setText("Maximum  Stock Level");
 
-        maximumStockLevelIF.setText("enter maximum stock level");
+        secondInputField.setText("enter maximum stock level");
 
-        currentStockLevelIF.setText("enter current stock level");
+        thirdInputField.setText("enter current stock level");
 
-        currentStockLevelSC.setText("Current Stock Level");
+        thirdInputText.setText("Current Stock Level");
 
         idSC.setText("0");
 
@@ -176,12 +179,12 @@ public class MainWindow extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jScrollPane1)
-                                    .addComponent(minimumStockLevelIF, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(maximumStockLevelSC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(maximumStockLevelIF, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(currentStockLevelIF, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(currentStockLevelSC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(minimumStockLevelSC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(firstInputField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(secondInputText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(secondInputField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(thirdInputField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(thirdInputText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(firstInputText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -213,17 +216,17 @@ public class MainWindow extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jScrollPane1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(minimumStockLevelSC, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(firstInputText, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(minimumStockLevelIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(firstInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(maximumStockLevelSC, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(secondInputText, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(maximumStockLevelIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(secondInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(currentStockLevelSC, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(thirdInputText, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(currentStockLevelIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(thirdInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(manageProductsIU)
@@ -267,14 +270,14 @@ public class MainWindow extends javax.swing.JFrame {
     public void updateUIFields(String uiType) {
         switch(uiType) {
             case "Product":
-                minimumStockLevelSC.setText("Minimum Stock Level");
-                minimumStockLevelIF.setText("enter minimum stock level");
+                firstInputText.setText("Minimum Stock Level");
+                firstInputField.setText("enter minimum stock level");
                 
-                maximumStockLevelSC.setText("Maximum Stock Level");
-                maximumStockLevelIF.setText("enter maximum stock level");
+                secondInputText.setText("Maximum Stock Level");
+                secondInputField.setText("enter maximum stock level");
                 
-                currentStockLevelSC.setText("Current Stock Level");
-                currentStockLevelIF.setText("enter current stock level");
+                thirdInputText.setText("Current Stock Level");
+                thirdInputField.setText("enter current stock level");
                 
                 
                 jLabel2.setVisible(true);
@@ -282,45 +285,45 @@ public class MainWindow extends javax.swing.JFrame {
                 jLabel2.setText("Description");
                 descriptionIA.setText("enter description about product");
                 
-                maximumStockLevelSC.setVisible(true);
-                maximumStockLevelIF.setVisible(true);
+                secondInputText.setVisible(true);
+                secondInputField.setVisible(true);
                 
-                currentStockLevelSC.setVisible(true);
-                currentStockLevelIF.setVisible(true);
+                thirdInputText.setVisible(true);
+                thirdInputField.setVisible(true);
                 break;
             case "Supplier":
-                minimumStockLevelSC.setText("Product ID");
-                minimumStockLevelIF.setText("enter Product ID");
+                firstInputText.setText("Product ID");
+                firstInputField.setText("enter Product ID");
                 
                 jLabel2.setVisible(true);
                 descriptionIA.setVisible(true);
                 jLabel2.setText("Name");
                 descriptionIA.setText("enter name of the Supplier");
                 
-                maximumStockLevelSC.setVisible(false);
-                maximumStockLevelIF.setVisible(false);
+                secondInputText.setVisible(false);
+                secondInputField.setVisible(false);
                 
-                currentStockLevelSC.setVisible(false);
-                currentStockLevelIF.setVisible(false);
+                thirdInputText.setVisible(false);
+                thirdInputField.setVisible(false);
                 break;
             case "Order":
-                minimumStockLevelSC.setText("Supplier ID");
-                minimumStockLevelIF.setText("enter Supplier ID");
+                firstInputText.setText("Supplier ID");
+                firstInputField.setText("enter Supplier ID");
                 
-                maximumStockLevelSC.setText("Quantity");
-                maximumStockLevelIF.setText("enter quantity");
+                secondInputText.setText("Quantity");
+                secondInputField.setText("enter quantity");
                 
-                currentStockLevelSC.setText("Order Date");
-                currentStockLevelIF.setText("enter order date");
+                thirdInputText.setText("Order Date");
+                thirdInputField.setText("enter order date");
                 
                 jLabel2.setVisible(false);
                 descriptionIA.setVisible(false);
                 
-                maximumStockLevelSC.setVisible(true);
-                maximumStockLevelIF.setVisible(true);
+                secondInputText.setVisible(true);
+                secondInputField.setVisible(true);
                 
-                currentStockLevelSC.setVisible(true);
-                currentStockLevelIF.setVisible(true);
+                thirdInputText.setVisible(true);
+                thirdInputField.setVisible(true);
                 break;
             default:
                 break;
@@ -331,71 +334,137 @@ public class MainWindow extends javax.swing.JFrame {
         commandSC.setText("Selected Item: " + id);
         idSC.setText("" + id);
         descriptionIA.setText(desc);
-        minimumStockLevelIF.setText("" + min);
-        maximumStockLevelIF.setText("" + max);
-        currentStockLevelIF.setText("" + current);
+        firstInputField.setText("" + min);
+        secondInputField.setText("" + max);
+        thirdInputField.setText("" + current);
     }
     
-        public void presentSupplierDetails(String id, String name, String productId) {
+    public void presentSupplierDetails(String id, String name, String productId) {
         commandSC.setText("Selected Supplier: " + id);
         idSC.setText("" + id);
         descriptionIA.setText(name);
-        minimumStockLevelIF.setText("" + productId);
+        firstInputField.setText("" + productId);
+    }
+    
+    public void presentOrderDetails(String id, int productId, int quantity, String date) {
+        commandSC.setText("Selected Order: " + id);
+        idSC.setText("" + id);
+        firstInputField.setText("" + productId);
+        secondInputField.setText("" + quantity);
+        thirdInputField.setText("" + date);
     }
 
     private void manageProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageProductActionPerformed
         //manageOrdersIU.setEnabled(true);
         // Delegate
         updateUIFields("Product");
-        isManagingProducts = true;
-        inventory.manageProducts();
+        managementMode = 1;
+        inventory.manageProducts(true);
     }//GEN-LAST:event_manageProductActionPerformed
 
     private void manageSuppliersIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSuppliersIUActionPerformed
         updateUIFields("Supplier");
-        isManagingSuppliers = true;
-        inventory.manageSuppliers();
+        managementMode = 2;
+        inventory.manageSuppliers(true);
     }//GEN-LAST:event_manageSuppliersIUActionPerformed
 
     private void deleteIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteIUActionPerformed
         String item = catalogIC.getSelectedValue();
-        inventory.productDeleteItem(item);
+        switch(managementMode) {
+            case 1:
+                inventory.productDeleteItem(item);
+                break;
+            case 2:
+                inventory.supplierDeleteItem(item);
+                break;
+            case 3:
+                inventory.orderDeleteItem(item);
+                break;
+            default:
+                break;
+        }
     }//GEN-LAST:event_deleteIUActionPerformed
 
     private void updateIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateIUActionPerformed
-        String a = idSC.getText();
-        String b = descriptionIA.getText();
-        String c = minimumStockLevelIF.getText();
-        String d = maximumStockLevelIF.getText();
-        String e = currentStockLevelIF.getText();
-        inventory.productUpdateItem(a,b,c,d,e);
+
+            String a = idSC.getText();
+            String b = descriptionIA.getText();
+            String c = firstInputField.getText();
+            String d = secondInputField.getText();
+            String e = thirdInputField.getText();
+            
+            switch(managementMode) {
+                case(1):
+                inventory.productUpdateItem(a,b,c,d,e);
+                break;
+                
+                case(2):
+                inventory.supplierUpdateItem(a, b, c, d, e);
+                break;
+                
+                case(3):
+                break;
+                
+                default:
+                break;        
+            }
+        
     }//GEN-LAST:event_updateIUActionPerformed
 
     private void createIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createIUActionPerformed
+
         String b = descriptionIA.getText();
-        String c = minimumStockLevelIF.getText();
-        String d = maximumStockLevelIF.getText();
-        String e = currentStockLevelIF.getText();
-        inventory.productAddItem(b,c,d,e);
+        String c = firstInputField.getText();
+        String d = secondInputField.getText();
+        String e = thirdInputField.getText();
+        
+        switch(managementMode) {
+            case(1):
+            inventory.productAddItem(b,c,d,e);
+            break;
+
+            case(2):
+            inventory.supplierAddItem(b,c,d,e);
+            break;
+
+            case(3):
+            break;
+            
+            default:
+            break;        
+        }       
+        
     }//GEN-LAST:event_createIUActionPerformed
 
     private void getIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getIUActionPerformed
         int items[] = catalogIC.getSelectedIndices();
         int index = catalogIC.getSelectedIndex() + 1;
-        if (isManagingProducts) {
+        switch(managementMode) {
+            case(1):
             inventory.productGetDetails(items, index);
-        }
-        else if (isManagingSuppliers) {
+            break;
+
+            case(2):
             inventory.supplierGetDetails(items, index);
-        }
+            break;
+
+            case(3):
+            inventory.orderGetDetails(items, index);
+            break;
+            
+            default:
+            break;        
+        }  
     }//GEN-LAST:event_getIUActionPerformed
 
-    private void minimumStockLevelIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minimumStockLevelIFActionPerformed
+    private void firstInputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstInputFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_minimumStockLevelIFActionPerformed
+    }//GEN-LAST:event_firstInputFieldActionPerformed
 
     private void manageOrdersIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrdersIUActionPerformed
         updateUIFields("Order");
+        managementMode = 3;
+        inventory.manageOrders(true);
     }//GEN-LAST:event_manageOrdersIUActionPerformed
 
     /**
@@ -441,10 +510,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JList<String> catalogIC;
     private javax.swing.JLabel commandSC;
     private javax.swing.JButton createIU;
-    private javax.swing.JTextField currentStockLevelIF;
-    private javax.swing.JLabel currentStockLevelSC;
     private javax.swing.JButton deleteIU;
     private javax.swing.JTextArea descriptionIA;
+    private javax.swing.JTextField firstInputField;
+    private javax.swing.JLabel firstInputText;
     private javax.swing.JButton getIU;
     private javax.swing.JLabel idSC;
     private javax.swing.JLabel jLabel1;
@@ -454,10 +523,11 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton manageOrdersIU;
     private javax.swing.JButton manageProductsIU;
     private javax.swing.JButton manageSuppliersIU;
-    private javax.swing.JTextField maximumStockLevelIF;
-    private javax.swing.JLabel maximumStockLevelSC;
-    private javax.swing.JTextField minimumStockLevelIF;
-    private javax.swing.JLabel minimumStockLevelSC;
+    private javax.swing.JTextField secondInputField;
+    private javax.swing.JLabel secondInputText;
+    private javax.swing.JTextField thirdInputField;
+    private javax.swing.JLabel thirdInputText;
     private javax.swing.JButton updateIU;
     // End of variables declaration//GEN-END:variables
+
 }

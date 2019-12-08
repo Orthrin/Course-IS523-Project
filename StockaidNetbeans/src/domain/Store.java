@@ -19,12 +19,14 @@ public class Store {
     // Instantiation
     ProductCatalog productCatalog;
     SupplierCatalog supplierCatalog;
+    OrderCatalog orderCatalog;
     UIFacade ui = UIFacade.getInstance();
 
     // Constructor
     public Store() {
         productCatalog = new ProductCatalog();
         supplierCatalog = new SupplierCatalog();
+        orderCatalog = new OrderCatalog();
     }
 
     // Command Functions
@@ -49,6 +51,7 @@ public class Store {
                         supplierLoadItems(p[0], p[1], p[2]);
                         break;
                     case 3:
+                        orderLoadItems(p[0],p[1],p[2],p[3]);
                         break;
                     default:
                         break;
@@ -77,19 +80,27 @@ public class Store {
         }
     }
     
-    public void manageProducts() {
+    public void manageProducts(boolean init) {
         ui.purgeCatalog();
-        loadData(1, productFileName);
+        if (init) {loadData(1, productFileName); }
         for (String key : productCatalog.descriptions.keySet()) {
             ui.addCatalog(productCatalog.getProducts(key).getProductId());
         }
     }
     
-    public void manageSuppliers() {
+    public void manageSuppliers(boolean init) {
         ui.purgeCatalog();
-        loadData(2, SupplierFileName);
+        if (init) {loadData(2, SupplierFileName); }
         for (String key: supplierCatalog.descriptions.keySet()) {
             ui.addCatalog(supplierCatalog.getSuppliers(key).getSupplierId());
+        }
+    }
+    
+    public void manageOrders(boolean init) {
+        ui.purgeCatalog();
+        if (init) {loadData(3, OrderFileName); }
+        for (String key: orderCatalog.descriptions.keySet()) {
+            ui.addCatalog(orderCatalog.getOrders(key).getProductId());
         }
     }
 
@@ -112,19 +123,35 @@ public class Store {
             );
         }
     }
+    
+    public void orderGetDetails(int items[], int index) {
+        if (items.length == 1) {
+            ui.addOrderDetails(orderCatalog.getOrders("" + index).getProductId(),
+                    orderCatalog.getOrders("" + index).getSupplierId(),
+                    orderCatalog.getOrders("" + index).getQuantity(),
+                    orderCatalog.getOrders("" + index).getOrderDate()
+            );
+        }
+    }
 
     public void productAddItem(String b, String c, String d, String e) {
         productCatalog.addItem(b, c, d, e);
         ui.purgeCatalog();
-        manageProducts();
+        manageProducts(false);
         productSaveData();
     }
     
         public void supplierAddItem(String b, String c, String d, String e) {
         supplierCatalog.addItem(b, c, d, e);
         ui.purgeCatalog();
-        manageSuppliers();
+        manageSuppliers(false);
         supplierSaveData();
+    }
+        public void orderAddItem(String b, String c, String d, String e) {
+        supplierCatalog.addItem(b, c, d, e);
+        ui.purgeCatalog();
+        manageOrders(false);
+        orderSaveData();
     }
 
     public void productDeleteItem(String item) {
@@ -133,7 +160,7 @@ public class Store {
         } catch (Exception e) {
         }
         ui.purgeCatalog();
-        manageProducts();
+        manageProducts(false);
         productSaveData();
     }
     
@@ -143,8 +170,28 @@ public class Store {
         } catch (Exception e) {
         }
         ui.purgeCatalog();
-        manageSuppliers();
+        manageSuppliers(false);
         supplierSaveData();
+    }
+    
+    public void orderDeleteItem(String item) {
+        try {
+            orderCatalog.deleteItem(item);
+        } catch (Exception e) {
+        }
+        ui.purgeCatalog();
+        manageOrders(false);
+        orderSaveData();
+    }
+    
+    public void orderUpdateItem(String item) {
+        try {
+            orderCatalog.deleteItem(item);
+        } catch (Exception e) {
+        }
+        ui.purgeCatalog();
+        manageOrders(false);
+        orderSaveData();
     }
 
     public void productUpdateItem(String a, String b, String c, String d, String e) {
@@ -164,6 +211,15 @@ public class Store {
         }
         supplierSaveData();
     }
+    
+    public void orderSaveItem(String a, String b, String c, String d, String e) {
+        try {
+            supplierCatalog.updateItem(a, b, c, d, e);
+        } catch (Exception ex) {
+            //  Block of code to handle errors
+        }
+        orderSaveData();
+    }
 
     public void productLoadItems(String a, String b, String c, String d, String e) {
         productCatalog.createItem(a, b, c, d, e);
@@ -171,6 +227,10 @@ public class Store {
     
     public void supplierLoadItems(String a, String b, String c) {
         supplierCatalog.createItem(a, b, c, "", "");
+    }
+    
+    public void orderLoadItems(String a, String b, String c, String d) {
+        orderCatalog.createItem(a, b, c, d, "");
     }
 
     public void productSaveData() {
@@ -214,6 +274,27 @@ public class Store {
                     + SupplierFileName + "'");
         }
     }
+    
+    public void orderSaveData() {
+        try {
+            // Assume default encoding.
+            FileWriter fileWriter
+                    = new FileWriter(OrderFileName);
+
+            // Always wrap FileWriter in BufferedWriter.
+            BufferedWriter bufferedWriter
+                    = new BufferedWriter(fileWriter);
+
+            // Write data
+            bufferedWriter.write(getOrderWriteData()); 
+            
+            // Always close files.
+            bufferedWriter.close();
+        } catch (IOException ex) {
+            System.out.println("Error writing to file '"
+                    + OrderFileName + "'");
+        }
+    }
 
     // Query Functions
     public ProductCatalog getProductCatalog() {
@@ -223,13 +304,21 @@ public class Store {
     public SupplierCatalog getSupplierCatalog() {
         return supplierCatalog;
     }
+    
+    public OrderCatalog getOrderCatalog() {
+        return orderCatalog;
+    }
 
     public String getProductWriteData() {
         return productCatalog.getSaveData();
     }
     
     public String getSupplierWriteData() {
-        return productCatalog.getSaveData();
+        return supplierCatalog.getSaveData();
+    }
+    
+    public String getOrderWriteData() {
+        return orderCatalog.getSaveData();
     }
 
 }
