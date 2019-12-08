@@ -3,13 +3,20 @@ package view;
 import domain.Store;
 import javax.swing.*;
 import java.awt.Toolkit;
+import javax.sql.rowset.spi.SyncProvider;
 
 public class MainWindow extends javax.swing.JFrame {
 
     // Instatantiation
     Store inventory;
     DefaultListModel catalogModel = new DefaultListModel();
-
+    
+    private JLabel secondEntry;
+    private JLabel thirdEntry;
+    
+    boolean isManagingProducts = false;
+    boolean isManagingSuppliers = false;
+    
     // Constructor
     public MainWindow(Store inventory) {
         initComponents();
@@ -83,6 +90,11 @@ public class MainWindow extends javax.swing.JFrame {
         authenticatioonSU.setText("Login Identification Text");
 
         manageOrdersIU.setText("Manage Orders");
+        manageOrdersIU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageOrdersIUActionPerformed(evt);
+            }
+        });
 
         manageSuppliersIU.setText("Manage Suppliers");
         manageSuppliersIU.addActionListener(new java.awt.event.ActionListener() {
@@ -252,7 +264,70 @@ public class MainWindow extends javax.swing.JFrame {
         catalogModel.removeAllElements();
     }
     
-    public void presentDetails(String id, String desc, int min, int max, int current) {
+    public void updateUIFields(String uiType) {
+        switch(uiType) {
+            case "Product":
+                minimumStockLevelSC.setText("Minimum Stock Level");
+                minimumStockLevelIF.setText("enter minimum stock level");
+                
+                maximumStockLevelSC.setText("Maximum Stock Level");
+                maximumStockLevelIF.setText("enter maximum stock level");
+                
+                currentStockLevelSC.setText("Current Stock Level");
+                currentStockLevelIF.setText("enter current stock level");
+                
+                
+                jLabel2.setVisible(true);
+                descriptionIA.setVisible(true);
+                jLabel2.setText("Description");
+                descriptionIA.setText("enter description about product");
+                
+                maximumStockLevelSC.setVisible(true);
+                maximumStockLevelIF.setVisible(true);
+                
+                currentStockLevelSC.setVisible(true);
+                currentStockLevelIF.setVisible(true);
+                break;
+            case "Supplier":
+                minimumStockLevelSC.setText("Product ID");
+                minimumStockLevelIF.setText("enter Product ID");
+                
+                jLabel2.setVisible(true);
+                descriptionIA.setVisible(true);
+                jLabel2.setText("Name");
+                descriptionIA.setText("enter name of the Supplier");
+                
+                maximumStockLevelSC.setVisible(false);
+                maximumStockLevelIF.setVisible(false);
+                
+                currentStockLevelSC.setVisible(false);
+                currentStockLevelIF.setVisible(false);
+                break;
+            case "Order":
+                minimumStockLevelSC.setText("Supplier ID");
+                minimumStockLevelIF.setText("enter Supplier ID");
+                
+                maximumStockLevelSC.setText("Quantity");
+                maximumStockLevelIF.setText("enter quantity");
+                
+                currentStockLevelSC.setText("Order Date");
+                currentStockLevelIF.setText("enter order date");
+                
+                jLabel2.setVisible(false);
+                descriptionIA.setVisible(false);
+                
+                maximumStockLevelSC.setVisible(true);
+                maximumStockLevelIF.setVisible(true);
+                
+                currentStockLevelSC.setVisible(true);
+                currentStockLevelIF.setVisible(true);
+                break;
+            default:
+                break;
+        }
+    }
+    
+    public void presentProductDetails(String id, String desc, int min, int max, int current) {
         commandSC.setText("Selected Item: " + id);
         idSC.setText("" + id);
         descriptionIA.setText(desc);
@@ -260,20 +335,31 @@ public class MainWindow extends javax.swing.JFrame {
         maximumStockLevelIF.setText("" + max);
         currentStockLevelIF.setText("" + current);
     }
+    
+        public void presentSupplierDetails(String id, String name, String productId) {
+        commandSC.setText("Selected Supplier: " + id);
+        idSC.setText("" + id);
+        descriptionIA.setText(name);
+        minimumStockLevelIF.setText("" + productId);
+    }
 
     private void manageProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageProductActionPerformed
-        manageOrdersIU.setEnabled(true);
+        //manageOrdersIU.setEnabled(true);
         // Delegate
+        updateUIFields("Product");
+        isManagingProducts = true;
         inventory.manageProducts();
     }//GEN-LAST:event_manageProductActionPerformed
 
     private void manageSuppliersIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSuppliersIUActionPerformed
-        // TODO add your handling code here:
+        updateUIFields("Supplier");
+        isManagingSuppliers = true;
+        inventory.manageSuppliers();
     }//GEN-LAST:event_manageSuppliersIUActionPerformed
 
     private void deleteIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteIUActionPerformed
         String item = catalogIC.getSelectedValue();
-        inventory.deleteItem(item);
+        inventory.productDeleteItem(item);
     }//GEN-LAST:event_deleteIUActionPerformed
 
     private void updateIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateIUActionPerformed
@@ -282,7 +368,7 @@ public class MainWindow extends javax.swing.JFrame {
         String c = minimumStockLevelIF.getText();
         String d = maximumStockLevelIF.getText();
         String e = currentStockLevelIF.getText();
-        inventory.updateItem(a,b,c,d,e);
+        inventory.productUpdateItem(a,b,c,d,e);
     }//GEN-LAST:event_updateIUActionPerformed
 
     private void createIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createIUActionPerformed
@@ -290,18 +376,27 @@ public class MainWindow extends javax.swing.JFrame {
         String c = minimumStockLevelIF.getText();
         String d = maximumStockLevelIF.getText();
         String e = currentStockLevelIF.getText();
-        inventory.addItem(b,c,d,e);
+        inventory.productAddItem(b,c,d,e);
     }//GEN-LAST:event_createIUActionPerformed
 
     private void getIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getIUActionPerformed
         int items[] = catalogIC.getSelectedIndices();
         int index = catalogIC.getSelectedIndex() + 1;
-        inventory.getDetails(items, index);
+        if (isManagingProducts) {
+            inventory.productGetDetails(items, index);
+        }
+        else if (isManagingSuppliers) {
+            inventory.supplierGetDetails(items, index);
+        }
     }//GEN-LAST:event_getIUActionPerformed
 
     private void minimumStockLevelIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minimumStockLevelIFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_minimumStockLevelIFActionPerformed
+
+    private void manageOrdersIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrdersIUActionPerformed
+        updateUIFields("Order");
+    }//GEN-LAST:event_manageOrdersIUActionPerformed
 
     /**
      * @param args the command line arguments

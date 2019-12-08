@@ -53,9 +53,15 @@ public class UIFacade {
         }
     }
     
-    public void addDetails(String id, String description, int min, int max, int current) {
+    public void addProductDetails(String id, String description, int min, int max, int current) {
         if (mainWindow != null) {
-            mainWindow.presentDetails(id, description, min, max, current);
+            mainWindow.presentProductDetails(id, description, min, max, current);
+        }
+    }
+    
+    public void addSupplierDetails(String id, String name, String productId) {
+        if (mainWindow != null) {
+            mainWindow.presentSupplierDetails(id, name, productId);
         }
     }
     
