@@ -3,7 +3,7 @@ package domain;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProductCatalog {
+public class ProductCatalog extends Catalog {
 
     // Instantiation
     Map<String, ProductDescription> descriptions;
@@ -12,7 +12,10 @@ public class ProductCatalog {
     public ProductCatalog() {
         descriptions = new HashMap<>();
     }
-
+    
+    // Command Functions
+    
+    @Override
     public void createItem(String a, String b, String c, String d, String e) {
         a = a.trim();
         b = b.trim();
@@ -22,7 +25,7 @@ public class ProductCatalog {
         ProductDescription pd = new ProductDescription(a, b, min, max, cur);
         descriptions.put(a, pd);
     }
-    
+    @Override
     public void addItem(String b, String c, String d, String e) {
           String key = "";
           boolean missing = false;
@@ -38,11 +41,11 @@ public class ProductCatalog {
           }
           createItem(key, "New Item", "1", "1", "1");
     }
-
+    @Override
     public void deleteItem(String item) {
         descriptions.remove(getProducts(item).getProductId());
     }
-    
+    @Override
     public void updateItem(String a, String b, String c, String d, String e) {
         getProducts(a).setDescription(b.trim());
         getProducts(a).setMinimumStockLevel(c.trim());
@@ -63,8 +66,8 @@ public class ProductCatalog {
         String data = "";
         for (int iii = 1; iii <= descriptions.size(); ++iii) {
             data = data
-                    + getProducts("" + iii).getProductId() + ", "
-                    + getProducts("" + iii).getDescription() + ", "
+                    + getProducts("" + iii).getProductId()         + ", "
+                    + getProducts("" + iii).getDescription()       + ", "
                     + getProducts("" + iii).getMinimumStockLevel() + ", "
                     + getProducts("" + iii).getMaximumStockLevel() + ", "
                     + getProducts("" + iii).getCurrentStockLevel() + "\n";

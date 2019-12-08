@@ -22,22 +22,7 @@ public class ProductDescription extends Description {
         this.currentStockLevel = currentStockLevel;
     }
 
-    // Command Functions
-    @Override
-    public void create() {
-        System.out.println("this is create");
-    }
-
-    @Override
-    public void update() {
-        System.out.println("this is update");
-    }
-
-    @Override
-    public void delete() {
-        System.out.println("this is delete");
-    }
-    
+    // Command Functions    
     public void setDescription(String description) {
         this.description = description;
     }
@@ -55,6 +40,11 @@ public class ProductDescription extends Description {
     }
 
     // Query Functions
+    @Override
+    public String getProductId() {
+        return productId;
+    }
+    
     public String getDescription() {
         return description;
     }

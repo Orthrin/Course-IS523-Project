@@ -51,9 +51,7 @@ public class Store {
         try {
             catalog.deleteItem(item);
         } catch (Exception e) {
-            //  Block of code to handle errors
         }
-        // Delete elements from display list
         ui.purgeCatalog();
         manageProducts();
         saveData();
@@ -82,17 +80,15 @@ public class Store {
             BufferedWriter bufferedWriter
                     = new BufferedWriter(fileWriter);
 
-            // Note that write() does not automatically
-            // append a newline character.bufferedWriter.write("Hello there,");
-            bufferedWriter.write(getWriteData()); // BURAYA YAZILACAK
+            // Write data
+            bufferedWriter.write(getWriteData()); 
+            
             // Always close files.
             bufferedWriter.close();
         } catch (IOException ex) {
             System.out.println(
                     "Error writing to file '"
                     + fileName + "'");
-            // Or we could just do this:
-            // ex.printStackTrace();
         }
     }
 

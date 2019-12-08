@@ -15,23 +15,12 @@ public class OrderDescription extends Description {
         this.date = new Date();
     }
 
-    // Command Functions
-    @Override
-    public void create() {
-        System.out.println("this is create");
-    }
-
-    @Override
-    public void update() {
-        System.out.println("this is update");
-    }
-
-    @Override
-    public void delete() {
-        System.out.println("this is delete");
-    }
-
     // Query Functions
+    @Override
+    public String getProductId() {
+        return productId;
+    }
+    
     public int getSupplierId() {
         return supplierId;
     }
