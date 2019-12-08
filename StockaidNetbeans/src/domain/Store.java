@@ -148,7 +148,7 @@ public class Store {
         supplierSaveData();
     }
         public void orderAddItem(String b, String c, String d, String e) {
-        supplierCatalog.addItem(b, c, d, e);
+        orderCatalog.addItem(b, c, d, e);
         ui.purgeCatalog();
         manageOrders(false);
         orderSaveData();
@@ -184,15 +184,6 @@ public class Store {
         orderSaveData();
     }
     
-    public void orderUpdateItem(String item) {
-        try {
-            orderCatalog.deleteItem(item);
-        } catch (Exception e) {
-        }
-        ui.purgeCatalog();
-        manageOrders(false);
-        orderSaveData();
-    }
 
     public void productUpdateItem(String a, String b, String c, String d, String e) {
         try {
@@ -212,7 +203,7 @@ public class Store {
         supplierSaveData();
     }
     
-    public void orderSaveItem(String a, String b, String c, String d, String e) {
+    public void orderUpdateItem(String a, String b, String c, String d, String e) {
         try {
             supplierCatalog.updateItem(a, b, c, d, e);
         } catch (Exception ex) {

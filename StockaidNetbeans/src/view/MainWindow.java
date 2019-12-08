@@ -403,6 +403,7 @@ public class MainWindow extends javax.swing.JFrame {
                 break;
                 
                 case(3):
+                inventory.orderUpdateItem(a,b,c,d,e);
                 break;
                 
                 default:
@@ -428,6 +429,7 @@ public class MainWindow extends javax.swing.JFrame {
             break;
 
             case(3):
+            inventory.orderAddItem(b, c, d, e);
             break;
             
             default:
