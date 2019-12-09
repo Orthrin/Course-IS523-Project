@@ -1,4 +1,4 @@
-package isolate;
+package domain;
 
 import domain.Description;
 
@@ -12,7 +12,7 @@ public class OrderDescription extends Description {
 
     // Constructor
     public OrderDescription(String productId, int supplierId, int quantity, String date) {
-        super("");
+        super(productId);
         this.productId = productId;
         this.supplierId = supplierId;
         this.quantity = quantity;

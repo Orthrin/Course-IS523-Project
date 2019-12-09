@@ -359,7 +359,6 @@ public class MainWindow extends javax.swing.JFrame {
         // Delegate
         updateUIFields("Product");
         managementMode = 1;
-//        inventory.manageGuide(managementMode);
         inventory.manageCatalog(managementMode);
     }//GEN-LAST:event_manageProductActionPerformed
 
@@ -368,6 +367,12 @@ public class MainWindow extends javax.swing.JFrame {
         managementMode = 2;
         inventory.manageCatalog(managementMode);
     }//GEN-LAST:event_manageSuppliersIUActionPerformed
+
+    private void manageOrdersIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrdersIUActionPerformed
+        updateUIFields("Order");
+        managementMode = 3;
+        inventory.manageCatalog(managementMode);
+    }//GEN-LAST:event_manageOrdersIUActionPerformed
 
     private void deleteIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteIUActionPerformed
         String item = catalogIC.getSelectedValue();
@@ -407,12 +412,6 @@ public class MainWindow extends javax.swing.JFrame {
     private void firstInputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstInputFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_firstInputFieldActionPerformed
-
-    private void manageOrdersIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrdersIUActionPerformed
-        updateUIFields("Order");
-        managementMode = 3;
-//        inventory.manageOrders(true);
-    }//GEN-LAST:event_manageOrdersIUActionPerformed
 
     /**
      * @param args the command line arguments

@@ -21,14 +21,14 @@ public class Store {
     Catalog catalog;
     ProductCatalog productCatalog;
     SupplierCatalog supplierCatalog;
-//    OrderCatalog orderCatalog;
+    OrderCatalog orderCatalog;
     UIFacade ui = UIFacade.getInstance();
 
     // Constructor
     public Store() {
         productCatalog = new ProductCatalog();
         supplierCatalog = new SupplierCatalog();
-//        orderCatalog = new OrderCatalog();
+        orderCatalog = new OrderCatalog();
     }
 
     // Command Functions
@@ -47,17 +47,14 @@ public class Store {
                 String[] p = line.split(",");
                 switch (fileId) {
                     case 1:
-                        loadItems(fileId ,p[0], p[1], p[2], p[3], p[4]);
+                        loadItems(fileId, p[0], p[1], p[2], p[3], p[4]);
                         break;
                     case 2:
-                        loadItems(fileId ,p[0], p[1], p[2], "", "");
+                        loadItems(fileId, p[0], p[1], p[2], "", "");
                         break;
                     case 3:
-//                        orderLoadItems(fileId ,p[0], p[1], p[2], p[3]);
+                        loadItems(fileId, p[0], p[1], p[2], p[3], "");
                         break;
-                    default:
-                        break;
-
                 }
             }
 
@@ -93,6 +90,12 @@ public class Store {
                     ui.addCatalog(supplierCatalog.getDescriptions(key).getSupplierId());
                 }
                 break;
+            case 3:
+                loadData(guide, OrderFileName);
+                for (String key : orderCatalog.descriptions.keySet()) {
+                    ui.addCatalog(orderCatalog.getDescriptions(key).getProductId());
+                }
+                break;
         }
     }
 
@@ -113,6 +116,13 @@ public class Store {
                             supplierCatalog.getDescriptions("" + index).getProductId()
                     );
                     break;
+                case 3:
+                    ui.addOrderDetails(orderCatalog.getDescriptions("" + index).getProductId(),
+                            orderCatalog.getDescriptions("" + index).getSupplierId(),
+                            orderCatalog.getDescriptions("" + index).getQuantity(),
+                            orderCatalog.getDescriptions("" + index).getOrderDate()
+                    );
+                    break;
             }
         }
     }
@@ -122,13 +132,16 @@ public class Store {
         switch (guide) {
             case 1:
                 productCatalog.addItem(b, c, d, e);
-                saveData(guide);;
-                
+                saveData(guide);
+                ;
                 break;
             case 2:
                 supplierCatalog.addItem(b, c, d, e);
                 saveData(guide);
-                
+                break;
+            case 3:
+                orderCatalog.addItem(b, c, d, e);
+                saveData(guide);
                 break;
         }
         manageCatalog(guide);
@@ -147,6 +160,13 @@ public class Store {
             case 2:
                 try {
                 supplierCatalog.deleteItem(item);
+                saveData(guide);
+            } catch (Exception e) {
+            }
+            break;
+            case 3:
+                try {
+                orderCatalog.deleteItem(item);
                 saveData(guide);
             } catch (Exception e) {
             }
@@ -173,69 +193,99 @@ public class Store {
                 //  Block of code to handle errors
             }
             break;
+            case 3:
+                try {
+                orderCatalog.updateItem(a, b, c, d, e);
+                saveData(guide);
+            } catch (Exception ex) {
+            }
+            break;
         }
     }
 
     // >> polymorphed
     public void loadItems(int guide, String a, String b, String c, String d, String e) {
-        switch(guide) {
+        switch (guide) {
             case 1:
                 productCatalog.createItem(a, b, c, d, e);
                 break;
             case 2:
                 supplierCatalog.createItem(a, b, c, "", "");
                 break;
+            case 3:
+                orderCatalog.createItem(a, b, c, d, "");
+                break;
         }
     }
 
     // >> polymorphed
     public void saveData(int guide) {
-        switch(guide) {
+        switch (guide) {
             case 1:
                 try {
-            // Assume default encoding.
-            FileWriter fileWriter
-                    = new FileWriter(productFileName);
+                // Assume default encoding.
+                FileWriter fileWriter
+                        = new FileWriter(productFileName);
 
-            // Always wrap FileWriter in BufferedWriter.
-            BufferedWriter bufferedWriter
-                    = new BufferedWriter(fileWriter);
+                // Always wrap FileWriter in BufferedWriter.
+                BufferedWriter bufferedWriter
+                        = new BufferedWriter(fileWriter);
 
-            // Write data
-            bufferedWriter.write(getWriteData(guide));
+                // Write data
+                bufferedWriter.write(getWriteData(guide));
 
-            // Always close files.
-            bufferedWriter.close();
-        } catch (IOException ex) {
-            System.out.println("Error writing to file '"
-                    + productFileName + "'");
-        }
-                break;
+                // Always close files.
+                bufferedWriter.close();
+            } catch (IOException ex) {
+                System.out.println("Error writing to file '"
+                        + productFileName + "'");
+            }
+            break;
             case 2:
                 try {
-            // Assume default encoding.
-            FileWriter fileWriter
-                    = new FileWriter(SupplierFileName);
+                // Assume default encoding.
+                FileWriter fileWriter
+                        = new FileWriter(SupplierFileName);
 
-            // Always wrap FileWriter in BufferedWriter.
-            BufferedWriter bufferedWriter
-                    = new BufferedWriter(fileWriter);
+                // Always wrap FileWriter in BufferedWriter.
+                BufferedWriter bufferedWriter
+                        = new BufferedWriter(fileWriter);
 
-            // Write data
-            bufferedWriter.write(getWriteData(guide));
+                // Write data
+                bufferedWriter.write(getWriteData(guide));
 
-            // Always close files.
-            bufferedWriter.close();
-        } catch (IOException ex) {
-            System.out.println("Error writing to file '"
-                    + SupplierFileName + "'");
+                // Always close files.
+                bufferedWriter.close();
+            } catch (IOException ex) {
+                System.out.println("Error writing to file '"
+                        + SupplierFileName + "'");
+            }
+            break;
+            case 3:
+                try {
+                // Assume default encoding.
+                FileWriter fileWriter
+                        = new FileWriter(OrderFileName);
+
+                // Always wrap FileWriter in BufferedWriter.
+                BufferedWriter bufferedWriter
+                        = new BufferedWriter(fileWriter);
+
+                // Write data
+                bufferedWriter.write(getWriteData(guide));
+
+                // Always close files.
+                bufferedWriter.close();
+            } catch (IOException ex) {
+                System.out.println("Error writing to file '"
+                        + OrderFileName + "'");
+            }
+            break;
         }
-                break;    
-        }
+
     }
 
     // Query Functions
-    
     // >> polymorphed
     public Catalog getCatalog(int id) {
         switch (id) {
@@ -244,13 +294,12 @@ public class Store {
             case 2:
                 return supplierCatalog;
             case 3:
-//                return orderCatalog;
+                return orderCatalog;
         }
         return productCatalog;
     }
 
 // orth >> getCatalog nerde kullaniliyor bulamadim.
-   
     // >> polymorphed
     public String getWriteData(int id) {
         switch (id) {
@@ -259,9 +308,9 @@ public class Store {
             case 2:
                 return supplierCatalog.getSaveData();
             case 3:
-//               return orderCatalog.getSaveData();
+                return orderCatalog.getSaveData();
         }
         return productCatalog.getSaveData();
     }
-    
+
 }
