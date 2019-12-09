@@ -391,6 +391,10 @@ public class MainWindow extends javax.swing.JFrame {
             inventory.updateItem(managementMode,a,b,c,d,e);
     }//GEN-LAST:event_updateIUActionPerformed
 
+    public void orderShowMax (int max) {
+            secondInputText.setText("Quantity [max= " + max + "]");
+    }
+    
     private void createIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createIUActionPerformed
 
         String b = descriptionIA.getText();

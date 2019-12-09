@@ -72,6 +72,12 @@ public class UIFacade {
         }
     }
     
+    public void orderShowMax(int max) {
+        if (mainWindow != null) {
+            mainWindow.orderShowMax(max);
+        }
+    }
+    
     // Query Functions
     synchronized public static UIFacade getInstance() {
         if (instance == null) {

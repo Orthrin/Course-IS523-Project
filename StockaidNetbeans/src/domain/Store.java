@@ -91,6 +91,7 @@ public class Store {
                 }
                 break;
             case 3:
+                loadData(1, productFileName);
                 loadData(guide, OrderFileName);
                 for (String key : orderCatalog.descriptions.keySet()) {
                     ui.addCatalog(orderCatalog.getDescriptions(key).getProductId());
@@ -122,6 +123,9 @@ public class Store {
                             orderCatalog.getDescriptions("" + index).getQuantity(),
                             orderCatalog.getDescriptions("" + index).getOrderDate()
                     );
+                    int max = productCatalog.getDescriptions("" + index).getMaximumStockLevel();
+                    int cur = productCatalog.getDescriptions("" + index).getCurrentStockLevel();
+                    ui.orderShowMax(max-cur);
                     break;
             }
         }
@@ -140,8 +144,12 @@ public class Store {
                 saveData(guide);
                 break;
             case 3:
+                if (productCatalog.descriptions.size() >= orderCatalog.descriptions.size()) {
                 orderCatalog.addItem(b, c, d, e);
                 saveData(guide);
+                } else {
+                    ui.inform("You already have orders for all products!");
+                }
                 break;
         }
         manageCatalog(guide);
@@ -195,7 +203,7 @@ public class Store {
             break;
             case 3:
                 try {
-                orderCatalog.updateItem(a, b, c, d, e);
+                orderCatalog.updateItem(a, b, c, d, e); 
                 saveData(guide);
             } catch (Exception ex) {
             }
