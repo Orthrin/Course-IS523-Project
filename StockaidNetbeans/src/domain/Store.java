@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Map;
 import view.UIFacade;
 
 public class Store {
@@ -48,13 +47,13 @@ public class Store {
                 String[] p = line.split(",");
                 switch (fileId) {
                     case 1:
-                        productLoadItems(p[0], p[1], p[2], p[3], p[4]);
+                        loadItems(fileId ,p[0], p[1], p[2], p[3], p[4]);
                         break;
                     case 2:
-                        supplierLoadItems(p[0], p[1], p[2]);
+                        loadItems(fileId ,p[0], p[1], p[2], "", "");
                         break;
                     case 3:
-//                        orderLoadItems(p[0], p[1], p[2], p[3]);
+//                        orderLoadItems(fileId ,p[0], p[1], p[2], p[3]);
                         break;
                     default:
                         break;
@@ -72,14 +71,10 @@ public class Store {
             System.out.println(
                     "Error reading file '"
                     + fileName + "'");
-            // Or we could just do this: 
-            // ex.printStackTrace();
         } catch (ArrayIndexOutOfBoundsException ex) {
             System.out.println(
                     "Error reading file '"
                     + fileName + "'");
-            // Or we could just do this: 
-            // ex.printStackTrace();
         }
     }
 
@@ -127,15 +122,16 @@ public class Store {
         switch (guide) {
             case 1:
                 productCatalog.addItem(b, c, d, e);
-                manageCatalog(guide);
-                productSaveData();
+                saveData(guide);;
+                
                 break;
             case 2:
                 supplierCatalog.addItem(b, c, d, e);
-                manageCatalog(guide);
-                supplierSaveData();
+                saveData(guide);
+                
                 break;
         }
+        manageCatalog(guide);
     }
 
     public void deleteItem(int guide, String item) {
@@ -144,63 +140,59 @@ public class Store {
             case 1:
                 try {
                 productCatalog.deleteItem(item);
+                saveData(guide);
             } catch (Exception e) {
             }
-            manageCatalog(guide);
-            productSaveData();
             break;
             case 2:
                 try {
                 supplierCatalog.deleteItem(item);
+                saveData(guide);
             } catch (Exception e) {
             }
-            manageCatalog(guide);
-            supplierSaveData();
             break;
         }
+        manageCatalog(guide);
     }
 
     public void updateItem(int guide, String a, String b, String c, String d, String e) {
         switch (guide) {
             case 1:
-        try {
+                try {
                 productCatalog.updateItem(a, b, c, d, e);
+                saveData(guide);
             } catch (Exception ex) {
                 //  Block of code to handle errors
             }
-            productSaveData();
             break;
             case 2:
-        try {
+                try {
                 supplierCatalog.updateItem(a, b, c, d, e);
+                saveData(guide);
             } catch (Exception ex) {
                 //  Block of code to handle errors
             }
-            supplierSaveData();
             break;
         }
     }
 
-    // POLYMORHIC LoadItems
-    public void loadItems(String a, String b, String c, String d, String e) {
-        productCatalog.createItem(a, b, c, d, e);
+    // >> polymorphed
+    public void loadItems(int guide, String a, String b, String c, String d, String e) {
+        switch(guide) {
+            case 1:
+                productCatalog.createItem(a, b, c, d, e);
+                break;
+            case 2:
+                supplierCatalog.createItem(a, b, c, "", "");
+                break;
+        }
     }
 
-    public void productLoadItems(String a, String b, String c, String d, String e) {
-        productCatalog.createItem(a, b, c, d, e);
-    }
-
-    public void supplierLoadItems(String a, String b, String c) {
-        supplierCatalog.createItem(a, b, c, "", "");
-    }
-//
-//    public void orderLoadItems(String a, String b, String c, String d) {
-//        orderCatalog.createItem(a, b, c, d, "");
-//    }
-
-    // POLYMORHIC SaveData
-    public void productSaveData() {
-        try {
+    // >> polymorphed
+    public void saveData(int guide) {
+        switch(guide) {
+            case 1:
+                try {
             // Assume default encoding.
             FileWriter fileWriter
                     = new FileWriter(productFileName);
@@ -210,7 +202,7 @@ public class Store {
                     = new BufferedWriter(fileWriter);
 
             // Write data
-            bufferedWriter.write(getProductWriteData());
+            bufferedWriter.write(getWriteData(guide));
 
             // Always close files.
             bufferedWriter.close();
@@ -218,10 +210,9 @@ public class Store {
             System.out.println("Error writing to file '"
                     + productFileName + "'");
         }
-    }
-
-    public void supplierSaveData() {
-        try {
+                break;
+            case 2:
+                try {
             // Assume default encoding.
             FileWriter fileWriter
                     = new FileWriter(SupplierFileName);
@@ -231,7 +222,7 @@ public class Store {
                     = new BufferedWriter(fileWriter);
 
             // Write data
-            bufferedWriter.write(getSupplierWriteData());
+            bufferedWriter.write(getWriteData(guide));
 
             // Always close files.
             bufferedWriter.close();
@@ -239,65 +230,38 @@ public class Store {
             System.out.println("Error writing to file '"
                     + SupplierFileName + "'");
         }
+                break;    
+        }
     }
 
-//    public void orderSaveData() {
-//        try {
-//            // Assume default encoding.
-//            FileWriter fileWriter
-//                    = new FileWriter(OrderFileName);
-//
-//            // Always wrap FileWriter in BufferedWriter.
-//            BufferedWriter bufferedWriter
-//                    = new BufferedWriter(fileWriter);
-//
-//            // Write data
-//            bufferedWriter.write(getOrderWriteData());
-//
-//            // Always close files.
-//            bufferedWriter.close();
-//        } catch (IOException ex) {
-//            System.out.println("Error writing to file '"
-//                    + OrderFileName + "'");
-//        }
-//    }
     // Query Functions
-    // POLYMORHIC>catalog getCatalog
-//    public Catalog getCatalog(int id) {
-//        switch (id) {
-//            case 1:
-//                return productCatalog;
-//            case 2:
-//                return supplierCatalog;
-//            case 3:
+    
+    // >> polymorphed
+    public Catalog getCatalog(int id) {
+        switch (id) {
+            case 1:
+                return productCatalog;
+            case 2:
+                return supplierCatalog;
+            case 3:
 //                return orderCatalog;
-//        }
-//        return productCatalog;
-//    }
-    public ProductCatalog getProductCatalog() {
-
+        }
         return productCatalog;
     }
 
-    public SupplierCatalog getSupplierCatalog() {
-        return supplierCatalog;
-    }
-//
-//    public OrderCatalog getOrderCatalog() {
-//        return orderCatalog;
-//    }
-
-    // POLYMORHIC>catalog getWriteData
-    public String getProductWriteData() {
+// orth >> getCatalog nerde kullaniliyor bulamadim.
+   
+    // >> polymorphed
+    public String getWriteData(int id) {
+        switch (id) {
+            case 1:
+                return productCatalog.getSaveData();
+            case 2:
+                return supplierCatalog.getSaveData();
+            case 3:
+//               return orderCatalog.getSaveData();
+        }
         return productCatalog.getSaveData();
     }
-
-    public String getSupplierWriteData() {
-        return supplierCatalog.getSaveData();
-    }
-//
-//    public String getOrderWriteData() {
-//        return orderCatalog.getSaveData();
-//    }
-
+    
 }
