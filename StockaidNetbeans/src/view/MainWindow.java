@@ -359,13 +359,14 @@ public class MainWindow extends javax.swing.JFrame {
         // Delegate
         updateUIFields("Product");
         managementMode = 1;
+//        inventory.manageGuide(managementMode);
         inventory.manageProducts(true);
     }//GEN-LAST:event_manageProductActionPerformed
 
     private void manageSuppliersIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSuppliersIUActionPerformed
         updateUIFields("Supplier");
         managementMode = 2;
-//        inventory.manageSuppliers(true);
+        inventory.manageSuppliers(true);
     }//GEN-LAST:event_manageSuppliersIUActionPerformed
 
     private void deleteIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteIUActionPerformed
@@ -375,7 +376,7 @@ public class MainWindow extends javax.swing.JFrame {
                 inventory.productDeleteItem(item);
                 break;
             case 2:
-//                inventory.supplierDeleteItem(item);
+                inventory.supplierDeleteItem(item);
                 break;
             case 3:
 //                inventory.orderDeleteItem(item);
@@ -399,7 +400,7 @@ public class MainWindow extends javax.swing.JFrame {
                 break;
                 
                 case(2):
-//                inventory.supplierUpdateItem(a, b, c, d, e);
+                inventory.supplierUpdateItem(a, b, c, d, e);
                 break;
                 
                 case(3):
@@ -425,7 +426,7 @@ public class MainWindow extends javax.swing.JFrame {
             break;
 
             case(2):
-//            inventory.supplierAddItem(b,c,d,e);
+            inventory.supplierAddItem(b,c,d,e);
             break;
 
             case(3):
@@ -447,7 +448,7 @@ public class MainWindow extends javax.swing.JFrame {
             break;
 
             case(2):
-//            inventory.supplierGetDetails(items, index);
+            inventory.supplierGetDetails(items, index);
             break;
 
             case(3):

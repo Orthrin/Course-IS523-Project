@@ -1,4 +1,6 @@
-package domain;
+package isolate;
+
+import domain.Description;
 
 public class OrderDescription extends Description {
 

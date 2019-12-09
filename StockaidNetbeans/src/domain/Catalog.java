@@ -1,14 +1,19 @@
 package domain;
 
+import java.util.HashMap;
+import java.util.Map;
+
 abstract public class Catalog {
     
     // Variables
+    Map<String, Description> descriptions;
     
     // Instantiation
  
 
     // Constructor
     public Catalog() {
+        descriptions = new HashMap<>();
     }
 
     // Command Functions
@@ -24,7 +29,7 @@ abstract public class Catalog {
     abstract public void deleteItem(String a);
     abstract public void updateItem(String a, String b, String c, String d, String e);
     
-    abstract public ProductDescription getDescriptions(String itemId);
+    abstract public Description getDescriptions(String itemId);
     abstract public int getCatalogSize();
     abstract public String getSaveData();
 

@@ -18,16 +18,16 @@ public class Store {
     public static final String OrderFileName = "orders.txt";
 
     // Instantiation
-//    Catalog catalog;
+    Catalog catalog;
     ProductCatalog productCatalog;
-//    SupplierCatalog supplierCatalog;
+    SupplierCatalog supplierCatalog;
 //    OrderCatalog orderCatalog;
     UIFacade ui = UIFacade.getInstance();
 
     // Constructor
     public Store() {
         productCatalog = new ProductCatalog();
-//        supplierCatalog = new SupplierCatalog();
+        supplierCatalog = new SupplierCatalog();
 //        orderCatalog = new OrderCatalog();
     }
 
@@ -50,7 +50,7 @@ public class Store {
                         productLoadItems(p[0], p[1], p[2], p[3], p[4]);
                         break;
                     case 2:
-//                        supplierLoadItems(p[0], p[1], p[2]);
+                        supplierLoadItems(p[0], p[1], p[2]);
                         break;
                     case 3:
 //                        orderLoadItems(p[0], p[1], p[2], p[3]);
@@ -111,15 +111,15 @@ public class Store {
         }
     }
 
-//    public void manageSuppliers(boolean init) {
-//        ui.purgeCatalog();
-//        if (init) {
-//            loadData(2, SupplierFileName);
-//        }
-//        for (String key : supplierCatalog.descriptions.keySet()) {
-//            ui.addCatalog(supplierCatalog.getSuppliers(key).getSupplierId());
-//        }
-//    }
+    public void manageSuppliers(boolean init) {
+        ui.purgeCatalog();
+        if (init) {
+            loadData(2, SupplierFileName);
+        }
+        for (String key : supplierCatalog.descriptions.keySet()) {
+            ui.addCatalog(supplierCatalog.getDescriptions(key).getSupplierId());
+        }
+    }
 //
 //    public void manageOrders(boolean init) {
 //        ui.purgeCatalog();
@@ -142,14 +142,14 @@ public class Store {
         }
     }
 
-//    public void supplierGetDetails(int items[], int index) {
-//        if (items.length == 1) {
-//            ui.addSupplierDetails(supplierCatalog.getSuppliers("" + index).getSupplierId(),
-//                    supplierCatalog.getSuppliers("" + index).getName(),
-//                    supplierCatalog.getSuppliers("" + index).getProductId()
-//            );
-//        }
-//    }
+    public void supplierGetDetails(int items[], int index) {
+        if (items.length == 1) {
+            ui.addSupplierDetails(supplierCatalog.getDescriptions("" + index).getSupplierId(),
+                    supplierCatalog.getDescriptions("" + index).getName(),
+                    supplierCatalog.getDescriptions("" + index).getProductId()
+            );
+        }
+    }
 //
 //    public void orderGetDetails(int items[], int index) {
 //        if (items.length == 1) {
@@ -168,12 +168,12 @@ public class Store {
         productSaveData();
     }
 
-//    public void supplierAddItem(String b, String c, String d, String e) {
-//        supplierCatalog.addItem(b, c, d, e);
-//        ui.purgeCatalog();
-//        manageSuppliers(false);
-//        supplierSaveData();
-//    }
+    public void supplierAddItem(String b, String c, String d, String e) {
+        supplierCatalog.addItem(b, c, d, e);
+        ui.purgeCatalog();
+        manageSuppliers(false);
+        supplierSaveData();
+    }
 //
 //    public void orderAddItem(String b, String c, String d, String e) {
 //        orderCatalog.addItem(b, c, d, e);
@@ -192,15 +192,15 @@ public class Store {
         productSaveData();
     }
 
-//    public void supplierDeleteItem(String item) {
-//        try {
-//            supplierCatalog.deleteItem(item);
-//        } catch (Exception e) {
-//        }
-//        ui.purgeCatalog();
-//        manageSuppliers(false);
-//        supplierSaveData();
-//    }
+    public void supplierDeleteItem(String item) {
+        try {
+            supplierCatalog.deleteItem(item);
+        } catch (Exception e) {
+        }
+        ui.purgeCatalog();
+        manageSuppliers(false);
+        supplierSaveData();
+    }
 //
 //    public void orderDeleteItem(String item) {
 //        try {
@@ -221,14 +221,14 @@ public class Store {
         productSaveData();
     }
 
-//    public void supplierUpdateItem(String a, String b, String c, String d, String e) {
-//        try {
-//            supplierCatalog.updateItem(a, b, c, d, e);
-//        } catch (Exception ex) {
-//            //  Block of code to handle errors
-//        }
-//        supplierSaveData();
-//    }
+    public void supplierUpdateItem(String a, String b, String c, String d, String e) {
+        try {
+            supplierCatalog.updateItem(a, b, c, d, e);
+        } catch (Exception ex) {
+            //  Block of code to handle errors
+        }
+        supplierSaveData();
+    }
 
 //    public void orderUpdateItem(String a, String b, String c, String d, String e) {
 //        try {
@@ -240,13 +240,17 @@ public class Store {
 //    }
 
     // POLYMORHIC LoadItems
+    public void loadItems(String a, String b, String c, String d, String e) {
+        productCatalog.createItem(a, b, c, d, e);
+    }
+    
     public void productLoadItems(String a, String b, String c, String d, String e) {
         productCatalog.createItem(a, b, c, d, e);
     }
 
-//    public void supplierLoadItems(String a, String b, String c) {
-//        supplierCatalog.createItem(a, b, c, "", "");
-//    }
+    public void supplierLoadItems(String a, String b, String c) {
+        supplierCatalog.createItem(a, b, c, "", "");
+    }
 //
 //    public void orderLoadItems(String a, String b, String c, String d) {
 //        orderCatalog.createItem(a, b, c, d, "");
@@ -274,26 +278,26 @@ public class Store {
         }
     }
 
-//    public void supplierSaveData() {
-//        try {
-//            // Assume default encoding.
-//            FileWriter fileWriter
-//                    = new FileWriter(SupplierFileName);
-//
-//            // Always wrap FileWriter in BufferedWriter.
-//            BufferedWriter bufferedWriter
-//                    = new BufferedWriter(fileWriter);
-//
-//            // Write data
-//            bufferedWriter.write(getSupplierWriteData());
-//
-//            // Always close files.
-//            bufferedWriter.close();
-//        } catch (IOException ex) {
-//            System.out.println("Error writing to file '"
-//                    + SupplierFileName + "'");
-//        }
-//    }
+    public void supplierSaveData() {
+        try {
+            // Assume default encoding.
+            FileWriter fileWriter
+                    = new FileWriter(SupplierFileName);
+
+            // Always wrap FileWriter in BufferedWriter.
+            BufferedWriter bufferedWriter
+                    = new BufferedWriter(fileWriter);
+
+            // Write data
+            bufferedWriter.write(getSupplierWriteData());
+
+            // Always close files.
+            bufferedWriter.close();
+        } catch (IOException ex) {
+            System.out.println("Error writing to file '"
+                    + SupplierFileName + "'");
+        }
+    }
 
 //    public void orderSaveData() {
 //        try {
@@ -335,9 +339,9 @@ public class Store {
         return productCatalog;
     }
 
-//    public SupplierCatalog getSupplierCatalog() {
-//        return supplierCatalog;
-//    }
+    public SupplierCatalog getSupplierCatalog() {
+        return supplierCatalog;
+    }
 //
 //    public OrderCatalog getOrderCatalog() {
 //        return orderCatalog;
@@ -348,9 +352,9 @@ public class Store {
         return productCatalog.getSaveData();
     }
 
-//    public String getSupplierWriteData() {
-//        return supplierCatalog.getSaveData();
-//    }
+    public String getSupplierWriteData() {
+        return supplierCatalog.getSaveData();
+    }
 //
 //    public String getOrderWriteData() {
 //        return orderCatalog.getSaveData();

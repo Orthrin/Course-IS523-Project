@@ -1,4 +1,4 @@
-package domain;
+package isolate;
 
 
 public class template {
