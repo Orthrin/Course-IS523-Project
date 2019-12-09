@@ -3,24 +3,36 @@ package domain;
 public class SupplierDescription extends Description {
 
     // Variables
-    int supplierId;
+    String supplierId;
+    String productId;
     String name;
 
     // Constructor
-    public SupplierDescription() {
-        super("");
-        this.name = "kedi";
+    public SupplierDescription(String supplierId, String name, String productId) {
+        super(productId);
+        this.productId = productId;
+        this.supplierId = supplierId;
+        this.name = name;
+
     }
 
     // Command Functions
-
+    
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+       
     // Query Functions
     @Override
     public String getProductId() {
         return productId;
     }
     
-    public int getSupplierId() {
+    public String getSupplierId() {
         return supplierId;
     }
     

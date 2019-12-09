@@ -3,6 +3,8 @@ package domain;
 abstract public class Catalog {
     
     // Variables
+    
+    // Instantiation
  
 
     // Constructor
@@ -21,6 +23,10 @@ abstract public class Catalog {
     abstract public void addItem(String b, String c, String d, String e);
     abstract public void deleteItem(String a);
     abstract public void updateItem(String a, String b, String c, String d, String e);
+    
+    abstract public ProductDescription getDescriptions(String itemId);
+    abstract public int getCatalogSize();
+    abstract public String getSaveData();
 
     
     

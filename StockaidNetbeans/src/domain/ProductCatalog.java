@@ -31,7 +31,7 @@ public class ProductCatalog extends Catalog {
           boolean missing = false;
           for(int iii=1; iii <= descriptions.size(); iii++) {
               key = ""+ iii;
-              if(getProducts(key) == null) {
+              if(getDescriptions(key) == null) {
                  missing = true;
                  break; 
               }
@@ -43,34 +43,37 @@ public class ProductCatalog extends Catalog {
     }
     @Override
     public void deleteItem(String item) {
-        descriptions.remove(getProducts(item).getProductId());
+        descriptions.remove(getDescriptions(item).getProductId());
     }
     @Override
     public void updateItem(String a, String b, String c, String d, String e) {
-        getProducts(a).setDescription(b.trim());
-        getProducts(a).setMinimumStockLevel(c.trim());
-        getProducts(a).setMaximumStockLevel(d.trim());
-        getProducts(a).setCurrentStockLevel(e.trim());
+        getDescriptions(a).setDescription(b.trim());
+        getDescriptions(a).setMinimumStockLevel(c.trim());
+        getDescriptions(a).setMaximumStockLevel(d.trim());
+        getDescriptions(a).setCurrentStockLevel(e.trim());
     }
 
     // Query Methods
-    public ProductDescription getProducts(String itemId) {
+    @Override
+    public ProductDescription getDescriptions(String itemId) {
         return descriptions.get(itemId);
     }
 
+    @Override
     public int getCatalogSize() {
         return descriptions.size();
     }
-
+    
+    @Override
     public String getSaveData() {
         String data = "";
         for (int iii = 1; iii <= descriptions.size(); ++iii) {
             data = data
-                    + getProducts("" + iii).getProductId()         + ", "
-                    + getProducts("" + iii).getDescription()       + ", "
-                    + getProducts("" + iii).getMinimumStockLevel() + ", "
-                    + getProducts("" + iii).getMaximumStockLevel() + ", "
-                    + getProducts("" + iii).getCurrentStockLevel() + "\n";
+                    + getDescriptions("" + iii).getProductId()         + ", "
+                    + getDescriptions("" + iii).getDescription()       + ", "
+                    + getDescriptions("" + iii).getMinimumStockLevel() + ", "
+                    + getDescriptions("" + iii).getMaximumStockLevel() + ", "
+                    + getDescriptions("" + iii).getCurrentStockLevel() + "\n";
         }
         return data;
     }
