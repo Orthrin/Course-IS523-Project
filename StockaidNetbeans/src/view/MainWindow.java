@@ -60,7 +60,6 @@ public class MainWindow extends javax.swing.JFrame {
         idSC = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("icon2.png")));
 
         createIU.setText("+");
         createIU.addActionListener(new java.awt.event.ActionListener() {
