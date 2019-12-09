@@ -360,30 +360,20 @@ public class MainWindow extends javax.swing.JFrame {
         updateUIFields("Product");
         managementMode = 1;
 //        inventory.manageGuide(managementMode);
-        inventory.manageProducts(true);
+        inventory.manageCatalog(managementMode);
     }//GEN-LAST:event_manageProductActionPerformed
 
     private void manageSuppliersIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageSuppliersIUActionPerformed
         updateUIFields("Supplier");
         managementMode = 2;
-        inventory.manageSuppliers(true);
+        inventory.manageCatalog(managementMode);
     }//GEN-LAST:event_manageSuppliersIUActionPerformed
 
     private void deleteIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteIUActionPerformed
         String item = catalogIC.getSelectedValue();
-        switch(managementMode) {
-            case 1:
-                inventory.productDeleteItem(item);
-                break;
-            case 2:
-                inventory.supplierDeleteItem(item);
-                break;
-            case 3:
-//                inventory.orderDeleteItem(item);
-                break;
-            default:
-                break;
-        }
+        
+        inventory.deleteItem(managementMode, item);
+
     }//GEN-LAST:event_deleteIUActionPerformed
 
     private void updateIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateIUActionPerformed
@@ -393,24 +383,8 @@ public class MainWindow extends javax.swing.JFrame {
             String c = firstInputField.getText();
             String d = secondInputField.getText();
             String e = thirdInputField.getText();
-            
-            switch(managementMode) {
-                case(1):
-                inventory.productUpdateItem(a,b,c,d,e);
-                break;
-                
-                case(2):
-                inventory.supplierUpdateItem(a, b, c, d, e);
-                break;
-                
-                case(3):
-//                inventory.orderUpdateItem(a,b,c,d,e);
-                break;
-                
-                default:
-                break;        
-            }
-        
+         
+            inventory.updateItem(managementMode,a,b,c,d,e);
     }//GEN-LAST:event_updateIUActionPerformed
 
     private void createIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createIUActionPerformed
@@ -420,44 +394,14 @@ public class MainWindow extends javax.swing.JFrame {
         String d = secondInputField.getText();
         String e = thirdInputField.getText();
         
-        switch(managementMode) {
-            case(1):
-            inventory.productAddItem(b,c,d,e);
-            break;
-
-            case(2):
-            inventory.supplierAddItem(b,c,d,e);
-            break;
-
-            case(3):
-//            inventory.orderAddItem(b, c, d, e);
-            break;
-            
-            default:
-            break;        
-        }       
-        
+        inventory.addItem(managementMode,b,c,d,e);    
     }//GEN-LAST:event_createIUActionPerformed
 
     private void getIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getIUActionPerformed
         int items[] = catalogIC.getSelectedIndices();
         int index = catalogIC.getSelectedIndex() + 1;
-        switch(managementMode) {
-            case(1):
-            inventory.productGetDetails(items, index);
-            break;
-
-            case(2):
-            inventory.supplierGetDetails(items, index);
-            break;
-
-            case(3):
-//            inventory.orderGetDetails(items, index);
-            break;
-            
-            default:
-            break;        
-        }  
+        inventory.getDetails(managementMode, items, index);
+        
     }//GEN-LAST:event_getIUActionPerformed
 
     private void firstInputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstInputFieldActionPerformed

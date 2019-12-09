@@ -6,14 +6,12 @@ import java.util.Map;
 abstract public class Catalog {
     
     // Variables
-    Map<String, Description> descriptions;
     
     // Instantiation
  
 
     // Constructor
     public Catalog() {
-        descriptions = new HashMap<>();
     }
 
     // Command Functions

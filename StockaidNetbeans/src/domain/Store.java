@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
 import view.UIFacade;
 
 public class Store {
@@ -81,169 +82,110 @@ public class Store {
             // ex.printStackTrace();
         }
     }
-    
-//    public void manageGuide(int index) {
-//        ui.purgeCatalog();
-//        catalog = productCatalog;
-//        switch(index) {
-//            case 1:
-//                catalog = productCatalog;
-//            case 2:
-//                catalog = supplierCatalog;
-//            case 3:
-//                catalog = orderCatalog;
-//        }
-//        if (index > 0) {
-//            loadData(index, productFileName);
-//        }
-//        for (String key : catalog.descriptions.keySet()) {
-//            ui.addCatalog(catalog.getDescriptions(key).getProductId());
-//        }
-//    }
-    
-    public void manageProducts(boolean init) {
+
+    public void manageCatalog(int guide) {
         ui.purgeCatalog();
-        if (init) {
-            loadData(1, productFileName);
-        }
-        for (String key : productCatalog.descriptions.keySet()) {
-            ui.addCatalog(productCatalog.getDescriptions(key).getProductId());
+        switch (guide) {
+            case 1:
+                loadData(guide, productFileName);
+                for (String key : productCatalog.descriptions.keySet()) {
+                    ui.addCatalog(productCatalog.getDescriptions(key).getProductId());
+                }
+                break;
+            case 2:
+                loadData(guide, SupplierFileName);
+                for (String key : supplierCatalog.descriptions.keySet()) {
+                    ui.addCatalog(supplierCatalog.getDescriptions(key).getSupplierId());
+                }
+                break;
         }
     }
 
-    public void manageSuppliers(boolean init) {
-        ui.purgeCatalog();
-        if (init) {
-            loadData(2, SupplierFileName);
-        }
-        for (String key : supplierCatalog.descriptions.keySet()) {
-            ui.addCatalog(supplierCatalog.getDescriptions(key).getSupplierId());
-        }
-    }
-//
-//    public void manageOrders(boolean init) {
-//        ui.purgeCatalog();
-//        if (init) {
-//            loadData(3, OrderFileName);
-//        }
-//        for (String key : orderCatalog.descriptions.keySet()) {
-//            ui.addCatalog(orderCatalog.getOrders(key).getProductId());
-//        }
-//    }
-
-    public void productGetDetails(int items[], int index) {
+    public void getDetails(int guide, int items[], int index) {
         if (items.length == 1) {
-            ui.addProductDetails(productCatalog.getDescriptions("" + index).getProductId(),
-                    productCatalog.getDescriptions("" + index).getDescription(),
-                    productCatalog.getDescriptions("" + index).getMinimumStockLevel(),
-                    productCatalog.getDescriptions("" + index).getMaximumStockLevel(),
-                    productCatalog.getDescriptions("" + index).getCurrentStockLevel()
-            );
+            switch (guide) {
+                case 1:
+                    ui.addProductDetails(productCatalog.getDescriptions("" + index).getProductId(),
+                            productCatalog.getDescriptions("" + index).getDescription(),
+                            productCatalog.getDescriptions("" + index).getMinimumStockLevel(),
+                            productCatalog.getDescriptions("" + index).getMaximumStockLevel(),
+                            productCatalog.getDescriptions("" + index).getCurrentStockLevel()
+                    );
+                    break;
+                case 2:
+                    ui.addSupplierDetails(supplierCatalog.getDescriptions("" + index).getSupplierId(),
+                            supplierCatalog.getDescriptions("" + index).getName(),
+                            supplierCatalog.getDescriptions("" + index).getProductId()
+                    );
+                    break;
+            }
         }
     }
 
-    public void supplierGetDetails(int items[], int index) {
-        if (items.length == 1) {
-            ui.addSupplierDetails(supplierCatalog.getDescriptions("" + index).getSupplierId(),
-                    supplierCatalog.getDescriptions("" + index).getName(),
-                    supplierCatalog.getDescriptions("" + index).getProductId()
-            );
-        }
-    }
-//
-//    public void orderGetDetails(int items[], int index) {
-//        if (items.length == 1) {
-//            ui.addOrderDetails(orderCatalog.getOrders("" + index).getProductId(),
-//                    orderCatalog.getOrders("" + index).getSupplierId(),
-//                    orderCatalog.getOrders("" + index).getQuantity(),
-//                    orderCatalog.getOrders("" + index).getOrderDate()
-//            );
-//        }
-//    }
-
-    public void productAddItem(String b, String c, String d, String e) {
-        productCatalog.addItem(b, c, d, e);
+    public void addItem(int guide, String b, String c, String d, String e) {
         ui.purgeCatalog();
-        manageProducts(false);
-        productSaveData();
+        switch (guide) {
+            case 1:
+                productCatalog.addItem(b, c, d, e);
+                manageCatalog(guide);
+                productSaveData();
+                break;
+            case 2:
+                supplierCatalog.addItem(b, c, d, e);
+                manageCatalog(guide);
+                supplierSaveData();
+                break;
+        }
     }
 
-    public void supplierAddItem(String b, String c, String d, String e) {
-        supplierCatalog.addItem(b, c, d, e);
+    public void deleteItem(int guide, String item) {
         ui.purgeCatalog();
-        manageSuppliers(false);
-        supplierSaveData();
-    }
-//
-//    public void orderAddItem(String b, String c, String d, String e) {
-//        orderCatalog.addItem(b, c, d, e);
-//        ui.purgeCatalog();
-//        manageOrders(false);
-//        orderSaveData();
-//    }
-
-    public void productDeleteItem(String item) {
-        try {
-            productCatalog.deleteItem(item);
-        } catch (Exception e) {
+        switch (guide) {
+            case 1:
+                try {
+                productCatalog.deleteItem(item);
+            } catch (Exception e) {
+            }
+            manageCatalog(guide);
+            productSaveData();
+            break;
+            case 2:
+                try {
+                supplierCatalog.deleteItem(item);
+            } catch (Exception e) {
+            }
+            manageCatalog(guide);
+            supplierSaveData();
+            break;
         }
-        ui.purgeCatalog();
-        manageProducts(false);
-        productSaveData();
     }
 
-    public void supplierDeleteItem(String item) {
+    public void updateItem(int guide, String a, String b, String c, String d, String e) {
+        switch (guide) {
+            case 1:
         try {
-            supplierCatalog.deleteItem(item);
-        } catch (Exception e) {
-        }
-        ui.purgeCatalog();
-        manageSuppliers(false);
-        supplierSaveData();
-    }
-//
-//    public void orderDeleteItem(String item) {
-//        try {
-//            orderCatalog.deleteItem(item);
-//        } catch (Exception e) {
-//        }
-//        ui.purgeCatalog();
-//        manageOrders(false);
-//        orderSaveData();
-//    }
-
-    public void productUpdateItem(String a, String b, String c, String d, String e) {
+                productCatalog.updateItem(a, b, c, d, e);
+            } catch (Exception ex) {
+                //  Block of code to handle errors
+            }
+            productSaveData();
+            break;
+            case 2:
         try {
-            productCatalog.updateItem(a, b, c, d, e);
-        } catch (Exception ex) {
-            //  Block of code to handle errors
+                supplierCatalog.updateItem(a, b, c, d, e);
+            } catch (Exception ex) {
+                //  Block of code to handle errors
+            }
+            supplierSaveData();
+            break;
         }
-        productSaveData();
     }
-
-    public void supplierUpdateItem(String a, String b, String c, String d, String e) {
-        try {
-            supplierCatalog.updateItem(a, b, c, d, e);
-        } catch (Exception ex) {
-            //  Block of code to handle errors
-        }
-        supplierSaveData();
-    }
-
-//    public void orderUpdateItem(String a, String b, String c, String d, String e) {
-//        try {
-//            supplierCatalog.updateItem(a, b, c, d, e);
-//        } catch (Exception ex) {
-//            //  Block of code to handle errors
-//        }
-//        orderSaveData();
-//    }
 
     // POLYMORHIC LoadItems
     public void loadItems(String a, String b, String c, String d, String e) {
         productCatalog.createItem(a, b, c, d, e);
     }
-    
+
     public void productLoadItems(String a, String b, String c, String d, String e) {
         productCatalog.createItem(a, b, c, d, e);
     }
@@ -319,7 +261,6 @@ public class Store {
 //                    + OrderFileName + "'");
 //        }
 //    }
-
     // Query Functions
     // POLYMORHIC>catalog getCatalog
 //    public Catalog getCatalog(int id) {
@@ -333,7 +274,6 @@ public class Store {
 //        }
 //        return productCatalog;
 //    }
-
     public ProductCatalog getProductCatalog() {
 
         return productCatalog;
