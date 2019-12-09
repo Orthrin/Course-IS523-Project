@@ -81,7 +81,12 @@ public class Store {
             case 1:
                 loadData(guide, productFileName);
                 for (String key : productCatalog.descriptions.keySet()) {
+                    int min = productCatalog.getDescriptions(key).getMinimumStockLevel();
+                    int cur = productCatalog.getDescriptions(key).getCurrentStockLevel();
                     ui.addCatalog(productCatalog.getDescriptions(key).getProductId());
+                    if(min >= cur) {
+                    ui.inform("Item: " + productCatalog.getDescriptions(key).getProductId() + " [Low in Stock!]" );
+                    }
                 }
                 break;
             case 2:

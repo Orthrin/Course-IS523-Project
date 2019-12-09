@@ -1,6 +1,7 @@
 package view;
 
 import domain.Store;
+import java.awt.Color;
 import javax.swing.*;
 import java.awt.Toolkit;
 import java.util.Date;
@@ -49,7 +50,6 @@ public class MainWindow extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         descriptionIA = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
-        getIU = new javax.swing.JButton();
         commandSC = new javax.swing.JLabel();
         firstInputText = new javax.swing.JLabel();
         firstInputField = new javax.swing.JTextField();
@@ -61,7 +61,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        createIU.setText("+");
+        createIU.setText("Add");
         createIU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createIUActionPerformed(evt);
@@ -86,6 +86,11 @@ public class MainWindow extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        catalogIC.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                catalogICValueChanged(evt);
+            }
         });
         jScrollPane3.setViewportView(catalogIC);
 
@@ -121,13 +126,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabel2.setText("Description");
 
-        getIU.setText("Get");
-        getIU.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getIUActionPerformed(evt);
-            }
-        });
-
         commandSC.setText("Please select item(s)");
 
         firstInputText.setText("Minimum Stock Level");
@@ -154,10 +152,11 @@ public class MainWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(manageProductsIU, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(manageOrdersIU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(manageSuppliersIU, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
+                    .addComponent(manageSuppliersIU, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                    .addComponent(manageProductsIU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -166,11 +165,11 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(authenticatioonSU, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(getIU, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(deleteIU, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(createIU, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(deleteIU, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -181,25 +180,23 @@ public class MainWindow extends javax.swing.JFrame {
                                     .addComponent(firstInputField, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(secondInputText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(secondInputField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(thirdInputField, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(thirdInputText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(firstInputText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(idSC, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 155, Short.MAX_VALUE))))
-                            .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 150, Short.MAX_VALUE))
+                                    .addComponent(thirdInputField)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(createIU, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(updateIU, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(updateIU, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(authenticatioonSU)
                     .addComponent(commandSC))
@@ -233,13 +230,14 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(manageSuppliersIU)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(manageOrdersIU)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(updateIU)
-                    .addComponent(createIU)
-                    .addComponent(deleteIU)
-                    .addComponent(getIU))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(createIU)
+                            .addComponent(deleteIU))
+                        .addContainerGap())))
         );
 
         pack();
@@ -352,6 +350,8 @@ public class MainWindow extends javax.swing.JFrame {
         secondInputField.setText("" + quantity);
         thirdInputField.setText("" + date);
     }
+    
+    // INPUT UNITS
 
     private void manageProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageProductActionPerformed
         //manageOrdersIU.setEnabled(true);
@@ -395,6 +395,10 @@ public class MainWindow extends javax.swing.JFrame {
             secondInputText.setText("Quantity [max= " + max + "]");
     }
     
+    public void indicateLow(String item) {
+        setBackground(Color.red);
+    }
+    
     private void createIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createIUActionPerformed
 
         String b = descriptionIA.getText();
@@ -405,16 +409,15 @@ public class MainWindow extends javax.swing.JFrame {
         inventory.addItem(managementMode,b,c,d,e);    
     }//GEN-LAST:event_createIUActionPerformed
 
-    private void getIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getIUActionPerformed
-        int items[] = catalogIC.getSelectedIndices();
-        int index = catalogIC.getSelectedIndex() + 1;
-        inventory.getDetails(managementMode, items, index);
-        
-    }//GEN-LAST:event_getIUActionPerformed
-
     private void firstInputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstInputFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_firstInputFieldActionPerformed
+
+    private void catalogICValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_catalogICValueChanged
+        int items[] = catalogIC.getSelectedIndices();
+        int index = catalogIC.getSelectedIndex() + 1;
+        inventory.getDetails(managementMode, items, index);
+    }//GEN-LAST:event_catalogICValueChanged
 
     /**
      * @param args the command line arguments
@@ -463,7 +466,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTextArea descriptionIA;
     private javax.swing.JTextField firstInputField;
     private javax.swing.JLabel firstInputText;
-    private javax.swing.JButton getIU;
     private javax.swing.JLabel idSC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

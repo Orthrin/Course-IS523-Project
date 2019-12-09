@@ -78,6 +78,12 @@ public class UIFacade {
         }
     }
     
+    public void indicateLow(String item) {
+        if (mainWindow != null) {
+            mainWindow.indicateLow(item);
+        }
+    }
+    
     // Query Functions
     synchronized public static UIFacade getInstance() {
         if (instance == null) {

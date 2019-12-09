@@ -24,10 +24,11 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="manageProductsIU" alignment="1" max="32767" attributes="0"/>
                   <Component id="manageOrdersIU" alignment="0" max="32767" attributes="0"/>
-                  <Component id="manageSuppliersIU" alignment="1" pref="135" max="32767" attributes="0"/>
+                  <Component id="manageSuppliersIU" alignment="0" pref="134" max="32767" attributes="0"/>
+                  <Component id="manageProductsIU" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -38,16 +39,16 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="getIU" min="-2" pref="102" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="deleteIU" min="-2" pref="102" max="-2" attributes="0"/>
+                              <Component id="createIU" min="-2" pref="102" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="deleteIU" min="-2" pref="90" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane3" min="-2" pref="210" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
@@ -55,22 +56,20 @@
                                   <Component id="firstInputField" alignment="1" max="32767" attributes="0"/>
                                   <Component id="secondInputText" alignment="1" max="32767" attributes="0"/>
                                   <Component id="secondInputField" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="thirdInputField" alignment="1" max="32767" attributes="0"/>
                                   <Component id="thirdInputText" alignment="1" max="32767" attributes="0"/>
                                   <Component id="firstInputText" alignment="1" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel1" min="-2" pref="30" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="idSC" min="-2" pref="200" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="155" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="150" max="32767" attributes="0"/>
                                   </Group>
+                                  <Component id="thirdInputField" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="createIU" min="-2" pref="102" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="updateIU" min="-2" pref="102" max="-2" attributes="0"/>
+                              <Component id="updateIU" min="-2" pref="108" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -82,7 +81,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="authenticatioonSU" min="-2" max="-2" attributes="0"/>
                   <Component id="commandSC" min="-2" max="-2" attributes="0"/>
@@ -122,14 +121,17 @@
                       <Component id="manageOrdersIU" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="updateIU" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="createIU" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="deleteIU" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="getIU" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
               <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="updateIU" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="createIU" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="deleteIU" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -137,7 +139,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="createIU">
       <Properties>
-        <Property name="text" type="java.lang.String" value="+"/>
+        <Property name="text" type="java.lang.String" value="Add"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createIUActionPerformed"/>
@@ -178,6 +180,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="catalogICValueChanged"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -238,14 +243,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Description"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="getIU">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Get"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getIUActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="commandSC">
       <Properties>
