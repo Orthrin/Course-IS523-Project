@@ -2,42 +2,27 @@
 Course Assignment Repository  
 Created at 30-Nov-2019
 
+# Necessary Links
+- Main Organization Spreadsheet
+https://docs.google.com/spreadsheets/u/3/d/1c7m3yfgulXQ2f02f3NHFWTZ6Q3f_O8O74WwLE5KOQYM/edit?usp=sharing
+- Use Case Document 
+https://docs.google.com/document/d/1iRpzijXLhz80Niux7AXG0uLf6_ObDuoa9j_0q3cMlzQ/edit
+- UML Diagrams & Graphs
+https://www.draw.io/#G11K0yvXkyoLxnmvpj3WaSPvflugTcC3SW
+- GitHub Repository
+https://github.com/Orthrin/Course-IS523-Project
+
 # Todo
-- jList queue
-- edit validation
+- Please Visit `Main Organization Spreadsheet - Todo`
 
 # Log state
 System.out.println("");
 
 # Nomenclature
-UI 
-    Frame >> InteractionFrame
-    Container >> <>Container
-    Input Unity >> <unit>IU
-    Input Field >> <unit>IF
-    Output Component >> <unit> OC
-    Interactive Component >> <unit>IC
-    Static Component >> <unit> SC
-Domain 
-    Controller -> <domanclass> / <useCase>Controller
-
-
-# Problems
-- UI facade is not fitting in class templatess
+- Please Visit `Main Organization Spreadsheet - Nomenclature` 
 
 # Class Templates
-- Variables >> variable of classses
-- Instantiation >> instantiation of clasases
-- Constructor >> constructor
-- Command Functions >> variable modification functions
-- Query Functions >> return vaalue functions
-- Abstract Functions >> polymorphic operatin identifier
-- Procedure >> Main code line
-// Variables
-// Instantiation
-// Constructor
-// Command Functions
-// Query Functions
+- Please Visit `Main Organization Spreadsheet - Nomenclature` 
 
 # Keywords
 window builder pro 
