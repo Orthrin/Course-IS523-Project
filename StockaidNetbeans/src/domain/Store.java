@@ -1,23 +1,30 @@
 package domain;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import view.UIFacade;
 
 public class Store {
+    
+    
+    // Singleton
+    private static final Store store = new Store();
+    // Singleton Call
+    public static Store getInstance() {
+        return store; 
+    }
 
     // Variables
     String name;
     public static String fileName = "";
-    public static final String productFileName = "products.txt";
+    public static final String ProductFileName = "products.txt";
     public static final String SupplierFileName = "suppliers.txt";
     public static final String OrderFileName = "orders.txt";
 
     // Instantiation
+    DatabaseAction database;
     Catalog catalog;
     ProductCatalog productCatalog;
     SupplierCatalog supplierCatalog;
@@ -25,37 +32,49 @@ public class Store {
     UIFacade ui = UIFacade.getInstance();
 
     // Constructor
-    public Store() {
+    private Store() {
+        database = new DatabaseAction();
         productCatalog = new ProductCatalog();
         supplierCatalog = new SupplierCatalog();
         orderCatalog = new OrderCatalog();
     }
 
     // Command Functions
-    public void loadData(int fileId, String fileName) {
+    public void loadData(int guide, String fileName) {
+//        database.loadData(guide);
+        
         String line = null;
+        String targetFileName = null;
+
+        switch (guide) {
+            case 1:
+                targetFileName = ProductFileName;
+                break;
+            case 2:
+                targetFileName = SupplierFileName;
+                break;
+            case 3:
+                targetFileName = OrderFileName;
+                break;
+            default:
+                targetFileName = "";
+        }
         try {
             // FileReader reads text files in the default encoding.
             FileReader fileReader
-                    = new FileReader(fileName);
+                    = new FileReader(targetFileName);
 
             // Always wrap FileReader in BufferedReader.
             BufferedReader bufferedReader
                     = new BufferedReader(fileReader);
 
             while ((line = bufferedReader.readLine()) != null) {
-                String[] p = line.split(",");
-                switch (fileId) {
-                    case 1:
-                        loadItems(fileId, p[0], p[1], p[2], p[3], p[4]);
-                        break;
-                    case 2:
-                        loadItems(fileId, p[0], p[1], p[2], "", "");
-                        break;
-                    case 3:
-                        loadItems(fileId, p[0], p[1], p[2], p[3], "");
-                        break;
+                String[] p = new String[5];
+                String[] data = line.split(",");
+                for(int iii=0; iii<data.length;iii++) {
+                    p[iii] = data[iii];
                 }
+                loadItems(guide, p[0], p[1], p[2], p[3], p[4]);
             }
 
             // Always close files.
@@ -79,7 +98,7 @@ public class Store {
         ui.purgeCatalog();
         switch (guide) {
             case 1:
-                loadData(guide, productFileName);
+                loadData(guide, ProductFileName);
                 for (String key : productCatalog.descriptions.keySet()) {
                     int min = productCatalog.getDescriptions(key).getMinimumStockLevel();
                     int cur = productCatalog.getDescriptions(key).getCurrentStockLevel();
@@ -96,7 +115,7 @@ public class Store {
                 }
                 break;
             case 3:
-                loadData(1, productFileName);
+                loadData(1, ProductFileName);
                 loadData(guide, OrderFileName);
                 for (String key : orderCatalog.descriptions.keySet()) {
                     ui.addCatalog(orderCatalog.getDescriptions(key).getProductId());
@@ -141,17 +160,17 @@ public class Store {
         switch (guide) {
             case 1:
                 productCatalog.addItem(b, c, d, e);
-                saveData(guide);
+                saveData(guide, getWriteData(guide));
                 ;
                 break;
             case 2:
                 supplierCatalog.addItem(b, c, d, e);
-                saveData(guide);
+                saveData(guide, getWriteData(guide));
                 break;
             case 3:
                 if (productCatalog.descriptions.size() >= orderCatalog.descriptions.size()) {
                 orderCatalog.addItem(b, c, d, e);
-                saveData(guide);
+                saveData(guide, getWriteData(guide));
                 } else {
                     ui.inform("You already have orders for all products!");
                 }
@@ -166,21 +185,21 @@ public class Store {
             case 1:
                 try {
                 productCatalog.deleteItem(item);
-                saveData(guide);
+                saveData(guide, getWriteData(guide));
             } catch (Exception e) {
             }
             break;
             case 2:
                 try {
                 supplierCatalog.deleteItem(item);
-                saveData(guide);
+                saveData(guide, getWriteData(guide));
             } catch (Exception e) {
             }
             break;
             case 3:
                 try {
                 orderCatalog.deleteItem(item);
-                saveData(guide);
+                saveData(guide, getWriteData(guide));
             } catch (Exception e) {
             }
             break;
@@ -193,7 +212,7 @@ public class Store {
             case 1:
                 try {
                 productCatalog.updateItem(a, b, c, d, e);
-                saveData(guide);
+                saveData(guide, getWriteData(guide));
             } catch (Exception ex) {
                 //  Block of code to handle errors
             }
@@ -201,7 +220,7 @@ public class Store {
             case 2:
                 try {
                 supplierCatalog.updateItem(a, b, c, d, e);
-                saveData(guide);
+                saveData(guide, getWriteData(guide));
             } catch (Exception ex) {
                 //  Block of code to handle errors
             }
@@ -209,7 +228,7 @@ public class Store {
             case 3:
                 try {
                 orderCatalog.updateItem(a, b, c, d, e); 
-                saveData(guide);
+                saveData(guide, getWriteData(guide));
             } catch (Exception ex) {
             }
             break;
@@ -231,75 +250,11 @@ public class Store {
         }
     }
 
-    // >> polymorphed
-    public void saveData(int guide) {
-        switch (guide) {
-            case 1:
-                try {
-                // Assume default encoding.
-                FileWriter fileWriter
-                        = new FileWriter(productFileName);
-
-                // Always wrap FileWriter in BufferedWriter.
-                BufferedWriter bufferedWriter
-                        = new BufferedWriter(fileWriter);
-
-                // Write data
-                bufferedWriter.write(getWriteData(guide));
-
-                // Always close files.
-                bufferedWriter.close();
-            } catch (IOException ex) {
-                System.out.println("Error writing to file '"
-                        + productFileName + "'");
-            }
-            break;
-            case 2:
-                try {
-                // Assume default encoding.
-                FileWriter fileWriter
-                        = new FileWriter(SupplierFileName);
-
-                // Always wrap FileWriter in BufferedWriter.
-                BufferedWriter bufferedWriter
-                        = new BufferedWriter(fileWriter);
-
-                // Write data
-                bufferedWriter.write(getWriteData(guide));
-
-                // Always close files.
-                bufferedWriter.close();
-            } catch (IOException ex) {
-                System.out.println("Error writing to file '"
-                        + SupplierFileName + "'");
-            }
-            break;
-            case 3:
-                try {
-                // Assume default encoding.
-                FileWriter fileWriter
-                        = new FileWriter(OrderFileName);
-
-                // Always wrap FileWriter in BufferedWriter.
-                BufferedWriter bufferedWriter
-                        = new BufferedWriter(fileWriter);
-
-                // Write data
-                bufferedWriter.write(getWriteData(guide));
-
-                // Always close files.
-                bufferedWriter.close();
-            } catch (IOException ex) {
-                System.out.println("Error writing to file '"
-                        + OrderFileName + "'");
-            }
-            break;
-        }
-
+    public void saveData(int guide, String data) {
+        database.saveData(guide, data);
     }
 
     // Query Functions
-    // >> polymorphed
     public Catalog getCatalog(int id) {
         switch (id) {
             case 1:
@@ -312,8 +267,6 @@ public class Store {
         return productCatalog;
     }
 
-// orth >> getCatalog nerde kullaniliyor bulamadim.
-    // >> polymorphed
     public String getWriteData(int id) {
         switch (id) {
             case 1:
@@ -325,5 +278,5 @@ public class Store {
         }
         return productCatalog.getSaveData();
     }
-
+    
 }

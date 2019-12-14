@@ -6,7 +6,7 @@ import view.UIFacade;
 public class Main {
 
     // Instantiation
-    public static Store store = new Store();
+    public static Store store = Store.getInstance(); 
 
     public static void main(String[] args) {
 
