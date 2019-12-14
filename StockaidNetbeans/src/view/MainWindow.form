@@ -246,7 +246,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="commandSC">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Please select item(s)"/>
+        <Property name="text" type="java.lang.String" value="Please select an item"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="firstInputText">

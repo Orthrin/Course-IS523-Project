@@ -1,8 +1,8 @@
 package view;
 
 import domain.Store;
-import java.awt.Color;
 import javax.swing.*;
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.util.Date;
 import javax.sql.rowset.spi.SyncProvider;
@@ -126,7 +126,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabel2.setText("Description");
 
-        commandSC.setText("Please select item(s)");
+        commandSC.setText("Please select an item");
 
         firstInputText.setText("Minimum Stock Level");
 
@@ -256,7 +256,7 @@ public class MainWindow extends javax.swing.JFrame {
         descriptionIA.append(log + "\n");
     }
 
-    public void addCatalog(String item) {
+    public void addItemToCatalog(String item) {
         catalogModel.addElement(item);
     }
     
@@ -328,7 +328,6 @@ public class MainWindow extends javax.swing.JFrame {
     }
     
     public void presentProductDetails(String id, String desc, int min, int max, int current) {
-        commandSC.setText("Selected Item: " + id);
         idSC.setText("" + id);
         descriptionIA.setText(desc);
         firstInputField.setText("" + min);
@@ -343,9 +342,8 @@ public class MainWindow extends javax.swing.JFrame {
         firstInputField.setText("" + productId);
     }
     
-    public void presentOrderDetails(String id, int productId, int quantity, String date) {
-        commandSC.setText("Selected Order: " + id);
-        idSC.setText("" + id);
+    public void presentOrderDetails(String id, String description, int productId, int quantity, String date) {
+        idSC.setText("" + id + " (" + description + ")" );
         firstInputField.setText("" + productId);
         secondInputField.setText("" + quantity);
         thirdInputField.setText("" + date);
@@ -374,8 +372,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_manageOrdersIUActionPerformed
 
     private void deleteIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteIUActionPerformed
-        String item = catalogIC.getSelectedValue();
-        
+        String item = idSC.getText();  
         inventory.deleteItem(managementMode, item);
 
     }//GEN-LAST:event_deleteIUActionPerformed
@@ -396,7 +393,8 @@ public class MainWindow extends javax.swing.JFrame {
     }
     
     public void indicateLow(String item) {
-        setBackground(Color.red);
+//        catalogIC.setSelectedIndex(catalogIC.getLastVisibleIndex());
+//        catalogIC.setSelectionBackground(Color.red);
     }
     
     private void createIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createIUActionPerformed

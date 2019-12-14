@@ -102,23 +102,24 @@ public class Store {
                 for (String key : productCatalog.descriptions.keySet()) {
                     int min = productCatalog.getDescriptions(key).getMinimumStockLevel();
                     int cur = productCatalog.getDescriptions(key).getCurrentStockLevel();
-                    ui.addCatalog(productCatalog.getDescriptions(key).getProductId());
                     if(min >= cur) {
-                    ui.inform("Item: " + productCatalog.getDescriptions(key).getProductId() + " [Low in Stock!]" );
+                    ui.addItemToCatalog(productCatalog.getDescriptions(key).getDescription() + " [LOW]");
+                    continue;
                     }
+                    ui.addItemToCatalog(productCatalog.getDescriptions(key).getDescription());
                 }
                 break;
             case 2:
                 loadData(guide, SupplierFileName);
                 for (String key : supplierCatalog.descriptions.keySet()) {
-                    ui.addCatalog(supplierCatalog.getDescriptions(key).getSupplierId());
+                    ui.addItemToCatalog(supplierCatalog.getDescriptions(key).getName());
                 }
                 break;
             case 3:
                 loadData(1, ProductFileName);
                 loadData(guide, OrderFileName);
                 for (String key : orderCatalog.descriptions.keySet()) {
-                    ui.addCatalog(orderCatalog.getDescriptions(key).getProductId());
+                    ui.addItemToCatalog(orderCatalog.getDescriptions(key).getProductId());
                 }
                 break;
         }
@@ -143,6 +144,7 @@ public class Store {
                     break;
                 case 3:
                     ui.addOrderDetails(orderCatalog.getDescriptions("" + index).getProductId(),
+                            productCatalog.getDescriptions("" + index).getDescription(),
                             orderCatalog.getDescriptions("" + index).getSupplierId(),
                             orderCatalog.getDescriptions("" + index).getQuantity(),
                             orderCatalog.getDescriptions("" + index).getOrderDate()
@@ -168,7 +170,7 @@ public class Store {
                 saveData(guide, getWriteData(guide));
                 break;
             case 3:
-                if (productCatalog.descriptions.size() >= orderCatalog.descriptions.size()) {
+                if (productCatalog.descriptions.size() > orderCatalog.descriptions.size()) {
                 orderCatalog.addItem(b, c, d, e);
                 saveData(guide, getWriteData(guide));
                 } else {
@@ -233,9 +235,9 @@ public class Store {
             }
             break;
         }
+        manageCatalog(guide);
     }
 
-    // >> polymorphed
     public void loadItems(int guide, String a, String b, String c, String d, String e) {
         switch (guide) {
             case 1:
@@ -255,8 +257,8 @@ public class Store {
     }
 
     // Query Functions
-    public Catalog getCatalog(int id) {
-        switch (id) {
+    public Catalog getCatalog(int guide) {
+        switch (guide) {
             case 1:
                 return productCatalog;
             case 2:
@@ -267,8 +269,8 @@ public class Store {
         return productCatalog;
     }
 
-    public String getWriteData(int id) {
-        switch (id) {
+    public String getWriteData(int guide) {
+        switch (guide) {
             case 1:
                 return productCatalog.getSaveData();
             case 2:
