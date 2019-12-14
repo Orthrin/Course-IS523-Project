@@ -343,7 +343,7 @@ public class MainWindow extends javax.swing.JFrame {
     }
     
     public void presentOrderDetails(String id, String description, int productId, int quantity, String date) {
-        idSC.setText("" + id + " (" + description + ")" );
+        idSC.setText("" + id);
         firstInputField.setText("" + productId);
         secondInputField.setText("" + quantity);
         thirdInputField.setText("" + date);

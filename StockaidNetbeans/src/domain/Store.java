@@ -200,6 +200,7 @@ public class Store {
             break;
             case 3:
                 try {
+                    System.out.println(item);
                 orderCatalog.deleteItem(item);
                 saveData(guide, getWriteData(guide));
             } catch (Exception e) {
