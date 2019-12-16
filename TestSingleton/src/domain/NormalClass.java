@@ -4,7 +4,9 @@ package domain;
 public class NormalClass {
     
     
-    // Singleton Constructor
+    // Variables
+    private static SingletonClass instance = SingletonClass.getInstance();
+    
     public NormalClass() {
         counter++;
     }
@@ -18,7 +20,7 @@ public class NormalClass {
     
     // Command Functions
     public void doSomething() {
-        
+        instance.doSomething();
         System.out.println("Singleton Test " + counter);
     }
     

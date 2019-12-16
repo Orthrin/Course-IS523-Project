@@ -8,6 +8,7 @@ public class SingletonClass {
     private static final SingletonClass instance = new SingletonClass();
     // Singleton Constructor
     private SingletonClass() {
+//        NormalClass normal = new NormalClass();
 
     }
     // Singleton Call

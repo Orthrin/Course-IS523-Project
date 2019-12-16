@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         
         int inc = 0;
-
+        
         SingletonClass x = SingletonClass.getInstance();
         SingletonClass y = SingletonClass.getInstance();
         SingletonClass z = SingletonClass.getInstance();
@@ -18,9 +18,12 @@ public class Main {
         NormalClass b = new NormalClass();
         NormalClass c = new NormalClass();
         
-        x.doSomething();
-        y.doSomething();
-        z.doSomething();
+        System.out.println(x);
+        System.out.println(y);
+        System.out.println(z);
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
         a.doSomething();
         b.doSomething();
         c.doSomething();
