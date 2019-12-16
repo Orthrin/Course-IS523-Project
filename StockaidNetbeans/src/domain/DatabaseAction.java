@@ -15,11 +15,11 @@ public class DatabaseAction {
     public static final String OrderFileName = "orders.txt";
     
     // Instantiation
-    public Store store;
+    public static Store store;
     
     // Constructor
     public DatabaseAction() {
-        store = Store.getInstance();
+        Store store = Store.getInstance();
     }
 
     // Command Functions
@@ -56,9 +56,9 @@ public class DatabaseAction {
                 for(int iii=0; iii<data.length;iii++) {
                     p[iii] = data[iii];
                 }
-                
+                System.out.println(store);
                 System.out.println(guide + " " + p[0] + " " + p[1] + " " + p[2] + " " + p[3] + " " + p[4]);
-                store.loadItems(guide, p[0], p[1], p[2], p[3], p[4]);
+//                store.loadItems(guide, p[0], p[1], p[2], p[3], p[4]);
             }
 
             // Always close files.

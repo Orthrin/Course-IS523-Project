@@ -41,7 +41,7 @@ public class Store {
 
     // Command Functions
     public void loadData(int guide, String fileName) {
-//        database.loadData(guide);
+        database.loadData(guide);
         
         String line = null;
         String targetFileName = null;

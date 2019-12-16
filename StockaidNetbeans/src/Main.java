@@ -6,11 +6,12 @@ import view.UIFacade;
 public class Main {
 
     // Instantiation
-    public static Store store = Store.getInstance(); 
+    private static Store store = Store.getInstance(); 
 
     public static void main(String[] args) {
 
         // Procedure
+        //System.out.println(store);
         UIFacade.getInstance().start(store);
 
     }

@@ -29,3 +29,5 @@ hs_err_pid*
 /testIO/build/
 /Assignment3/StockaidNetbeans/build/
 /Assignment3/StockaidNetbeans/dist/
+/TestSingleton/nbproject/private/
+/TestSingleton/build/
