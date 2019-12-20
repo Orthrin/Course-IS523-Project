@@ -23,7 +23,7 @@ public class OrderCatalog extends Catalog{
             int supplierId = Integer.parseInt(b.replaceAll(" ", ""));
             int quantity = Integer.parseInt(c.replaceAll(" ", ""));
             d = d.trim();
-            OrderDescription od = new OrderDescription(a, supplierId, quantity, d);
+            OrderDescription od = new OrderDescription(a, quantity, supplierId, quantity, d);
             descriptions.put(a, od);
     }
 

@@ -7,14 +7,16 @@ public class OrderDescription extends Description {
     // Variables
     String productId;
     int supplierId;
+    int orderId;
     int quantity;
     String date;
 
     // Constructor
-    public OrderDescription(String productId, int supplierId, int quantity, String date) {
+    public OrderDescription(String productId, int supplierId, int orderId, int quantity, String date) {
         super(productId);
         this.productId = productId;
         this.supplierId = supplierId;
+        this.orderId = orderId;
         this.quantity = quantity;
         this.date = date;
     }
@@ -27,6 +29,10 @@ public class OrderDescription extends Description {
     
     public void setSupplierId(int supplierId) {
         this.supplierId = supplierId;
+    }
+    
+     public void setOrderId(int supplierId) {
+        this.orderId = supplierId;
     }
     
     public void setQuantity(int quantity) {
@@ -45,6 +51,10 @@ public class OrderDescription extends Description {
     
     public int getSupplierId() {
         return supplierId;
+    }
+    
+    public int getOrderId() {
+        return orderId;
     }
     
     public int getQuantity() {

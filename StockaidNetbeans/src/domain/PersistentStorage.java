@@ -16,25 +16,11 @@ public class PersistentStorage {
     
     // Constructor
     public PersistentStorage() {
-        Store store = Store.getInstance();
     }
 
     // Command Functions
     public void saveData(int guide, String data) {
-        String targetFileName;
-        switch (guide) {
-            case 1:
-                targetFileName = ProductFileName;
-                break;
-            case 2:
-                targetFileName = SupplierFileName;
-                break;
-            case 3:
-                targetFileName = OrderFileName;
-                break;
-            default:
-                targetFileName = "";
-        }
+        String targetFileName = getFileName(guide);
         if (targetFileName != "") {
             try {
                 // Assume default encoding.
@@ -57,24 +43,25 @@ public class PersistentStorage {
     }
     
     // Query Functions    
-    public int getItemCount(int guide) {
-        int count = 0;
-        String targetFileName = null;
-        String line = null;
-
-        switch (guide) {
+    public String getFileName(int guide) {
+       switch (guide) {
             case 1:
-                targetFileName = ProductFileName;
-                break;
+                return ProductFileName;
             case 2:
-                targetFileName = SupplierFileName;
-                break;
+                return SupplierFileName;
             case 3:
-                targetFileName = OrderFileName;
-                break;
+                return OrderFileName;
             default:
-                targetFileName = "";
-        }
+                return "";
+        } 
+    }
+    
+    public int getItemCount(int guide) {
+        
+        String targetFileName = getFileName(guide);
+        int count = 0;
+        String line = null;
+        
         try {
             // FileReader reads text files in the default encoding.
             FileReader fileReader
@@ -107,23 +94,11 @@ public class PersistentStorage {
     }
     
     public String getLineItem(int guide, int lineItem) {
-       String line = null;
-        String targetFileName = null;
+        
+        String targetFileName = getFileName(guide);
+        String line = null;
         int counter = 0;
-
-        switch (guide) {
-            case 1:
-                targetFileName = ProductFileName;
-                break;
-            case 2:
-                targetFileName = SupplierFileName;
-                break;
-            case 3:
-                targetFileName = OrderFileName;
-                break;
-            default:
-                targetFileName = "";
-        }
+        
         try {
             // FileReader reads text files in the default encoding.
             FileReader fileReader
@@ -138,11 +113,7 @@ public class PersistentStorage {
                     return line;
                 }
                 counter++;
-//                System.out.println(guide + " " + p[0] + " " + p[1] + " " + p[2] + " " + p[3] + " " + p[4]);
-//                store.loadItems(guide, p[0], p[1], p[2], p[3], p[4]);
             }
-
-            // Always close files.
             bufferedReader.close();
         } catch (FileNotFoundException ex) {
             System.out.println(
@@ -159,5 +130,4 @@ public class PersistentStorage {
         }
         return line;
     }
-
 }
