@@ -292,39 +292,36 @@ public class MainWindow extends javax.swing.JFrame {
                 productCB.setVisible(false);
                 supplierCB.setVisible(false);
                 
-                inputFieldText2.setText("Minimum Stock Level");
-                inputField2.setText("enter minimum stock level");
-                
-                inputFieldText3.setText("Maximum Stock Level");
-                inputField3.setText("enter maximum stock level");
-                
-                inputFieldText4.setText("Current Stock Level");
-                inputField4.setText("enter current stock level");
-                
-                
                 inputFieldText1.setVisible(true);
                 inputField1.setVisible(true);
                 inputFieldText1.setText("Description");
                 inputField1.setText("enter description about product");
                 
+                inputFieldText2.setText("Minimum Stock Level");
+                inputField2.setText("enter minimum stock level");
+                
                 inputFieldText3.setVisible(true);
                 inputField3.setVisible(true);
+                inputFieldText3.setText("Maximum Stock Level");
+                inputField3.setText("enter maximum stock level");
                 
                 inputFieldText4.setVisible(true);
                 inputField4.setVisible(true);
+                inputFieldText4.setText("Current Stock Level");
+                inputField4.setText("enter current stock level");
                 break;
             case "Supplier":
                 idSC.setText("Supplier ID:");
                 productCB.setVisible(true);
                 supplierCB.setVisible(false);
                 
-                inputFieldText2.setText("Product ID:");
-                inputField2.setText("enter Product ID");
-                
                 inputFieldText1.setVisible(true);
                 inputField1.setVisible(true);
                 inputFieldText1.setText("Name");
                 inputField1.setText("enter name of the Supplier");
+                
+                inputFieldText2.setText("Product ID:");
+                inputField2.setText("enter Product ID");
                 
                 inputFieldText3.setVisible(false);
                 inputField3.setVisible(false);
@@ -336,22 +333,22 @@ public class MainWindow extends javax.swing.JFrame {
                 idSC.setText("Order ID:");
                 productCB.setVisible(true);
                 supplierCB.setVisible(true);
-                
-                inputFieldText2.setText("Supplier ID");
-                inputField2.setText("enter Supplier ID");
-                
-                inputFieldText3.setText("Quantity");
-                inputField3.setText("enter quantity");
-                
-                inputFieldText4.setText("Order Date");
-                inputField4.setText("enter order date");
-                
+
                 inputFieldText1.setVisible(false);
                 inputField1.setVisible(false);
-                
+
+                inputFieldText2.setText("Supplier ID");
+                inputField2.setText("enter Supplier ID");
+
+                inputFieldText3.setText("Quantity");
+                inputField3.setText("enter quantity");
+
                 inputFieldText3.setVisible(true);
                 inputField3.setVisible(true);
                 
+                inputFieldText4.setText("Order Date");
+                inputField4.setText("enter order date");
+
                 inputFieldText4.setVisible(true);
                 inputField4.setVisible(true);
                 break;
@@ -360,7 +357,7 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }
     
-    public void presentProductDetails(String id, String desc, String min, String max, String current) {
+    public void displayItemDetails(String id, String desc, String min, String max, String current) {
         idOC.setText("" + id);
         inputField1.setText(desc);
         inputField2.setText("" + min);

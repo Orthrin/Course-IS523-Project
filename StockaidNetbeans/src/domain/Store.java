@@ -1,6 +1,5 @@
 package domain;
 
-import java.util.HashMap;
 import java.util.Map;
 import view.UIFacade;
 
@@ -14,21 +13,17 @@ public class Store {
     }
     // Singleton Constructor
     private Store() {
-        descriptions = new HashMap<>();
         database = new PersistentStorage();
         catalogFactory = CatalogFactory.getInstance();
         mapFactory = MapFactory.getInstance();
     }
 
-    // Variables
-    String name;
-
     // Instantiation
+    UIFacade ui = UIFacade.getInstance();
     PersistentStorage database;
     CatalogFactory catalogFactory;
     MapFactory mapFactory = MapFactory.getInstance();
-    UIFacade ui = UIFacade.getInstance();
-    Map<String, Description> descriptions;
+    Map<String, Description> currentMap;
 
     // Command Functions
     public void loadData(int guide) {
@@ -47,7 +42,7 @@ public class Store {
     }
 
     public void loadItems(int guide, String a, String b, String c, String d, String e) {
-        descriptions.put(a, catalogFactory.getCatalog(guide).getDescription(a, b, c, d, e));
+        mapFactory.getMap(guide).put(a, catalogFactory.getCatalog(guide).getDescription(a, b, c, d, e));
     }
 
     public void saveData(int guide, String data) {
@@ -55,21 +50,23 @@ public class Store {
     }
 
     public void manageCatalog(int guide) {
-        descriptions.clear();
+        currentMap = mapFactory.getMap(guide);
+//        System.out.println(mapFactory.getMap(1) + "\n" + mapFactory.getMap(2) + "\n" + mapFactory.getMap(3));
+        currentMap.clear();
         ui.purgeCatalog();
         loadData(guide);
-        for (String key : descriptions.keySet()) {
-            ui.addItemToCatalog(descriptions.get(key).getParameter1());
+        for (String key : currentMap.keySet()) {
+            ui.addItemToCatalog(currentMap.get(key).getParameter1());
         }
     }
 
     public void getDetails(int guide, int items[], int index) {
         if (items.length == 1) {
-            ui.displayProductDetails(descriptions.get("" + index).getProductId(),
-                    descriptions.get("" + index).getParameter1(),
-                    descriptions.get("" + index).getParameter2(),
-                    descriptions.get("" + index).getParameter3(),
-                    descriptions.get("" + index).getParameter4()
+            ui.displayItemDetails(currentMap.get("" + index).getProductId(),
+                    currentMap.get("" + index).getParameter1(),
+                    currentMap.get("" + index).getParameter2(),
+                    currentMap.get("" + index).getParameter3(),
+                    currentMap.get("" + index).getParameter4()
             );
         }
     }
@@ -78,33 +75,33 @@ public class Store {
         ui.purgeCatalog();
         String key = "";
         boolean missing = false;
-        for (int iii = 1; iii <= descriptions.size(); iii++) {
+        for (int iii = 1; iii <= currentMap.size(); iii++) {
             key = "" + iii;
-            if (descriptions.get(key) == null) {
+            if (currentMap.get(key) == null) {
                 missing = true;
                 break;
             }
         }
         if (!missing) {
-            key = "" + (descriptions.size() + 1);
+            key = "" + (currentMap.size() + 1);
         }
-        descriptions.put(key, catalogFactory.getCatalog(guide).addItem(key));
+        currentMap.put(key, catalogFactory.getCatalog(guide).addItem(key));
         saveData(guide, getSaveData(guide));
         manageCatalog(guide);
     }
 
     public void deleteItem(int guide, String item) {
         ui.purgeCatalog();
-        descriptions.remove(item);
+        currentMap.remove(item);
         saveData(guide, getSaveData(guide));
         manageCatalog(guide);
     }
 
     public void updateItem(int guide, String a, String b, String c, String d, String e) {
-        descriptions.get(a).setParameter1(b);
-        descriptions.get(a).setParameter2(c);
-        descriptions.get(a).setParameter3(d);
-        descriptions.get(a).setParameter4(e);
+        currentMap.get(a).setParameter1(b);
+        currentMap.get(a).setParameter2(c);
+        currentMap.get(a).setParameter3(d);
+        currentMap.get(a).setParameter4(e);
         saveData(guide, getSaveData(guide));
         manageCatalog(guide);
     }
@@ -112,14 +109,14 @@ public class Store {
     // Query Functions
     public String getSaveData(int guide) {
         String data = "";
-        descriptions.size();
-        for (String key : descriptions.keySet()) {
+        currentMap.size();
+        for (String key : currentMap.keySet()) {
             data = data
-                    + descriptions.get("" + key).getProductId() + ", "
-                    + descriptions.get("" + key).getParameter1() + ", "
-                    + descriptions.get("" + key).getParameter2() + ", "
-                    + descriptions.get("" + key).getParameter3() + ", "
-                    + descriptions.get("" + key).getParameter4() + "\n";
+                    + currentMap.get("" + key).getProductId() + ", "
+                    + currentMap.get("" + key).getParameter1() + ", "
+                    + currentMap.get("" + key).getParameter2() + ", "
+                    + currentMap.get("" + key).getParameter3() + ", "
+                    + currentMap.get("" + key).getParameter4() + "\n";
         }
         return data;
     }
