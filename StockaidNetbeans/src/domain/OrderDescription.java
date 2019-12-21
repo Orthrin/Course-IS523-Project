@@ -1,18 +1,16 @@
 package domain;
 
-import domain.Description;
-
 public class OrderDescription extends Description {
 
     // Variables
     String productId;
-    int supplierId;
-    int orderId;
-    int quantity;
+    String supplierId;
+    String orderId;
+    String quantity;
     String date;
 
     // Constructor
-    public OrderDescription(String productId, int supplierId, int orderId, int quantity, String date) {
+    public OrderDescription(String productId, String supplierId, String orderId, String quantity, String date) {
         super(productId);
         this.productId = productId;
         this.supplierId = supplierId;
@@ -22,47 +20,45 @@ public class OrderDescription extends Description {
     }
     
     // Command Functions
-    
-    public void setProductId(String productId) {
-        this.productId = productId;
+    @Override
+    public void setParameter1(String parameter) {
+        this.orderId = parameter;
     }
     
-    public void setSupplierId(int supplierId) {
-        this.supplierId = supplierId;
-    }
-    
-     public void setOrderId(int supplierId) {
-        this.orderId = supplierId;
-    }
-    
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-    
-    public void setOrderDate(String date) {
-        this.date = date;
+    @Override
+    public void setParameter2(String parameter) {
+        this.supplierId = parameter;
     }
 
-    // Query Functions
     @Override
-    public String getProductId() {
-        return productId;
+    public void setParameter3(String parameter) {
+        this.quantity = parameter;
     }
-    
-    public int getSupplierId() {
-        return supplierId;
+
+    @Override
+    public void setParameter4(String parameter) {
+        this.date = parameter;
     }
-    
-    public int getOrderId() {
+
+    // Query Functions 
+    @Override
+    public String getParameter1() {
         return orderId;
     }
     
-    public int getQuantity() {
+    @Override
+    public String getParameter2() {
+        return supplierId;
+    }
+    
+    @Override
+    public String getParameter3() {
         return quantity;
     }
     
-    public String getOrderDate() {
+    @Override
+    public String getParameter4() {
         return date;
     }
-
+   
 }

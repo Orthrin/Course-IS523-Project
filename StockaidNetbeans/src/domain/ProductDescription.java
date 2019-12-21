@@ -4,17 +4,17 @@ public class ProductDescription extends Description {
 
     // Variables
     String description;
-    int minimumStockLevel;
-    int maximumStockLevel;
-    int currentStockLevel;
+    String minimumStockLevel;
+    String maximumStockLevel;
+    String currentStockLevel;
 
     // Constructor
     public ProductDescription(
             String productId,
             String description,
-            int minimumStockLevel,
-            int maximumStockLevel,
-            int currentStockLevel) {
+            String minimumStockLevel,
+            String maximumStockLevel,
+            String currentStockLevel) {
         super(productId);
         this.description = description;
         this.minimumStockLevel = minimumStockLevel;
@@ -22,21 +22,25 @@ public class ProductDescription extends Description {
         this.currentStockLevel = currentStockLevel;
     }
 
-    // Command Functions    
-    public void setDescription(String description) {
-        this.description = description;
+    // Command Functions        
+    @Override
+    public void setParameter1(String parameter) {
+        this.description = parameter;
     }
     
-    public void setMinimumStockLevel(String min) {
-        this.minimumStockLevel = Integer.parseInt(min);
+    @Override
+    public void setParameter2(String parameter) {
+        this.minimumStockLevel = parameter;
     }
-    
-    public void setMaximumStockLevel(String max) {
-        this.maximumStockLevel = Integer.parseInt(max);
+
+    @Override
+    public void setParameter3(String parameter) {
+        this.maximumStockLevel = parameter;
     }
-    
-    public void setCurrentStockLevel(String curr) {
-        this.currentStockLevel = Integer.parseInt(curr);
+
+    @Override
+    public void setParameter4(String parameter) {
+        this.currentStockLevel = parameter;
     }
 
     // Query Functions
@@ -45,20 +49,23 @@ public class ProductDescription extends Description {
         return productId;
     }
     
-    public String getDescription() {
+    @Override
+    public String getParameter1() {
         return description;
     }
-
-    public int getMinimumStockLevel() {
-        return minimumStockLevel;
+    
+    @Override
+    public String getParameter2() {
+        return "" + minimumStockLevel;
     }
-
-    public int getMaximumStockLevel() {
-        return maximumStockLevel;
+    
+    @Override
+    public String getParameter3() {
+        return "" + maximumStockLevel;
     }
-
-    public int getCurrentStockLevel() {
-        return currentStockLevel;
+    
+    @Override
+    public String getParameter4() {
+        return "" + currentStockLevel;
     }
-
 }

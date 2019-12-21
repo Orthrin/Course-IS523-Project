@@ -15,63 +15,19 @@ public class SupplierCatalog extends Catalog {
 
     // Command Functions
     @Override
-    public void createItem(String a, String b, String c, String d, String e) {
+    public Description getDescription(String a, String b, String c, String d, String e) {
         a = a.trim();
         b = b.trim();
         c = c.trim();
         SupplierDescription sd = new SupplierDescription(a, b, c);
-        descriptions.put(a, sd);
-    }
-
-    @Override
-    public void addItem(String b, String c, String d, String e) {
-        String key = "";
-        boolean missing = false;
-        for (int iii = 1; iii <= descriptions.size(); iii++) {
-            key = "" + iii;
-            if (getDescriptions(key) == null) {
-                missing = true;
-                break;
-            }
-        }
-        if (!missing) {
-            key = "" + (descriptions.size() + 1);
-        }
-        createItem(key, "New Supplier", "1", "", "");
-    }
-
-    @Override
-    public void deleteItem(String item) {
-        descriptions.remove(getDescriptions(item).getSupplierId());
-    }
-
-    @Override
-    public void updateItem(String a, String b, String c, String d, String e) {
-        getDescriptions(a).setName(b.trim());
-        getDescriptions(a).setProductId(c.trim());
-    }
-
-    // Query Methods
-    @Override
-    public SupplierDescription getDescriptions(String itemId) {
-        return descriptions.get(itemId);
+        //descriptions.put(a, pd);
+        //getCatalog(pd);
+        return sd;   
     }
     
-    @Override
-    public int getCatalogSize() {
-        return descriptions.size();
+        @Override
+    public Description addItem(String a) {
+        SupplierDescription neu = new SupplierDescription(a, "", "");
+        return neu;
     }
-
-    @Override
-    public String getSaveData() {
-        String data = "";
-        for (int iii = 1; iii <= descriptions.size(); ++iii) {
-            data = data
-                    + getDescriptions("" + iii).getSupplierId() + ", "
-                    + getDescriptions("" + iii).getName()       + ", "
-                    + getDescriptions("" + iii).getProductId()  + "\n";
-        }
-        return data;
-    }
-
 }

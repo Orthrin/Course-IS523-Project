@@ -17,27 +17,42 @@ public class SupplierDescription extends Description {
     }
 
     // Command Functions
-    
-    public void setProductId(String productId) {
-        this.productId = productId;
+    @Override
+    public void setParameter1(String parameter) {
+        this.name = parameter;
     }
     
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public void setParameter2(String parameter) {
+        this.supplierId = parameter;
     }
-       
+
+    @Override
+    public void setParameter3(String parameter) {
+    }
+
+    @Override
+    public void setParameter4(String parameter) {
+    }
+
     // Query Functions
     @Override
-    public String getProductId() {
-        return productId;
+    public String getParameter1() {
+        return name;
     }
     
-    public String getSupplierId() {
+    @Override
+    public String getParameter2() {
         return supplierId;
     }
     
-    public String getName() {
-        return name;
+    @Override
+    public String getParameter3() {
+        return null;
     }
-
+    
+    @Override
+    public String getParameter4() {
+        return null;
+    }
 }

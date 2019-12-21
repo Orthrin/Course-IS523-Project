@@ -11,14 +11,17 @@ abstract public class Description {
     }
 
     // Command Functions
+    abstract public void setParameter1(String p);
+    abstract public void setParameter2(String p);
+    abstract public void setParameter3(String p);
+    abstract public void setParameter4(String p);
     
     // Query Functions
     public String getProductId() {
         return productId;
-    }
-    
-    // Abstract Functions
-//    abstract public void create();
-//    abstract public void update();
-//    abstract public void delete();
+    } 
+    abstract public String getParameter1();
+    abstract public String getParameter2();
+    abstract public String getParameter3();
+    abstract public String getParameter4();
 }

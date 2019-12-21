@@ -49,11 +49,11 @@ public class MainWindow extends javax.swing.JFrame {
         catalogIC = new javax.swing.JList<>();
         idSC = new javax.swing.JLabel();
         idOC = new javax.swing.JLabel();
-        productOC = new javax.swing.JLabel();
-        supplierOC = new javax.swing.JLabel();
+        productCB = new javax.swing.JComboBox<>();
+        supplierCB = new javax.swing.JComboBox<>();
         inputFieldText1 = new javax.swing.JLabel();
-        inputField1 = new javax.swing.JScrollPane();
-        descriptionIA = new javax.swing.JTextArea();
+        inputField1Panel = new javax.swing.JScrollPane();
+        inputField1 = new javax.swing.JTextArea();
         inputFieldText2 = new javax.swing.JLabel();
         inputField2 = new javax.swing.JTextField();
         inputFieldText3 = new javax.swing.JLabel();
@@ -125,12 +125,21 @@ public class MainWindow extends javax.swing.JFrame {
 
         idOC.setText("0");
 
+        productCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        supplierCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        supplierCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supplierCBActionPerformed(evt);
+            }
+        });
+
         inputFieldText1.setText("Description");
 
-        descriptionIA.setColumns(20);
-        descriptionIA.setRows(5);
-        descriptionIA.setText("enter description about product\n");
-        inputField1.setViewportView(descriptionIA);
+        inputField1.setColumns(20);
+        inputField1.setRows(5);
+        inputField1.setText("enter description about product\n");
+        inputField1Panel.setViewportView(inputField1);
 
         inputFieldText2.setText("Minimum Stock Level");
 
@@ -178,7 +187,7 @@ public class MainWindow extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(inputFieldText1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(inputField1)
+                                    .addComponent(inputField1Panel)
                                     .addComponent(inputField2, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(inputFieldText3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(inputField3, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -186,17 +195,19 @@ public class MainWindow extends javax.swing.JFrame {
                                     .addComponent(inputFieldText2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(inputField4)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(idSC, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(idSC, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(idOC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(productOC, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(supplierOC, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addComponent(idOC, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(updateIU, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(productCB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addContainerGap())))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(updateIU, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(supplierCB, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))))
         );
         layout.setVerticalGroup(
@@ -211,15 +222,16 @@ public class MainWindow extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(supplierOC)
-                                    .addComponent(idOC, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(idSC, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(productOC, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(idOC, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(idSC, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(productCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(supplierCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(inputFieldText1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(inputField1)
+                            .addComponent(inputField1Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(inputFieldText2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -258,11 +270,11 @@ public class MainWindow extends javax.swing.JFrame {
     }
     
     public void clearLog() {
-        descriptionIA.setText("");
+        inputField1.setText("");
     }
 
     public void addLog(String log) {
-        descriptionIA.append(log + "\n");
+        inputField1.append(log + "\n");
     }
 
     public void addItemToCatalog(String item) {
@@ -276,9 +288,9 @@ public class MainWindow extends javax.swing.JFrame {
     public void updateUIFields(String uiType) {
         switch(uiType) {
             case "Product":
-                idSC.setText("Product ID");
-                productOC.setVisible(false);
-                supplierOC.setVisible(false);    
+                idSC.setText("Product ID:"); 
+                productCB.setVisible(false);
+                supplierCB.setVisible(false);
                 
                 inputFieldText2.setText("Minimum Stock Level");
                 inputField2.setText("enter minimum stock level");
@@ -291,9 +303,9 @@ public class MainWindow extends javax.swing.JFrame {
                 
                 
                 inputFieldText1.setVisible(true);
-                descriptionIA.setVisible(true);
+                inputField1.setVisible(true);
                 inputFieldText1.setText("Description");
-                descriptionIA.setText("enter description about product");
+                inputField1.setText("enter description about product");
                 
                 inputFieldText3.setVisible(true);
                 inputField3.setVisible(true);
@@ -302,17 +314,17 @@ public class MainWindow extends javax.swing.JFrame {
                 inputField4.setVisible(true);
                 break;
             case "Supplier":
-                idSC.setText("Supplier ID");
-                productOC.setVisible(true);
-                supplierOC.setVisible(false); 
+                idSC.setText("Supplier ID:");
+                productCB.setVisible(true);
+                supplierCB.setVisible(false);
                 
-                inputFieldText2.setText("Product ID");
+                inputFieldText2.setText("Product ID:");
                 inputField2.setText("enter Product ID");
                 
                 inputFieldText1.setVisible(true);
-                descriptionIA.setVisible(true);
+                inputField1.setVisible(true);
                 inputFieldText1.setText("Name");
-                descriptionIA.setText("enter name of the Supplier");
+                inputField1.setText("enter name of the Supplier");
                 
                 inputFieldText3.setVisible(false);
                 inputField3.setVisible(false);
@@ -321,9 +333,9 @@ public class MainWindow extends javax.swing.JFrame {
                 inputField4.setVisible(false);
                 break;
             case "Order":
-                idSC.setText("Order ID");
-                productOC.setVisible(true);
-                supplierOC.setVisible(true); 
+                idSC.setText("Order ID:");
+                productCB.setVisible(true);
+                supplierCB.setVisible(true);
                 
                 inputFieldText2.setText("Supplier ID");
                 inputField2.setText("enter Supplier ID");
@@ -335,7 +347,7 @@ public class MainWindow extends javax.swing.JFrame {
                 inputField4.setText("enter order date");
                 
                 inputFieldText1.setVisible(false);
-                descriptionIA.setVisible(false);
+                inputField1.setVisible(false);
                 
                 inputFieldText3.setVisible(true);
                 inputField3.setVisible(true);
@@ -348,9 +360,9 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }
     
-    public void presentProductDetails(String id, String desc, int min, int max, int current) {
+    public void presentProductDetails(String id, String desc, String min, String max, String current) {
         idOC.setText("" + id);
-        descriptionIA.setText(desc);
+        inputField1.setText(desc);
         inputField2.setText("" + min);
         inputField3.setText("" + max);
         inputField4.setText("" + current);
@@ -359,15 +371,12 @@ public class MainWindow extends javax.swing.JFrame {
     public void presentSupplierDetails(String id, String name, String productId) {
         commandSC.setText("Selected Supplier: " + id);
         idOC.setText("" + id);
-        productOC.setText("[" + productId +"] " + name);
-        descriptionIA.setText(name);
+        inputField1.setText(name);
         inputField2.setText("" + productId);
     }
     
     public void presentOrderDetails(String id, String description, int productId, int quantity, String date) {
         idOC.setText("" + id);
-        productOC.setText("[" + productId +"] " + description);
-        supplierOC.setText("[" + id +"] " + description);
         inputField2.setText("" + productId);
         inputField3.setText("" + quantity);
         inputField4.setText("" + date);
@@ -404,7 +413,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void updateIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateIUActionPerformed
 
             String a = idOC.getText();
-            String b = descriptionIA.getText();
+            String b = inputField1.getText();
             String c = inputField2.getText();
             String d = inputField3.getText();
             String e = inputField4.getText();
@@ -423,7 +432,7 @@ public class MainWindow extends javax.swing.JFrame {
     
     private void createIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createIUActionPerformed
 
-        String b = descriptionIA.getText();
+        String b = inputField1.getText();
         String c = inputField2.getText();
         String d = inputField3.getText();
         String e = inputField4.getText();
@@ -440,6 +449,10 @@ public class MainWindow extends javax.swing.JFrame {
         int index = catalogIC.getSelectedIndex() + 1;
         inventory.getDetails(managementMode, items, index);
     }//GEN-LAST:event_catalogICValueChanged
+
+    private void supplierCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplierCBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_supplierCBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -486,10 +499,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel commandSC;
     private javax.swing.JButton createIU;
     private javax.swing.JButton deleteIU;
-    private javax.swing.JTextArea descriptionIA;
     private javax.swing.JLabel idOC;
     private javax.swing.JLabel idSC;
-    private javax.swing.JScrollPane inputField1;
+    private javax.swing.JTextArea inputField1;
+    private javax.swing.JScrollPane inputField1Panel;
     private javax.swing.JTextField inputField2;
     private javax.swing.JTextField inputField3;
     private javax.swing.JTextField inputField4;
@@ -500,8 +513,8 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton manageOrdersIU;
     private javax.swing.JButton manageProductsIU;
     private javax.swing.JButton manageSuppliersIU;
-    private javax.swing.JLabel productOC;
-    private javax.swing.JLabel supplierOC;
+    private javax.swing.JComboBox<String> productCB;
+    private javax.swing.JComboBox<String> supplierCB;
     private javax.swing.JButton updateIU;
     // End of variables declaration//GEN-END:variables
 

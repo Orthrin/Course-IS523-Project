@@ -54,7 +54,7 @@ public class UIFacade {
         }
     }
     
-    public void addProductDetails(String id, String description, int min, int max, int current) {
+    public void displayProductDetails(String id, String description, String min, String max, String current) {
         if (mainWindow != null) {
             mainWindow.presentProductDetails(id, description, min, max, current);
         }
