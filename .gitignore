@@ -27,5 +27,14 @@ hs_err_pid*
 /testProjekt/build/
 /testIO/nbproject/private/
 /testIO/build/
+<<<<<<< Updated upstream
 /monopolyPrototype/build/
 /monopolyPrototype/nbproject/private/
+=======
+/Assignment3/StockaidNetbeans/build/
+/Assignment3/StockaidNetbeans/dist/
+/TestSingleton/nbproject/private/
+/TestSingleton/build/
+/StockaidNetbeans/nbproject/private/
+/StockaidNetbeans/build/
+>>>>>>> Stashed changes
