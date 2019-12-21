@@ -45,7 +45,7 @@ public class ProductDescription extends Description {
 
     // Query Functions
     @Override
-    public String getProductId() {
+    public String getParameter0() {
         return productId;
     }
     

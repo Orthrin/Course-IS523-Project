@@ -17,7 +17,7 @@ abstract public class Description {
     abstract public void setParameter4(String p);
     
     // Query Functions
-    public String getProductId() {
+    public String getParameter0() {
         return productId;
     } 
     abstract public String getParameter1();

@@ -7,15 +7,20 @@ public class Store {
 
     // Singleton
     private static final Store store = new Store();
+
     // Singleton Call
     public static Store getInstance() {
         return store;
     }
+
     // Singleton Constructor
     private Store() {
         database = new PersistentStorage();
         catalogFactory = CatalogFactory.getInstance();
         mapFactory = MapFactory.getInstance();
+        loadData(1);
+        loadData(2);
+        loadData(3);
     }
 
     // Instantiation
@@ -58,11 +63,27 @@ public class Store {
         for (String key : currentMap.keySet()) {
             ui.addItemToCatalog(currentMap.get(key).getParameter1());
         }
+        if (guide == 2 || guide == 3) {
+            currentMap = mapFactory.getMap(1);
+            for (String key : currentMap.keySet()) {
+                ui.addItemToCB1(currentMap.get(key).getParameter1());
+            }
+        }
+        if (guide == 3) {
+            currentMap = mapFactory.getMap(2);
+            for (String key : currentMap.keySet()) {
+                if (currentMap.get(key).getParameter0()== "")
+                ui.addItemToCB2(currentMap.get(key).getParameter1());
+            }
+        }
+        currentMap = mapFactory.getMap(guide);    
+        
     }
 
     public void getDetails(int guide, int items[], int index) {
         if (items.length == 1) {
-            ui.displayItemDetails(currentMap.get("" + index).getProductId(),
+            ui.displayItemDetails(guide,
+                    currentMap.get("" + index).getParameter0(),
                     currentMap.get("" + index).getParameter1(),
                     currentMap.get("" + index).getParameter2(),
                     currentMap.get("" + index).getParameter3(),
@@ -87,6 +108,7 @@ public class Store {
         }
         currentMap.put(key, catalogFactory.getCatalog(guide).addItem(key));
         saveData(guide, getSaveData(guide));
+
         manageCatalog(guide);
     }
 
@@ -112,11 +134,11 @@ public class Store {
         currentMap.size();
         for (String key : currentMap.keySet()) {
             data = data
-                    + currentMap.get("" + key).getProductId() + ", "
-                    + currentMap.get("" + key).getParameter1() + ", "
-                    + currentMap.get("" + key).getParameter2() + ", "
-                    + currentMap.get("" + key).getParameter3() + ", "
-                    + currentMap.get("" + key).getParameter4() + "\n";
+                    + currentMap.get(key).getParameter0() + ", "
+                    + currentMap.get(key).getParameter1() + ", "
+                    + currentMap.get(key).getParameter2() + ", "
+                    + currentMap.get(key).getParameter3() + ", "
+                    + currentMap.get(key).getParameter4() + "\n";
         }
         return data;
     }

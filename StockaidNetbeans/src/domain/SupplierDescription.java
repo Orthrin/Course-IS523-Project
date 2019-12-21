@@ -24,7 +24,7 @@ public class SupplierDescription extends Description {
     
     @Override
     public void setParameter2(String parameter) {
-        this.productId = parameter;
+        this.supplierId = parameter;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class SupplierDescription extends Description {
     
     @Override
     public String getParameter2() {
-        return productId;
+        return supplierId;
     }
     
     @Override

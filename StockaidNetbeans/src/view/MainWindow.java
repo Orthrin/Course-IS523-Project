@@ -12,20 +12,21 @@ public class MainWindow extends javax.swing.JFrame {
     // Instatantiation
     Store inventory;
     DefaultListModel catalogModel = new DefaultListModel();
-    
-    private JLabel secondEntry;
-    private JLabel thirdEntry;
-    
+    DefaultComboBoxModel cBModel1= new DefaultComboBoxModel();
+    DefaultComboBoxModel cBModel2= new DefaultComboBoxModel();
+
     boolean isManagingProducts = false;
     boolean isManagingSuppliers = false;
-    
+
     int managementMode = 1;
-    
+
     // Constructor
     public MainWindow(Store inventory) {
         initComponents();
         this.inventory = inventory;
         this.catalogIC.setModel(catalogModel);
+        this.productCB.setModel(cBModel1);
+        this.supplierCB.setModel(cBModel2);
     }
 
     /**
@@ -126,6 +127,11 @@ public class MainWindow extends javax.swing.JFrame {
         idOC.setText("0");
 
         productCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        productCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productCBActionPerformed(evt);
+            }
+        });
 
         supplierCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         supplierCB.addActionListener(new java.awt.event.ActionListener() {
@@ -268,7 +274,7 @@ public class MainWindow extends javax.swing.JFrame {
     public void inform(String info) {
         commandSC.setText(info);
     }
-    
+
     public void clearLog() {
         inputField1.setText("");
     }
@@ -281,30 +287,40 @@ public class MainWindow extends javax.swing.JFrame {
         catalogModel.addElement(item);
     }
     
-    public void purgeCatalog() {
-        catalogModel.removeAllElements();
+    public void addItemToCB1(String item) {
+        cBModel1.addElement(item);
     }
     
+    public void addItemToCB2(String item) {
+        cBModel2.addElement(item);
+    }
+
+    public void purgeCatalog() {
+        catalogModel.removeAllElements();
+        cBModel1.removeAllElements();
+        cBModel2.removeAllElements();
+    }
+
     public void updateUIFields(String uiType) {
-        switch(uiType) {
+        switch (uiType) {
             case "Product":
-                idSC.setText("Product ID:"); 
+                idSC.setText("Product ID:");
                 productCB.setVisible(false);
                 supplierCB.setVisible(false);
-                
+
                 inputFieldText1.setVisible(true);
                 inputField1.setVisible(true);
                 inputFieldText1.setText("Description");
                 inputField1.setText("enter description about product");
-                
+
                 inputFieldText2.setText("Minimum Stock Level");
                 inputField2.setText("enter minimum stock level");
-                
+
                 inputFieldText3.setVisible(true);
                 inputField3.setVisible(true);
                 inputFieldText3.setText("Maximum Stock Level");
                 inputField3.setText("enter maximum stock level");
-                
+
                 inputFieldText4.setVisible(true);
                 inputField4.setVisible(true);
                 inputFieldText4.setText("Current Stock Level");
@@ -314,18 +330,18 @@ public class MainWindow extends javax.swing.JFrame {
                 idSC.setText("Supplier ID:");
                 productCB.setVisible(true);
                 supplierCB.setVisible(false);
-                
+
                 inputFieldText1.setVisible(true);
                 inputField1.setVisible(true);
                 inputFieldText1.setText("Name");
                 inputField1.setText("enter name of the Supplier");
-                
+
                 inputFieldText2.setText("Product ID:");
                 inputField2.setText("enter Product ID");
-                
+
                 inputFieldText3.setVisible(false);
                 inputField3.setVisible(false);
-                
+
                 inputFieldText4.setVisible(false);
                 inputField4.setVisible(false);
                 break;
@@ -345,7 +361,7 @@ public class MainWindow extends javax.swing.JFrame {
 
                 inputFieldText3.setVisible(true);
                 inputField3.setVisible(true);
-                
+
                 inputFieldText4.setText("Order Date");
                 inputField4.setText("enter order date");
 
@@ -356,30 +372,33 @@ public class MainWindow extends javax.swing.JFrame {
                 break;
         }
     }
-    
-    public void displayItemDetails(String id, String desc, String min, String max, String current) {
-        idOC.setText("" + id);
-        inputField1.setText(desc);
-        inputField2.setText("" + min);
-        inputField3.setText("" + max);
-        inputField4.setText("" + current);
+
+    public void displayItemDetails(int guide, String a, String b, String c, String d, String e) {
+        switch (guide) {
+            case 1:
+                idOC.setText("" + a);
+                inputField1.setText(b);
+                inputField2.setText("" + c);
+                inputField3.setText("" + d);
+                inputField4.setText("" + e);
+                break;
+            case 2:
+                int x = Integer.parseInt(a);
+                idOC.setText("" + c);
+                inputField1.setText(b);
+                inputField2.setText("" + a);
+                productCB.setSelectedIndex(x-1);
+                break;
+
+            case 3:
+                idOC.setText("" + a);
+                inputField2.setText("" + c);
+                inputField3.setText("" + b);
+                inputField4.setText("" + d);
+                break;
+        }
     }
-    
-    public void presentSupplierDetails(String id, String name, String productId) {
-        commandSC.setText("Selected Supplier: " + id);
-        idOC.setText("" + id);
-        inputField1.setText(name);
-        inputField2.setText("" + productId);
-    }
-    
-    public void presentOrderDetails(String id, String description, int productId, int quantity, String date) {
-        idOC.setText("" + id);
-        inputField2.setText("" + productId);
-        inputField3.setText("" + quantity);
-        inputField4.setText("" + date);
-    }
-    
-    // INPUT UNITS
+        // INPUT UNITS
 
     private void manageProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageProductActionPerformed
         //manageOrdersIU.setEnabled(true);
@@ -402,39 +421,45 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_manageOrdersIUActionPerformed
 
     private void deleteIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteIUActionPerformed
-        String item = idOC.getText();  
+        String item = idOC.getText();
         inventory.deleteItem(managementMode, item);
 
     }//GEN-LAST:event_deleteIUActionPerformed
 
     private void updateIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateIUActionPerformed
 
-            String a = idOC.getText();
-            String b = inputField1.getText();
-            String c = inputField2.getText();
-            String d = inputField3.getText();
-            String e = inputField4.getText();
-         
-            inventory.updateItem(managementMode,a,b,c,d,e);
+        String a = idOC.getText();
+        String b = inputField1.getText();
+        String c = inputField2.getText();
+        System.out.println(c);
+        
+        if(managementMode == 2){
+        c = "" + (productCB.getSelectedIndex()+1);
+            System.out.println(c);
+        }
+        String d = inputField3.getText();
+        String e = inputField4.getText();
+
+        inventory.updateItem(managementMode, a, b, c, d, e);
     }//GEN-LAST:event_updateIUActionPerformed
 
-    public void orderShowMax (int max) {
-            inputFieldText3.setText("Quantity [max= " + max + "]");
+    public void orderShowMax(int max) {
+        inputFieldText3.setText("Quantity [max= " + max + "]");
     }
-    
+
     public void indicateLow(String item) {
 //        catalogIC.setSelectedIndex(catalogIC.getLastVisibleIndex());
 //        catalogIC.setSelectionBackground(Color.red);
     }
-    
+
     private void createIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createIUActionPerformed
 
         String b = inputField1.getText();
         String c = inputField2.getText();
         String d = inputField3.getText();
         String e = inputField4.getText();
-        
-        inventory.addItem(managementMode,b,c,d,e);    
+
+        inventory.addItem(managementMode, b, c, d, e);
     }//GEN-LAST:event_createIUActionPerformed
 
     private void inputField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputField2ActionPerformed
@@ -450,6 +475,10 @@ public class MainWindow extends javax.swing.JFrame {
     private void supplierCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplierCBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_supplierCBActionPerformed
+
+    private void productCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productCBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_productCBActionPerformed
 
     /**
      * @param args the command line arguments

@@ -24,7 +24,7 @@ public class MapFactory {
     Map<String, Description> supplierMap;
     Map<String, Description> orderMap;
     
-        // Query Functions
+    // Query Functions
     public Map getMap(int guide) {
         switch(guide) {
             case 1:

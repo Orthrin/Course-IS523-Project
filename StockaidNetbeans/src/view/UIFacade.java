@@ -48,29 +48,39 @@ public class UIFacade {
         }
     }
     
+    public void addItemToCB1(String item) {
+        if (mainWindow != null) {
+            mainWindow.addItemToCB1(item);
+        }
+    }
+    
+    public void addItemToCB2(String item) {
+        if (mainWindow != null) {
+            mainWindow.addItemToCB2(item);
+        }
+    }
+    
     public void purgeCatalog() {
         if (mainWindow != null) {
             mainWindow.purgeCatalog();
         }
     }
     
-    public void displayItemDetails(String id, String description, String min, String max, String current) {
-        if (mainWindow != null) {
-            mainWindow.displayItemDetails(id, description, min, max, current);
-        }
+    public void displayItemDetails(int guide, String a, String b, String c, String d, String e) {
+        mainWindow.displayItemDetails(guide, a, b, c, d, e);
     }
     
-    public void addSupplierDetails(String id, String name, String productId) {
-        if (mainWindow != null) {
-            mainWindow.presentSupplierDetails(id, name, productId);
-        }
-    }
-    
-    public void addOrderDetails(String id, String description, int productId, int quantity, String date) {
-        if (mainWindow != null) {
-            mainWindow.presentOrderDetails(id, description, productId, quantity, date);
-        }
-    }
+//    public void displaySupplierDetails(String id, String name, String productId) {
+//        if (mainWindow != null) {
+//            mainWindow.displaySupplierDetails(id, name, productId);
+//        }
+//    }
+//    
+//    public void displayOrderDetails(String id, String description, int productId, int quantity, String date) {
+//        if (mainWindow != null) {
+//            mainWindow.displayOrderDetails(id, description, productId, quantity, date);
+//        }
+//    }
     
     public void orderShowMax(int max) {
         if (mainWindow != null) {
