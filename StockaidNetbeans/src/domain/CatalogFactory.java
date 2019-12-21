@@ -10,10 +10,24 @@ public class CatalogFactory {
         OrderCatalog orderCatalog;
         
         private CatalogFactory(){
-        productCatalog = null;
-        supplierCatalog = null;
-        orderCatalog = null;
+        productCatalog = new ProductCatalog();
+        supplierCatalog = new SupplierCatalog();
+        orderCatalog = new OrderCatalog();
         }
         
+        public Catalog createCatalog(Integer catalogId) {
+            Catalog newCatalog = null;
+            
+            switch(catalogId) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
+        }
 
 }
