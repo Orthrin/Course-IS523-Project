@@ -5,15 +5,13 @@ import view.UIFacade;
 
 public class Main {
 
-    // Variables
-    public static final String fileName = "products.txt";
-
     // Instantiation
-    public static Store store = new Store();
+    private static Store store = Store.getInstance(); 
 
     public static void main(String[] args) {
 
         // Procedure
+        //System.out.println(store);
         UIFacade.getInstance().start(store);
 
     }

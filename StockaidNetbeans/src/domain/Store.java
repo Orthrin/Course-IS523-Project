@@ -1,315 +1,223 @@
 package domain;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import view.UIFacade;
 
 public class Store {
 
+    // Singleton
+    private static final Store store = new Store();
+
+    // Singleton Call
+    public static Store getInstance() {
+        return store;
+    }
+
     // Variables
     String name;
-    public static final String productFileName = "products.txt";
-    public static final String SupplierFileName = "suppliers.txt";
-    public static final String OrderFileName = "orders.txt";
 
     // Instantiation
+    PersistentStorage database;
+    Catalog catalog;
     ProductCatalog productCatalog;
     SupplierCatalog supplierCatalog;
     OrderCatalog orderCatalog;
     UIFacade ui = UIFacade.getInstance();
 
     // Constructor
-    public Store() {
+    private Store() {
+        database = new PersistentStorage();
         productCatalog = new ProductCatalog();
         supplierCatalog = new SupplierCatalog();
         orderCatalog = new OrderCatalog();
     }
 
     // Command Functions
-   public void loadData(int fileId, String fileName) {
-        String line = null;
-        try {
-            // FileReader reads text files in the default encoding.
-            FileReader fileReader
-                    = new FileReader(fileName);
-
-            // Always wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader
-                    = new BufferedReader(fileReader);
-
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] p = line.split(",");
-                switch(fileId) {
-                    case 1:
-                        productLoadItems(p[0], p[1], p[2], p[3], p[4]);
-                        break;
-                    case 2:
-                        supplierLoadItems(p[0], p[1], p[2]);
-                        break;
-                    case 3:
-                        orderLoadItems(p[0],p[1],p[2],p[3]);
-                        break;
-                    default:
-                        break;
-                       
-                }
+    public void loadData(int guide) {
+        for (int iii = 0; iii < database.getItemCount(guide); iii++) {
+            String line = database.getLineItem(guide, iii);
+            String[] p = new String[5];
+            String[] data = line.split(",");
+            for (int yyy = 0; yyy < data.length; yyy++) {
+                p[yyy] = data[yyy];
             }
-
-            // Always close files.
-            bufferedReader.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println(
-                    "Unable to open file '"
-                    + fileName + "'");
-        } catch (IOException ex) {
-            System.out.println(
-                    "Error reading file '"
-                    + fileName + "'");
-            // Or we could just do this: 
-            // ex.printStackTrace();
-        } catch (ArrayIndexOutOfBoundsException ex) {
-            System.out.println(
-                    "Error reading file '"
-                    + fileName + "'");
-            // Or we could just do this: 
-            // ex.printStackTrace();
+            loadItems(guide, p[0], p[1], p[2], p[3], p[4]);
         }
     }
     
-    public void manageProducts(boolean init) {
+    public void manageCatalog(int guide) {
         ui.purgeCatalog();
-        if (init) {loadData(1, productFileName); }
-        for (String key : productCatalog.descriptions.keySet()) {
-            ui.addCatalog(productCatalog.getProducts(key).getProductId());
-        }
-    }
-    
-    public void manageSuppliers(boolean init) {
-        ui.purgeCatalog();
-        if (init) {loadData(2, SupplierFileName); }
-        for (String key: supplierCatalog.descriptions.keySet()) {
-            ui.addCatalog(supplierCatalog.getSuppliers(key).getSupplierId());
-        }
-    }
-    
-    public void manageOrders(boolean init) {
-        ui.purgeCatalog();
-        if (init) {loadData(3, OrderFileName); }
-        for (String key: orderCatalog.descriptions.keySet()) {
-            ui.addCatalog(orderCatalog.getOrders(key).getProductId());
+        switch (guide) {
+            case 1:
+                loadData(guide);
+                for (String key : productCatalog.descriptions.keySet()) {
+                    int min = productCatalog.getDescriptions(key).getMinimumStockLevel();
+                    int cur = productCatalog.getDescriptions(key).getCurrentStockLevel();
+                    if (min >= cur) {
+                        ui.addItemToCatalog(productCatalog.getDescriptions(key).getDescription() + " [LOW]");
+                        continue;
+                    }
+                    ui.addItemToCatalog(productCatalog.getDescriptions(key).getDescription());
+                }
+                break;
+            case 2:
+                loadData(guide);
+                for (String key : supplierCatalog.descriptions.keySet()) {
+                    ui.addItemToCatalog(supplierCatalog.getDescriptions(key).getName());
+                }
+                break;
+            case 3:
+                loadData(1);
+                loadData(guide);
+                for (String key : orderCatalog.descriptions.keySet()) {
+                    ui.addItemToCatalog(orderCatalog.getDescriptions(key).getProductId());
+                }
+                break;
         }
     }
 
-    public void productGetDetails(int items[], int index) {
+    public void getDetails(int guide, int items[], int index) {
         if (items.length == 1) {
-            ui.addProductDetails(productCatalog.getProducts("" + index).getProductId(),
-                    productCatalog.getProducts("" + index).getDescription(),
-                    productCatalog.getProducts("" + index).getMinimumStockLevel(),
-                    productCatalog.getProducts("" + index).getMaximumStockLevel(),
-                    productCatalog.getProducts("" + index).getCurrentStockLevel()
-            );
-        }
-    }
-    
-    public void supplierGetDetails(int items[], int index) {
-        if (items.length == 1) {
-            ui.addSupplierDetails(supplierCatalog.getSuppliers("" + index).getSupplierId(),
-                    supplierCatalog.getSuppliers("" + index).getName(),
-                    supplierCatalog.getSuppliers("" + index).getProductId()
-            );
-        }
-    }
-    
-    public void orderGetDetails(int items[], int index) {
-        if (items.length == 1) {
-            ui.addOrderDetails(orderCatalog.getOrders("" + index).getProductId(),
-                    orderCatalog.getOrders("" + index).getSupplierId(),
-                    orderCatalog.getOrders("" + index).getQuantity(),
-                    orderCatalog.getOrders("" + index).getOrderDate()
-            );
+            switch (guide) {
+                case 1:
+                    ui.addProductDetails(productCatalog.getDescriptions("" + index).getProductId(),
+                            productCatalog.getDescriptions("" + index).getDescription(),
+                            productCatalog.getDescriptions("" + index).getMinimumStockLevel(),
+                            productCatalog.getDescriptions("" + index).getMaximumStockLevel(),
+                            productCatalog.getDescriptions("" + index).getCurrentStockLevel()
+                    );
+                    break;
+                case 2:
+                    ui.addSupplierDetails(supplierCatalog.getDescriptions("" + index).getSupplierId(),
+                            supplierCatalog.getDescriptions("" + index).getName(),
+                            supplierCatalog.getDescriptions("" + index).getProductId()
+                    );
+                    break;
+                case 3:
+                    ui.addOrderDetails(orderCatalog.getDescriptions("" + index).getProductId(),
+                            productCatalog.getDescriptions("" + index).getDescription(),
+                            orderCatalog.getDescriptions("" + index).getSupplierId(),
+                            orderCatalog.getDescriptions("" + index).getQuantity(),
+                            orderCatalog.getDescriptions("" + index).getOrderDate()
+                    );
+                    int max = productCatalog.getDescriptions("" + index).getMaximumStockLevel();
+                    int cur = productCatalog.getDescriptions("" + index).getCurrentStockLevel();
+                    ui.orderShowMax(max - cur);
+                    break;
+            }
         }
     }
 
-    public void productAddItem(String b, String c, String d, String e) {
-        productCatalog.addItem(b, c, d, e);
+    public void addItem(int guide, String b, String c, String d, String e) {
         ui.purgeCatalog();
-        manageProducts(false);
-        productSaveData();
+        switch (guide) {
+            case 1:
+                productCatalog.addItem(b, c, d, e);
+                saveData(guide, getWriteData(guide));
+                ;
+                break;
+            case 2:
+                supplierCatalog.addItem(b, c, d, e);
+                saveData(guide, getWriteData(guide));
+                break;
+            case 3:
+                if (productCatalog.descriptions.size() > orderCatalog.descriptions.size()) {
+                    orderCatalog.addItem(b, c, d, e);
+                    saveData(guide, getWriteData(guide));
+                } else {
+                    ui.inform("You already have orders for all products!");
+                }
+                break;
+        }
+        manageCatalog(guide);
     }
-    
-        public void supplierAddItem(String b, String c, String d, String e) {
-        supplierCatalog.addItem(b, c, d, e);
+
+    public void deleteItem(int guide, String item) {
         ui.purgeCatalog();
-        manageSuppliers(false);
-        supplierSaveData();
-    }
-        public void orderAddItem(String b, String c, String d, String e) {
-        orderCatalog.addItem(b, c, d, e);
-        ui.purgeCatalog();
-        manageOrders(false);
-        orderSaveData();
+        switch (guide) {
+            case 1:
+                try {
+                productCatalog.deleteItem(item);
+                saveData(guide, getWriteData(guide));
+            } catch (Exception e) {
+            }
+            break;
+            case 2:
+                try {
+                supplierCatalog.deleteItem(item);
+                saveData(guide, getWriteData(guide));
+            } catch (Exception e) {
+            }
+            break;
+            case 3:
+                try {
+                System.out.println(item);
+                orderCatalog.deleteItem(item);
+                saveData(guide, getWriteData(guide));
+            } catch (Exception e) {
+            }
+            break;
+        }
+        manageCatalog(guide);
     }
 
-    public void productDeleteItem(String item) {
-        try {
-            productCatalog.deleteItem(item);
-        } catch (Exception e) {
+    public void updateItem(int guide, String a, String b, String c, String d, String e) {
+        switch (guide) {
+            case 1:
+                try {
+                productCatalog.updateItem(a, b, c, d, e);
+                saveData(guide, getWriteData(guide));
+            } catch (Exception ex) {
+                //  Block of code to handle errors
+            }
+            break;
+            case 2:
+                try {
+                supplierCatalog.updateItem(a, b, c, d, e);
+                saveData(guide, getWriteData(guide));
+            } catch (Exception ex) {
+                //  Block of code to handle errors
+            }
+            break;
+            case 3:
+                try {
+                orderCatalog.updateItem(a, b, c, d, e);
+                saveData(guide, getWriteData(guide));
+            } catch (Exception ex) {
+            }
+            break;
         }
-        ui.purgeCatalog();
-        manageProducts(false);
-        productSaveData();
-    }
-    
-    public void supplierDeleteItem(String item) {
-        try {
-            supplierCatalog.deleteItem(item);
-        } catch (Exception e) {
-        }
-        ui.purgeCatalog();
-        manageSuppliers(false);
-        supplierSaveData();
-    }
-    
-    public void orderDeleteItem(String item) {
-        try {
-            orderCatalog.deleteItem(item);
-        } catch (Exception e) {
-        }
-        ui.purgeCatalog();
-        manageOrders(false);
-        orderSaveData();
-    }
-    
-
-    public void productUpdateItem(String a, String b, String c, String d, String e) {
-        try {
-            productCatalog.updateItem(a, b, c, d, e);
-        } catch (Exception ex) {
-            //  Block of code to handle errors
-        }
-        productSaveData();
-    }
-    
-    public void supplierUpdateItem(String a, String b, String c, String d, String e) {
-        try {
-            supplierCatalog.updateItem(a, b, c, d, e);
-        } catch (Exception ex) {
-            //  Block of code to handle errors
-        }
-        supplierSaveData();
-    }
-    
-    public void orderUpdateItem(String a, String b, String c, String d, String e) {
-        try {
-            supplierCatalog.updateItem(a, b, c, d, e);
-        } catch (Exception ex) {
-            //  Block of code to handle errors
-        }
-        orderSaveData();
+        manageCatalog(guide);
     }
 
-    public void productLoadItems(String a, String b, String c, String d, String e) {
-        productCatalog.createItem(a, b, c, d, e);
-    }
-    
-    public void supplierLoadItems(String a, String b, String c) {
-        supplierCatalog.createItem(a, b, c, "", "");
-    }
-    
-    public void orderLoadItems(String a, String b, String c, String d) {
-        orderCatalog.createItem(a, b, c, d, "");
-    }
-
-    public void productSaveData() {
-        try {
-            // Assume default encoding.
-            FileWriter fileWriter
-                    = new FileWriter(productFileName);
-
-            // Always wrap FileWriter in BufferedWriter.
-            BufferedWriter bufferedWriter
-                    = new BufferedWriter(fileWriter);
-
-            // Write data
-            bufferedWriter.write(getProductWriteData()); 
-            
-            // Always close files.
-            bufferedWriter.close();
-        } catch (IOException ex) {
-            System.out.println("Error writing to file '"
-                    + productFileName + "'");
+    public void loadItems(int guide, String a, String b, String c, String d, String e) {
+        switch (guide) {
+            case 1:
+                productCatalog.createItem(a, b, c, d, e);
+                break;
+            case 2:
+                supplierCatalog.createItem(a, b, c, "", "");
+                break;
+            case 3:
+                orderCatalog.createItem(a, b, c, d, "");
+                break;
         }
     }
-    
-    public void supplierSaveData() {
-        try {
-            // Assume default encoding.
-            FileWriter fileWriter
-                    = new FileWriter(SupplierFileName);
 
-            // Always wrap FileWriter in BufferedWriter.
-            BufferedWriter bufferedWriter
-                    = new BufferedWriter(fileWriter);
-
-            // Write data
-            bufferedWriter.write(getSupplierWriteData()); 
-            
-            // Always close files.
-            bufferedWriter.close();
-        } catch (IOException ex) {
-            System.out.println("Error writing to file '"
-                    + SupplierFileName + "'");
-        }
-    }
-    
-    public void orderSaveData() {
-        try {
-            // Assume default encoding.
-            FileWriter fileWriter
-                    = new FileWriter(OrderFileName);
-
-            // Always wrap FileWriter in BufferedWriter.
-            BufferedWriter bufferedWriter
-                    = new BufferedWriter(fileWriter);
-
-            // Write data
-            bufferedWriter.write(getOrderWriteData()); 
-            
-            // Always close files.
-            bufferedWriter.close();
-        } catch (IOException ex) {
-            System.out.println("Error writing to file '"
-                    + OrderFileName + "'");
-        }
+    public void saveData(int guide, String data) {
+        database.saveData(guide, data);
     }
 
     // Query Functions
-    public ProductCatalog getProductCatalog() {
-        return productCatalog;
-    }
-    
-    public SupplierCatalog getSupplierCatalog() {
-        return supplierCatalog;
-    }
-    
-    public OrderCatalog getOrderCatalog() {
-        return orderCatalog;
-    }
-
-    public String getProductWriteData() {
+    public String getWriteData(int guide) {
+        switch (guide) {
+            case 1:
+                return productCatalog.getSaveData();
+            case 2:
+                return supplierCatalog.getSaveData();
+            case 3:
+                return orderCatalog.getSaveData();
+        }
         return productCatalog.getSaveData();
-    }
-    
-    public String getSupplierWriteData() {
-        return supplierCatalog.getSaveData();
-    }
-    
-    public String getOrderWriteData() {
-        return orderCatalog.getSaveData();
     }
 
 }

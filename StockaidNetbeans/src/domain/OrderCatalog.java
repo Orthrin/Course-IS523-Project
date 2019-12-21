@@ -23,7 +23,7 @@ public class OrderCatalog extends Catalog{
             int supplierId = Integer.parseInt(b.replaceAll(" ", ""));
             int quantity = Integer.parseInt(c.replaceAll(" ", ""));
             d = d.trim();
-            OrderDescription od = new OrderDescription(a, supplierId, quantity, d);
+            OrderDescription od = new OrderDescription(a, quantity, supplierId, quantity, d);
             descriptions.put(a, od);
     }
 
@@ -33,7 +33,7 @@ public class OrderCatalog extends Catalog{
           boolean missing = false;
           for(int iii=1; iii <= descriptions.size(); iii++) {
               key = ""+ iii;
-              if(getOrders(key) == null) {
+              if(getDescriptions(key) == null) {
                  missing = true;
                  break; 
               }
@@ -46,37 +46,38 @@ public class OrderCatalog extends Catalog{
 
     @Override
     public void deleteItem(String item) {
-        descriptions.remove(getOrders(item).getSupplierId());
+        descriptions.remove(getDescriptions(item).getProductId());
     }
 
     @Override
     public void updateItem(String a, String b, String c, String d, String e) {
-        getOrders(a).setSupplierId(Integer.parseInt(b.replaceAll(" ", "")));
-        getOrders(a).setQuantity(Integer.parseInt(c.replaceAll(" ", "")));
-        getOrders(a).setOrderDate(d.trim());
-        
+        getDescriptions(a).setSupplierId(Integer.parseInt(c.replaceAll(" ", "")));
+        getDescriptions(a).setQuantity(Integer.parseInt(d.replaceAll(" ", "")));
+        getDescriptions(a).setOrderDate(e.trim());   
     }
     
     // Query Methods
-    public OrderDescription getOrders(String itemId) {
+    @Override
+    public OrderDescription getDescriptions(String itemId) {
         return descriptions.get(itemId);
     }
-    
-    public int getOrderSize() {
+
+    @Override
+    public int getCatalogSize() {
         return descriptions.size();
     }
     
+    @Override
     public String getSaveData() {
         String data = "";
         for (int iii = 1; iii <= descriptions.size(); ++iii) {
             data = data
-                    + getOrders("" + iii).getProductId()         + ", "
-                    + getOrders("" + iii).getSupplierId()       + ", "
-                    + getOrders("" + iii).getQuantity()+ ", "
-                    + getOrders("" + iii).getOrderDate()+ "\n";
+                    + getDescriptions("" + iii).getProductId()  + ", "
+                    + getDescriptions("" + iii).getSupplierId() + ", "
+                    + getDescriptions("" + iii).getQuantity()   + ", "
+                    + getDescriptions("" + iii).getOrderDate()  + "\n";
         }
         return data;
     }
-    
-    
+      
 }

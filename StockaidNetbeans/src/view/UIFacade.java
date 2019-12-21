@@ -42,9 +42,9 @@ public class UIFacade {
         }
     }
     
-    public void addCatalog(String item) {
+    public void addItemToCatalog(String item) {
         if (mainWindow != null) {
-            mainWindow.addCatalog(item);
+            mainWindow.addItemToCatalog(item);
         }
     }
     
@@ -66,9 +66,21 @@ public class UIFacade {
         }
     }
     
-    public void addOrderDetails(String id, int productId, int quantity, String date) {
+    public void addOrderDetails(String id, String description, int productId, int quantity, String date) {
         if (mainWindow != null) {
-            mainWindow.presentOrderDetails(id, productId, quantity, date);
+            mainWindow.presentOrderDetails(id, description, productId, quantity, date);
+        }
+    }
+    
+    public void orderShowMax(int max) {
+        if (mainWindow != null) {
+            mainWindow.orderShowMax(max);
+        }
+    }
+    
+    public void indicateLow(String item) {
+        if (mainWindow != null) {
+            mainWindow.indicateLow(item);
         }
     }
     
