@@ -17,6 +17,7 @@ public class Store {
         descriptions = new HashMap<>();
         database = new PersistentStorage();
         catalogFactory = CatalogFactory.getInstance();
+        mapFactory = MapFactory.getInstance();
     }
 
     // Variables
@@ -25,6 +26,7 @@ public class Store {
     // Instantiation
     PersistentStorage database;
     CatalogFactory catalogFactory;
+    MapFactory mapFactory = MapFactory.getInstance();
     UIFacade ui = UIFacade.getInstance();
     Map<String, Description> descriptions;
 
@@ -87,14 +89,14 @@ public class Store {
             key = "" + (descriptions.size() + 1);
         }
         descriptions.put(key, catalogFactory.getCatalog(guide).addItem(key));
-        saveData(guide, getWriteData(guide));
+        saveData(guide, getSaveData(guide));
         manageCatalog(guide);
     }
 
     public void deleteItem(int guide, String item) {
         ui.purgeCatalog();
         descriptions.remove(item);
-        saveData(guide, getWriteData(guide));
+        saveData(guide, getSaveData(guide));
         manageCatalog(guide);
     }
 
@@ -103,12 +105,12 @@ public class Store {
         descriptions.get(a).setParameter2(c);
         descriptions.get(a).setParameter3(d);
         descriptions.get(a).setParameter4(e);
-        saveData(guide, getWriteData(guide));
+        saveData(guide, getSaveData(guide));
         manageCatalog(guide);
     }
 
     // Query Functions
-    public String getWriteData(int guide) {
+    public String getSaveData(int guide) {
         String data = "";
         descriptions.size();
         for (String key : descriptions.keySet()) {
