@@ -509,12 +509,14 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_catalogICValueChanged
 
     private void supplierCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplierCBActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_supplierCBActionPerformed
 
     private void productCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productCBActionPerformed
-        
         productOC.setText("Product ID: " + (productCB.getSelectedIndex()+1));
+        if(managementMode == 3 ){
+            inventory.getOrderSuppliers(managementMode, productCB.getSelectedIndex()+1);
+        }
     }//GEN-LAST:event_productCBActionPerformed
 
     /**

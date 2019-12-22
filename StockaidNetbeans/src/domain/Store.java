@@ -58,7 +58,6 @@ public class Store {
 
     public void manageCatalog(int guide) {
         currentMap = mapFactory.getMap(guide);
-//        System.out.println(mapFactory.getMap(1) + "\n" + mapFactory.getMap(2) + "\n" + mapFactory.getMap(3));
         currentMap.clear();
         ui.purgeCatalog();
         loadData(guide);
@@ -72,16 +71,24 @@ public class Store {
                 ui.addItemToCB1(currentMap.get(key).getParameter1());
             }
             ui.CB1Cleanse();
-        }
+        }    
+        currentMap = mapFactory.getMap(guide);
+    }
+    
+    public void getOrderSuppliers(int guide, int index) {
         if (guide == 3) {
+            System.out.println(index);
             currentMap = mapFactory.getMap(2);
             for (String key : currentMap.keySet()) {
-                if (currentMap.get(key).getParameter0()== "")
-                ui.addItemToCB2(currentMap.get(key).getParameter1());
+                String test = currentMap.get(key).getParameter0(); // Supplier Product ID
+                currentMap = mapFactory.getMap(1);
+                if (currentMap.get(key).getParameter0() == test) {
+//                    System.out.println(currentMap.get(key).getParameter0() + " a");
+                    //ui.addItemToCB2(currentMap.get(key).getParameter1());
+                }
             }
         }
-        currentMap = mapFactory.getMap(guide);    
-        
+        currentMap = mapFactory.getMap(guide);
     }
 
     public void getDetails(int guide, int items[], int index) {
