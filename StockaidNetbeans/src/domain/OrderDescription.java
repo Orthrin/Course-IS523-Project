@@ -1,7 +1,5 @@
 package domain;
 
-import domain.Description;
-
 public class OrderDescription extends Description {
 
     // Variables
@@ -22,37 +20,6 @@ public class OrderDescription extends Description {
     }
     
     // Command Functions
-    
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-    
-    public void setSupplierId(int supplierId) {
-        this.supplierId = supplierId;
-    }
-    
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-    
-    public void setOrderDate(String date) {
-        this.date = date;
-    }
-
-    // Query Functions   
-    public int getSupplierId() {
-        return supplierId;
-    }
-    
-    public int getQuantity() {
-        return quantity;
-    }
-    
-    public String getOrderDate() {
-        return date;
-    }
-    
-        // Command Functions
     @Override
     public void setParameter1(String parameter) {
         this.orderId = Integer.parseInt(parameter);
@@ -91,7 +58,7 @@ public class OrderDescription extends Description {
     
     @Override
     public String getParameter4() {
-        return date;
+        return date.trim();
     }
 
 }

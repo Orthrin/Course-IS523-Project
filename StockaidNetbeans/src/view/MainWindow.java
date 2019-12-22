@@ -443,9 +443,8 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_inputPanel1ActionPerformed
 
     private void catalogICValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_catalogICValueChanged
-        int items[] = catalogIC.getSelectedIndices();
         int index = catalogIC.getSelectedIndex() + 1;
-        inventory.getDetails(managementMode, items, index);
+        inventory.getDetails(managementMode, index);
     }//GEN-LAST:event_catalogICValueChanged
 
     /**

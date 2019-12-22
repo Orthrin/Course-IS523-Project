@@ -16,31 +16,7 @@ public class SupplierDescription extends Description {
 
     }
 
-    // Command Functions
-    
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
-    }
-       
-    // Query Functions
-    @Override
-    public String getParameter0() {
-        return supplierId;
-    }
-    
-    public String getSupplierId() {
-        return supplierId;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-        // Command Functions
+    // Command Functions        
     @Override
     public void setParameter1(String parameter) {
         this.name = parameter;
@@ -59,7 +35,7 @@ public class SupplierDescription extends Description {
     public void setParameter4(String parameter) {
     }
 
-    // Query Functions
+    // Query Functions 
     @Override
     public String getParameter1() {
         return name;
@@ -67,7 +43,7 @@ public class SupplierDescription extends Description {
     
     @Override
     public String getParameter2() {
-        return supplierId;
+        return "" + supplierId;
     }
     
     @Override
@@ -79,5 +55,5 @@ public class SupplierDescription extends Description {
     public String getParameter4() {
         return null;
     }
-
+    
 }
