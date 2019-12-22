@@ -27,8 +27,8 @@ public class Store {
     ProductCatalog productCatalog;
     SupplierCatalog supplierCatalog;
     OrderCatalog orderCatalog;
-    CatalogFactory cf = CatalogFactory.getInstance();
-    MapFactory mf = MapFactory.getInstance();
+    CatalogFactory cats = CatalogFactory.getInstance();
+    MapFactory maps = MapFactory.getInstance();
     UIFacade ui = UIFacade.getInstance();
 
     // Command Functions
@@ -51,18 +51,18 @@ public class Store {
     //>>repetitive [fixed]
     public void loadItems(int guide, String a, String b, String c, String d, String e) {
         try{
-            cf.get(guide).addTest(a, b, c, d, e);
+            cats.get(guide).addTest(a, b, c, d, e);
         } catch(NumberFormatException ex) {}
     }
     
     //>>repetitive [fixed]
     public void manageCatalog(int guide) {
         ui.purgeCatalog();
-        mf.prune(guide);
+        maps.prune(guide);
         loadData(guide);
-        System.out.println(mf.get(guide));  //!!
-        for(String key : mf.getSize(guide)) {
-            ui.addItemToCatalog(mf.item(guide,key).getParameter1());
+        System.out.println(maps.get(guide));  //!!
+        for(String key : maps.getSize(guide)) {
+            ui.addItemToCatalog(maps.item(guide,key).getParameter1());
         }
         // case 3: load 1 to
         // case 1: min-cur add low
@@ -73,11 +73,11 @@ public class Store {
         if (items.length == 1) {
             try {
             ui.addProductDetails(guide, // Bunlarin ayyrimi ui uzerinde yapilacak
-                    mf.item(guide,"" + index).getParameter0(),
-                    mf.item(guide,"" + index).getParameter1(),
-                    mf.item(guide,"" + index).getParameter2(),
-                    mf.item(guide,"" + index).getParameter3(),
-                    mf.item(guide,"" + index).getParameter4()
+maps.item(guide,"" + index).getParameter0(),
+                    maps.item(guide,"" + index).getParameter1(),
+                    maps.item(guide,"" + index).getParameter2(),
+                    maps.item(guide,"" + index).getParameter3(),
+                    maps.item(guide,"" + index).getParameter4()
             );
             } catch (NullPointerException ex) {}
 //            switch (guide) {
@@ -113,7 +113,7 @@ public class Store {
     //>>repetitive [fixed!]
     public void addItem(int guide, String b, String c, String d, String e) {
         ui.purgeCatalog();
-        cf.get(guide).addItem(guide);
+        cats.get(guide).addItem(guide);
         saveData(guide, getWriteData(guide));
         // case 3: you already have orders for all products
         manageCatalog(guide);
@@ -122,7 +122,7 @@ public class Store {
     //>>repetitive [fixed!]
     public void deleteItem(int guide, String item) {
         ui.purgeCatalog(); // Item catalog id number
-        mf.delete(guide, item);
+        maps.delete(guide, item);
         saveData(guide,getWriteData(guide));
         manageCatalog(guide);
     }
@@ -166,14 +166,14 @@ public class Store {
     //>>repetitive [fixed!]
     public String getWriteData(int guide) {
         String data = "";
-        for (String key : mf.getSize(guide)) {
-            data = data + mf.item(guide, key).getParameter0() + ", "
-                        + mf.item(guide, key).getParameter1() + ", "
-                        + mf.item(guide, key).getParameter2();
+        for (String key : maps.getSize(guide)) {
+            data = data + maps.item(guide, key).getParameter0() + ", "
+                        + maps.item(guide, key).getParameter1() + ", "
+                        + maps.item(guide, key).getParameter2();
             if(guide != 2){
             data = data + ", " 
-                        + mf.item(guide, key).getParameter3() + ", "
-                        + mf.item(guide, key).getParameter4();
+                        + maps.item(guide, key).getParameter3() + ", "
+                        + maps.item(guide, key).getParameter4();
             }
             data = data + "\n";
         }
