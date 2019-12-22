@@ -50,7 +50,7 @@ public class OrderCatalog extends Catalog{
     
     @Override
     public void updateItem(String a, String b, String c, String d, String e) {
-        maps.item(3, a).setParameter1(b.trim());
+        maps.item(3, a).setParameter0(b.trim());
         maps.item(3, a).setParameter2(c.trim());
         maps.item(3, a).setParameter3(d.trim());
         maps.item(3, a).setParameter4(e.trim());

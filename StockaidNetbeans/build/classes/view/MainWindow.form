@@ -49,12 +49,13 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="inputPanelText4" alignment="1" max="32767" attributes="0"/>
                           <Component id="inputPanelText2" alignment="1" max="32767" attributes="0"/>
                           <Component id="inputPanelText3" alignment="1" max="32767" attributes="0"/>
                           <Component id="inputPanelText1" alignment="1" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="inputPanelText5" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="inputPanelText4" alignment="0" max="32767" attributes="0"/>
                                   <Component id="inputPanel2" alignment="0" max="32767" attributes="0"/>
                                   <Component id="inputPanel3" alignment="0" max="32767" attributes="0"/>
                                   <Component id="inputPanel1" alignment="0" max="32767" attributes="0"/>
@@ -62,23 +63,24 @@
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="updateIU" min="-2" pref="108" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="idSC" min="-2" pref="30" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="idOC" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="supplierSC" max="32767" attributes="0"/>
+                                          <Component id="productOC" max="32767" attributes="0"/>
                                           <Component id="productSC" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="productOC" pref="192" max="32767" attributes="0"/>
+                                          <Component id="supplierSC" pref="192" max="32767" attributes="0"/>
                                           <Component id="supplierOC" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="inputPanel4" alignment="0" pref="382" max="32767" attributes="0"/>
+                                  <Component id="inputPanel4Panel" alignment="0" pref="382" max="32767" attributes="0"/>
+                                  <Component id="inputPanel5" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -98,7 +100,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="idSC" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
@@ -107,11 +109,11 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="productSC" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="productOC" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="supplierSC" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="supplierSC" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="productOC" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="supplierOC" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -126,10 +128,14 @@
                           <Component id="inputPanelText3" min="-2" pref="16" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="inputPanel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="inputPanelText4" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="inputPanel4" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Component id="inputPanelText5" min="-2" pref="16" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="inputPanel5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="inputPanelText4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Component id="inputPanel4Panel" min="-2" pref="84" max="-2" attributes="0"/>
                       </Group>
                       <Component id="CatalogICPanel" min="-2" pref="395" max="-2" attributes="0"/>
                   </Group>
@@ -260,12 +266,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="productOC">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Supplier Name:"/>
+        <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="supplierSC">
       <Properties>
-        <Property name="text" type="java.lang.String" value="0"/>
+        <Property name="text" type="java.lang.String" value="Supplier Name:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="supplierOC">
@@ -311,14 +317,14 @@
         <Property name="text" type="java.lang.String" value="Description"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="inputPanel4">
+    <Container class="javax.swing.JScrollPane" name="inputPanel4Panel">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="descriptionIA">
+        <Component class="javax.swing.JTextArea" name="inputPanel4">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -327,5 +333,15 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="inputPanelText5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Current Stock Level"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="inputPanel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="enter current stock level"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

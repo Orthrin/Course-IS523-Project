@@ -2,4 +2,4 @@
 2, Supertensile Plastics, 40, 75, 50
 3, Viral Agent, 16, 34, 16
 4, Polytextile Structures, 200, 350, 250
-5, Transcranial Microcontrollers, 45, 89, 50
+5, Transcranial Microcontrollers, 45, 88, 50

@@ -22,7 +22,7 @@ public class OrderDescription extends Description {
     // Command Functions
     @Override
     public void setParameter1(String parameter) {
-        this.orderId = Integer.parseInt(parameter);
+//        this.orderId = Integer.parseInt(parameter);
     }
     
     @Override
@@ -43,7 +43,7 @@ public class OrderDescription extends Description {
     // Query Functions 
     @Override
     public String getParameter1() {
-        return ""+orderId;
+        return "" + orderId;
     }
     
     @Override

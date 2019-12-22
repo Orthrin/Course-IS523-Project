@@ -12,6 +12,9 @@ abstract public class Description {
 
     
     // Command Functions
+    public void setParameter0(String parameter) {
+        this.productId = parameter;
+    }
     abstract public void setParameter1(String p);
     abstract public void setParameter2(String p);
     abstract public void setParameter3(String p);

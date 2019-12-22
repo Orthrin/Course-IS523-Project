@@ -60,17 +60,12 @@ public class UIFacade {
         }
     }
     
-    public void addSupplierDetails(String id, String name, String productId) {
+    public void additionalInfo(String product, String supplier) {
         if (mainWindow != null) {
-            mainWindow.presentSupplierDetails(id, name, productId);
+            mainWindow.additionalInfo(product, supplier);
         }
     }
     
-    public void addOrderDetails(String id, String description, int productId, int quantity, String date) {
-        if (mainWindow != null) {
-            mainWindow.presentOrderDetails(id, description, productId, quantity, date);
-        }
-    }
     
     public void orderShowMax(int max) {
         if (mainWindow != null) {

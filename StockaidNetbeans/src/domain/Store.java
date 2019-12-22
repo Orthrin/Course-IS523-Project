@@ -14,9 +14,6 @@ public class Store {
     // Singleton Constructor
     private Store() {
         database = new PersistentStorage();
-        productCatalog = new ProductCatalog();
-        supplierCatalog = new SupplierCatalog();
-        orderCatalog = new OrderCatalog();
         loadData(1);
         loadData(2);
         loadData(3);
@@ -24,9 +21,6 @@ public class Store {
 
     // Instantiation
     PersistentStorage database;
-    ProductCatalog productCatalog;
-    SupplierCatalog supplierCatalog;
-    OrderCatalog orderCatalog;
     CatalogFactory cats = CatalogFactory.getInstance();
     MapFactory maps = MapFactory.getInstance();
     UIFacade ui = UIFacade.getInstance();
@@ -77,11 +71,28 @@ public class Store {
                     maps.item(guide, "" + index).getParameter3(),
                     maps.item(guide, "" + index).getParameter4()
             );
+            if(guide == 2) { 
+                additionalInformation(guide, index, false);
+            } else if (guide == 3) {
+                additionalInformation(guide, index, true);
+            }
+            
         } catch (NullPointerException ex) {
         }
         // min maax case 3
     }
 
+    // 
+    public void additionalInformation(int guide, int index, boolean order) {
+        String product = maps.item(1, "" +  maps.item(guide, "" + index).getParameter0()).getParameter1();
+        String supp = maps.item(2, "" +  maps.item(guide, "" + index).getParameter2()).getParameter1();
+        if(!order && product != null) {
+            ui.additionalInfo(product, "0");
+        } else {
+            ui.additionalInfo(product, supp);
+        }    
+    }
+    
     //>>repetitive [fixed!]
     public void addItem(int guide, String b, String c, String d, String e) {
         ui.purgeCatalog();
