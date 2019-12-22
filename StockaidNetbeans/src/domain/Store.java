@@ -29,6 +29,8 @@ public class Store {
     CatalogFactory catalogFactory;
     MapFactory mapFactory = MapFactory.getInstance();
     Map<String, Description> currentMap;
+    Map<String, Description> supplierMap;
+    Map<String, Description> orderMap;
 
     // Command Functions
     public void loadData(int guide) {
@@ -63,11 +65,13 @@ public class Store {
         for (String key : currentMap.keySet()) {
             ui.addItemToCatalog(currentMap.get(key).getParameter1());
         }
+        
         if (guide == 2 || guide == 3) {
             currentMap = mapFactory.getMap(1);
             for (String key : currentMap.keySet()) {
                 ui.addItemToCB1(currentMap.get(key).getParameter1());
             }
+            ui.CB1Cleanse();
         }
         if (guide == 3) {
             currentMap = mapFactory.getMap(2);
@@ -122,10 +126,19 @@ public class Store {
     }
 
     public void updateItem(int guide, String a, String b, String c, String d, String e) {
-        currentMap.get(a).setParameter1(b);
-        currentMap.get(a).setParameter2(c);
-        currentMap.get(a).setParameter3(d);
-        currentMap.get(a).setParameter4(e);
+        
+        if (b != ""){
+            currentMap.get(a).setParameter1(b);
+        }
+        if (c != ""){
+            currentMap.get(a).setParameter2(c);
+        }
+        if (d != ""){
+            currentMap.get(a).setParameter3(d);
+        }
+        if (e != ""){
+            currentMap.get(a).setParameter4(e);
+        }
         saveData(guide, getSaveData(guide));
         manageCatalog(guide);
     }
@@ -135,12 +148,15 @@ public class Store {
         String data = "";
         currentMap.size();
         for (String key : currentMap.keySet()) {
-            data = data
-                    + currentMap.get(key).getParameter0() + ", "
-                    + currentMap.get(key).getParameter1() + ", "
-                    + currentMap.get(key).getParameter2() + ", "
-                    + currentMap.get(key).getParameter3() + ", "
-                    + currentMap.get(key).getParameter4() + "\n";
+            data = data + currentMap.get(key).getParameter0() + ", "
+                        + currentMap.get(key).getParameter1() + ", "
+                        + currentMap.get(key).getParameter2();
+            if(guide != 2){
+            data = data + ", " 
+                        + currentMap.get(key).getParameter3() + ", "
+                        + currentMap.get(key).getParameter4();
+            }
+            data = data + "\n";
         }
         return data;
     }

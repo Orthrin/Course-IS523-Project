@@ -47,37 +47,33 @@
                           </Group>
                           <Component id="catalogPanel" min="-2" pref="210" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="inputFieldText1" alignment="1" max="32767" attributes="0"/>
+                          <Component id="inputField1Panel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="inputField2" alignment="1" max="32767" attributes="0"/>
+                          <Component id="inputFieldText3" alignment="1" max="32767" attributes="0"/>
+                          <Component id="inputField3" alignment="1" max="32767" attributes="0"/>
+                          <Component id="inputFieldText4" alignment="1" max="32767" attributes="0"/>
+                          <Component id="inputField4" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
+                              <Component id="idSC" min="-2" pref="89" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="inputFieldText1" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="inputField1Panel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="inputField2" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="inputFieldText3" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="inputField3" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="inputFieldText4" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="inputFieldText2" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="inputField4" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="idSC" min="-2" pref="89" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="idOC" min="-2" pref="321" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="updateIU" alignment="1" min="-2" pref="108" max="-2" attributes="0"/>
-                                          <Component id="productCB" alignment="1" min="-2" pref="416" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="idOC" min="-2" pref="321" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="supplierCB" min="-2" pref="416" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="updateIU" min="-2" pref="108" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="productCB" min="-2" pref="416" max="-2" attributes="0"/>
+                                  <Component id="supplierCB" min="-2" pref="416" max="-2" attributes="0"/>
+                                  <Component id="productOC" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="supplierOC" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="inputFieldText2" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -102,17 +98,17 @@
                               <Component id="idOC" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
                               <Component id="idSC" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="productOC" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="productCB" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          <Component id="supplierOC" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="supplierCB" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="inputFieldText1" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="inputField1Panel" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="inputFieldText2" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           <Component id="inputField2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="inputFieldText3" min="-2" pref="10" max="-2" attributes="0"/>
@@ -122,6 +118,10 @@
                           <Component id="inputFieldText4" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="inputField4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="inputFieldText1" min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="inputField1Panel" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
                       <Component id="catalogPanel" min="-2" pref="395" max="-2" attributes="0"/>
                   </Group>
@@ -245,6 +245,11 @@
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="productOC">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Corresponding Product ID"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JComboBox" name="productCB">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -262,6 +267,11 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="supplierOC">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Corresponding Supplier ID"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="supplierCB">
       <Properties>

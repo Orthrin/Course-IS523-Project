@@ -1,4 +1,4 @@
-1, Duvolle Laboratories, 2
-2, Kaalakiota Corp, 1
+1, Kaalakiota Corp, 1
+1, Kaalakiota Corp, 1
 3, CCP, 3
 4, Weta Workshop, 5

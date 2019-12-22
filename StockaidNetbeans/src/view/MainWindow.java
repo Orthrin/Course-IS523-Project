@@ -50,7 +50,9 @@ public class MainWindow extends javax.swing.JFrame {
         catalogIC = new javax.swing.JList<>();
         idSC = new javax.swing.JLabel();
         idOC = new javax.swing.JLabel();
+        productOC = new javax.swing.JLabel();
         productCB = new javax.swing.JComboBox<>();
+        supplierOC = new javax.swing.JLabel();
         supplierCB = new javax.swing.JComboBox<>();
         inputFieldText1 = new javax.swing.JLabel();
         inputField1Panel = new javax.swing.JScrollPane();
@@ -126,12 +128,16 @@ public class MainWindow extends javax.swing.JFrame {
 
         idOC.setText("0");
 
+        productOC.setText("Corresponding Product ID");
+
         productCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         productCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 productCBActionPerformed(evt);
             }
         });
+
+        supplierOC.setText("Corresponding Supplier ID");
 
         supplierCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         supplierCB.addActionListener(new java.awt.event.ActionListener() {
@@ -188,32 +194,30 @@ public class MainWindow extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(deleteIU, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(catalogPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(inputFieldText1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inputField1Panel)
+                            .addComponent(inputField2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(inputFieldText3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inputField3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(inputFieldText4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inputField4)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(idSC, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(idOC, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(inputFieldText1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(inputField1Panel)
-                                    .addComponent(inputField2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(inputFieldText3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(inputField3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(inputFieldText4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(inputFieldText2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(inputField4)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(idSC, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(idOC, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(updateIU, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(productCB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addContainerGap())))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(supplierCB, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(updateIU, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(productCB, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(supplierCB, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(productOC)
+                                    .addComponent(supplierOC)
+                                    .addComponent(inputFieldText2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())))))
         );
         layout.setVerticalGroup(
@@ -230,17 +234,17 @@ public class MainWindow extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(idOC, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(idSC, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(productOC)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(productCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(4, 4, 4)
+                            .addComponent(supplierOC)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(supplierCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(inputFieldText1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(inputField1Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(inputFieldText2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGap(8, 8, 8)
                             .addComponent(inputField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(inputFieldText3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,7 +253,11 @@ public class MainWindow extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(inputFieldText4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(inputField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(inputField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(inputFieldText1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(inputField1Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(catalogPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(manageProductsIU)
@@ -292,7 +300,13 @@ public class MainWindow extends javax.swing.JFrame {
     }
     
     public void CB1Cleanse() {
-//        productCB.setSelectedIndex(-1); //.setText("Select Product");
+        try {
+        if (inputField2.getText() != "enter product ID") {
+            productCB.setSelectedIndex(Integer.parseInt(inputField2.getText())-1); //.setText("Select Product");
+        } else {
+            productCB.setSelectedIndex(0);
+        }
+        } catch(NumberFormatException ex) {}
     }
     
     public void addItemToCB2(String item) {
@@ -309,6 +323,8 @@ public class MainWindow extends javax.swing.JFrame {
         switch (uiType) {
             case "Product":
                 idSC.setText("Product ID:");
+                productOC.setVisible(false);
+                supplierOC.setVisible(false);
                 productCB.setVisible(false);
                 supplierCB.setVisible(false);
 
@@ -332,6 +348,8 @@ public class MainWindow extends javax.swing.JFrame {
                 break;
             case "Supplier":
                 idSC.setText("Supplier ID:");
+                productOC.setVisible(true);
+                supplierOC.setVisible(false);
                 productCB.setVisible(true);
                 supplierCB.setVisible(false);
 
@@ -340,6 +358,8 @@ public class MainWindow extends javax.swing.JFrame {
                 inputFieldText1.setText("Name");
                 inputField1.setText("enter name of the Supplier");
 
+                inputFieldText2.setVisible(false);
+                inputField2.setVisible(false);
                 inputFieldText2.setText("Product ID:");
                 inputField2.setText("enter Product ID");
 
@@ -351,6 +371,8 @@ public class MainWindow extends javax.swing.JFrame {
                 break;
             case "Order":
                 idSC.setText("Order ID:");
+                productOC.setVisible(true);
+                supplierOC.setVisible(true);
                 productCB.setVisible(true);
                 supplierCB.setVisible(true);
 
@@ -388,6 +410,7 @@ public class MainWindow extends javax.swing.JFrame {
                 break;
             case 2:
                 idOC.setText("" + c);
+                productOC.setText("Product ID: " + a);
                 inputField1.setText(b);
                 inputField2.setText("" + a);
                 productCB.setSelectedIndex(Integer.parseInt(a)-1);
@@ -431,18 +454,27 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void updateIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateIUActionPerformed
 
-        String a = idOC.getText();
-        String b = inputField1.getText();
-        String c = inputField2.getText();
-        //System.out.println(c);
+        String a, b, c, d, e = "";
+
+        a = idOC.getText();
+        b = inputField1.getText();
+        c = inputField2.getText();
+        d = inputField3.getText();
+        e = inputField4.getText();
         
-        if(managementMode == 2){
-        c = "" + (productCB.getSelectedIndex()+1);
-        inputField2.setText(c);
-        productCB.setSelectedIndex(Integer.parseInt(c)-1);
+        switch (managementMode) {
+            case 2:
+                c = "" + (productCB.getSelectedIndex() + 1);
+                inputField2.setText(c);
+                productCB.setSelectedIndex(Integer.parseInt(c) - 1);
+                d = "";
+                e = "";
+                break;
+            case 3:
+                break;
+
         }
-        String d = inputField3.getText();
-        String e = inputField4.getText();
+        System.out.println(a + " " + b + " " + c + " " + d + " " + e);
 
         inventory.updateItem(managementMode, a, b, c, d, e);
     }//GEN-LAST:event_updateIUActionPerformed
@@ -481,7 +513,8 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_supplierCBActionPerformed
 
     private void productCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productCBActionPerformed
-        // TODO add your handling code here:
+        
+        productOC.setText("Product ID: " + (productCB.getSelectedIndex()+1));
     }//GEN-LAST:event_productCBActionPerformed
 
     /**
@@ -544,7 +577,9 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton manageProductsIU;
     private javax.swing.JButton manageSuppliersIU;
     private javax.swing.JComboBox<String> productCB;
+    private javax.swing.JLabel productOC;
     private javax.swing.JComboBox<String> supplierCB;
+    private javax.swing.JLabel supplierOC;
     private javax.swing.JButton updateIU;
     // End of variables declaration//GEN-END:variables
 
