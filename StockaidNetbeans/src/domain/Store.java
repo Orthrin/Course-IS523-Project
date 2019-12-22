@@ -82,6 +82,7 @@ public class Store {
 
     public void getDetails(int guide, int items[], int index) {
         if (items.length == 1) {
+            try {
             ui.displayItemDetails(guide,
                     currentMap.get("" + index).getParameter0(),
                     currentMap.get("" + index).getParameter1(),
@@ -89,6 +90,7 @@ public class Store {
                     currentMap.get("" + index).getParameter3(),
                     currentMap.get("" + index).getParameter4()
             );
+            } catch (NullPointerException ex) {}
         }
     }
 

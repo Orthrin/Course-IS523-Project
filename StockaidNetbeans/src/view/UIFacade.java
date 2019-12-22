@@ -54,6 +54,12 @@ public class UIFacade {
         }
     }
     
+    public void CB1Cleanse(){
+        if (mainWindow != null) {
+            mainWindow.CB1Cleanse();
+        }
+    }
+    
     public void addItemToCB2(String item) {
         if (mainWindow != null) {
             mainWindow.addItemToCB2(item);

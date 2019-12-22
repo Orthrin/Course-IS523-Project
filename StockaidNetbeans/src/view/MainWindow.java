@@ -291,6 +291,10 @@ public class MainWindow extends javax.swing.JFrame {
         cBModel1.addElement(item);
     }
     
+    public void CB1Cleanse() {
+//        productCB.setSelectedIndex(-1); //.setText("Select Product");
+    }
+    
     public void addItemToCB2(String item) {
         cBModel2.addElement(item);
     }
@@ -383,11 +387,10 @@ public class MainWindow extends javax.swing.JFrame {
                 inputField4.setText("" + e);
                 break;
             case 2:
-                int x = Integer.parseInt(a);
                 idOC.setText("" + c);
                 inputField1.setText(b);
                 inputField2.setText("" + a);
-                productCB.setSelectedIndex(x-1);
+                productCB.setSelectedIndex(Integer.parseInt(a)-1);
                 break;
 
             case 3:
@@ -431,11 +434,12 @@ public class MainWindow extends javax.swing.JFrame {
         String a = idOC.getText();
         String b = inputField1.getText();
         String c = inputField2.getText();
-        System.out.println(c);
+        //System.out.println(c);
         
         if(managementMode == 2){
         c = "" + (productCB.getSelectedIndex()+1);
-            System.out.println(c);
+        inputField2.setText(c);
+        productCB.setSelectedIndex(Integer.parseInt(c)-1);
         }
         String d = inputField3.getText();
         String e = inputField4.getText();
