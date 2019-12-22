@@ -1,0 +1,5 @@
+1, Enriched Uranium, 25, 100, 50
+2, Supertensile Plastics, 50, 200, 60
+3, Viral Agent, 16, 25, 18
+4, Polytextile Structures, 30, 70, 25
+5, Transcranial Microcontrollers, 20, 300, 25

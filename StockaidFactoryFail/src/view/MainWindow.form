@@ -35,7 +35,7 @@
                   <Group type="102" attributes="0">
                       <Component id="commandSC" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="authenticatioonSU" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="authenticationSU" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -45,40 +45,34 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="deleteIU" min="-2" pref="90" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="CatalogICPanel" min="-2" pref="210" max="-2" attributes="0"/>
+                          <Component id="catalogPanel" min="-2" pref="210" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="inputPanelText4" alignment="1" max="32767" attributes="0"/>
-                          <Component id="inputPanelText2" alignment="1" max="32767" attributes="0"/>
-                          <Component id="inputPanelText3" alignment="1" max="32767" attributes="0"/>
-                          <Component id="inputPanelText1" alignment="1" max="32767" attributes="0"/>
+                          <Component id="inputFieldText1" alignment="1" max="32767" attributes="0"/>
+                          <Component id="inputField1Panel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="inputField2" alignment="1" max="32767" attributes="0"/>
+                          <Component id="inputFieldText3" alignment="1" max="32767" attributes="0"/>
+                          <Component id="inputField3" alignment="1" max="32767" attributes="0"/>
+                          <Component id="inputFieldText4" alignment="1" max="32767" attributes="0"/>
+                          <Component id="inputField4" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
+                              <Component id="idSC" min="-2" pref="89" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="idOC" min="-2" pref="321" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="inputPanel2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="inputPanel3" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="inputPanel1" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="updateIU" min="-2" pref="108" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="idSC" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="idOC" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="supplierSC" max="32767" attributes="0"/>
-                                          <Component id="productSC" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="productOC" pref="192" max="32767" attributes="0"/>
-                                          <Component id="supplierOC" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Component id="inputPanel4" alignment="0" pref="382" max="32767" attributes="0"/>
+                                  <Component id="productCB" min="-2" pref="416" max="-2" attributes="0"/>
+                                  <Component id="supplierCB" min="-2" pref="416" max="-2" attributes="0"/>
+                                  <Component id="productOC" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="supplierOC" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="inputFieldText2" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -93,45 +87,43 @@
           <Group type="102" attributes="0">
               <EmptySpace pref="24" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="authenticatioonSU" min="-2" max="-2" attributes="0"/>
+                  <Component id="authenticationSU" min="-2" max="-2" attributes="0"/>
                   <Component id="commandSC" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="idSC" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-                              <Component id="idOC" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="idOC" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
+                              <Component id="idSC" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="productSC" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="productOC" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="supplierSC" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="supplierOC" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="inputPanelText1" min="-2" pref="16" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="inputPanel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="inputPanelText2" min="-2" pref="16" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="inputPanel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="inputPanelText3" min="-2" pref="16" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="inputPanel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="inputPanelText4" min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="productOC" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="inputPanel4" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Component id="productCB" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          <Component id="supplierOC" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="supplierCB" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="inputFieldText2" min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                          <Component id="inputField2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="inputFieldText3" min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="inputField3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="inputFieldText4" min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="inputField4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="inputFieldText1" min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="inputField1Panel" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="CatalogICPanel" min="-2" pref="395" max="-2" attributes="0"/>
+                      <Component id="catalogPanel" min="-2" pref="395" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="manageProductsIU" min="-2" max="-2" attributes="0"/>
@@ -157,6 +149,11 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JLabel" name="authenticationSU">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Login Identification Text"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JButton" name="manageOrdersIU">
       <Properties>
         <Property name="text" type="java.lang.String" value="Manage Orders"/>
@@ -189,14 +186,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createIUActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="updateIU">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Update"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateIUActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="deleteIU">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete"/>
@@ -205,12 +194,20 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteIUActionPerformed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JButton" name="updateIU">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Update"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateIUActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JLabel" name="commandSC">
       <Properties>
         <Property name="text" type="java.lang.String" value="Please select an item"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="CatalogICPanel">
+    <Container class="javax.swing.JScrollPane" name="catalogPanel">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
@@ -238,11 +235,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="authenticatioonSU">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Login Identification Text"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="idSC">
       <Properties>
         <Property name="text" type="java.lang.String" value="ID :"/>
@@ -253,72 +245,65 @@
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="productSC">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Product Name:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="productOC">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Supplier Name:"/>
+        <Property name="text" type="java.lang.String" value="Corresponding Product ID"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="supplierSC">
+    <Component class="javax.swing.JComboBox" name="productCB">
       <Properties>
-        <Property name="text" type="java.lang.String" value="0"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="productCBActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="supplierOC">
       <Properties>
-        <Property name="text" type="java.lang.String" value="0"/>
+        <Property name="text" type="java.lang.String" value="Corresponding Supplier ID"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="inputPanelText1">
+    <Component class="javax.swing.JComboBox" name="supplierCB">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Minimum Stock Level"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="inputPanel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="enter minimum stock level"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputPanel1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="supplierCBActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="inputPanelText2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Maximum  Stock Level"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="inputPanel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="enter maximum stock level"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="inputPanelText3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Current Stock Level"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="inputPanel3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="enter current stock level"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="inputPanelText4">
+    <Component class="javax.swing.JLabel" name="inputFieldText1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Description"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="inputPanel4">
+    <Container class="javax.swing.JScrollPane" name="inputField1Panel">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="descriptionIA">
+        <Component class="javax.swing.JTextArea" name="inputField1">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -327,5 +312,38 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="inputFieldText2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Minimum Stock Level"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="inputField2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="enter minimum stock level"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputField2ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="inputFieldText3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Maximum  Stock Level"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="inputField3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="enter maximum stock level"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="inputFieldText4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Current Stock Level"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="inputField4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="enter current stock level"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

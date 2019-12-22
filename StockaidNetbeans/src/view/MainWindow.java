@@ -26,6 +26,10 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         this.inventory = inventory;
         this.catalogIC.setModel(catalogModel);
+        productSC.setVisible(false);
+        productOC.setVisible(false);
+        supplierSC.setVisible(false);
+        supplierOC.setVisible(false);
     }
 
     /**
@@ -49,10 +53,10 @@ public class MainWindow extends javax.swing.JFrame {
         authenticatioonSU = new javax.swing.JLabel();
         idSC = new javax.swing.JLabel();
         idOC = new javax.swing.JLabel();
-        productIdSC = new javax.swing.JLabel();
-        productIdOC = new javax.swing.JLabel();
-        supplierIdSC = new javax.swing.JLabel();
-        supplierIdOC = new javax.swing.JLabel();
+        productSC = new javax.swing.JLabel();
+        productOC = new javax.swing.JLabel();
+        supplierSC = new javax.swing.JLabel();
+        supplierOC = new javax.swing.JLabel();
         inputPanelText1 = new javax.swing.JLabel();
         inputPanel1 = new javax.swing.JTextField();
         inputPanelText2 = new javax.swing.JLabel();
@@ -127,13 +131,13 @@ public class MainWindow extends javax.swing.JFrame {
 
         idOC.setText("0");
 
-        productIdSC.setText("Product ID:");
+        productSC.setText("Product Name:");
 
-        productIdOC.setText("SupplierID:");
+        productOC.setText("Supplier Name:");
 
-        supplierIdSC.setText("jLabel3");
+        supplierSC.setText("0");
 
-        supplierIdOC.setText("jLabel4");
+        supplierOC.setText("0");
 
         inputPanelText1.setText("Minimum Stock Level");
 
@@ -186,7 +190,6 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(inputPanelText4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(inputPanel4)
                             .addComponent(inputPanelText2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(inputPanelText3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(inputPanelText1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -202,14 +205,15 @@ public class MainWindow extends javax.swing.JFrame {
                                         .addComponent(idSC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(idOC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(productIdSC)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(supplierSC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(productSC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(supplierIdSC, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(productIdOC)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(supplierIdOC, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(productOC, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                                            .addComponent(supplierOC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(inputPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE))
                                 .addContainerGap())))))
         );
         layout.setVerticalGroup(
@@ -228,20 +232,22 @@ public class MainWindow extends javax.swing.JFrame {
                                 .addComponent(idOC))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(productIdSC)
-                                .addComponent(productIdOC)
-                                .addComponent(supplierIdSC)
-                                .addComponent(supplierIdOC))
-                            .addGap(25, 25, 25)
-                            .addComponent(inputPanelText1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(productSC)
+                                .addComponent(productOC))
+                            .addGap(3, 3, 3)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(supplierSC)
+                                .addComponent(supplierOC))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(inputPanelText1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(inputPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(inputPanelText2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputPanelText2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(inputPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(inputPanelText3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputPanelText3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(inputPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -501,10 +507,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton manageOrdersIU;
     private javax.swing.JButton manageProductsIU;
     private javax.swing.JButton manageSuppliersIU;
-    private javax.swing.JLabel productIdOC;
-    private javax.swing.JLabel productIdSC;
-    private javax.swing.JLabel supplierIdOC;
-    private javax.swing.JLabel supplierIdSC;
+    private javax.swing.JLabel productOC;
+    private javax.swing.JLabel productSC;
+    private javax.swing.JLabel supplierOC;
+    private javax.swing.JLabel supplierSC;
     private javax.swing.JButton updateIU;
     // End of variables declaration//GEN-END:variables
 

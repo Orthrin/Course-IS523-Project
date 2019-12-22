@@ -4,12 +4,18 @@ import view.UIFacade;
 
 public class Store {
 
-    // Singleton
+    // Singleton Decleration
     private static final Store store = new Store();
-
     // Singleton Call
     public static Store getInstance() {
         return store;
+    }
+    // Singleton Constructor
+    private Store() {
+        database = new PersistentStorage();
+        productCatalog = new ProductCatalog();
+        supplierCatalog = new SupplierCatalog();
+        orderCatalog = new OrderCatalog();
     }
 
     // Variables
@@ -21,15 +27,8 @@ public class Store {
     ProductCatalog productCatalog;
     SupplierCatalog supplierCatalog;
     OrderCatalog orderCatalog;
+    CatalogFactory cf = CatalogFactory.getInstance();
     UIFacade ui = UIFacade.getInstance();
-
-    // Constructor
-    private Store() {
-        database = new PersistentStorage();
-        productCatalog = new ProductCatalog();
-        supplierCatalog = new SupplierCatalog();
-        orderCatalog = new OrderCatalog();
-    }
 
     // Command Functions
     public void loadData(int guide) {
@@ -202,7 +201,7 @@ public class Store {
                 break;
         }
     }
-
+    
     public void saveData(int guide, String data) {
         database.saveData(guide, data);
     }

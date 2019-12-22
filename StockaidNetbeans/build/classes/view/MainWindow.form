@@ -50,7 +50,6 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="inputPanelText4" alignment="1" max="32767" attributes="0"/>
-                          <Component id="inputPanel4" alignment="0" max="32767" attributes="0"/>
                           <Component id="inputPanelText2" alignment="1" max="32767" attributes="0"/>
                           <Component id="inputPanelText3" alignment="1" max="32767" attributes="0"/>
                           <Component id="inputPanelText1" alignment="1" max="32767" attributes="0"/>
@@ -68,15 +67,18 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="idOC" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="productIdSC" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="supplierSC" max="32767" attributes="0"/>
+                                          <Component id="productSC" max="32767" attributes="0"/>
+                                      </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="supplierIdSC" pref="110" max="32767" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="productIdOC" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="supplierIdOC" min="-2" pref="119" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="productOC" pref="192" max="32767" attributes="0"/>
+                                          <Component id="supplierOC" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
+                                  <Component id="inputPanel4" alignment="0" pref="382" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -104,21 +106,24 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="productIdSC" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="productIdOC" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="supplierIdSC" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="supplierIdOC" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="productSC" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="productOC" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="inputPanelText1" min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="supplierSC" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="supplierOC" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="inputPanelText1" min="-2" pref="16" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="inputPanel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="inputPanelText2" min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="inputPanelText2" min="-2" pref="16" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="inputPanel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="inputPanelText3" min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="inputPanelText3" min="-2" pref="16" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="inputPanel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -248,24 +253,24 @@
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="productIdSC">
+    <Component class="javax.swing.JLabel" name="productSC">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Product ID:"/>
+        <Property name="text" type="java.lang.String" value="Product Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="productIdOC">
+    <Component class="javax.swing.JLabel" name="productOC">
       <Properties>
-        <Property name="text" type="java.lang.String" value="SupplierID:"/>
+        <Property name="text" type="java.lang.String" value="Supplier Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="supplierIdSC">
+    <Component class="javax.swing.JLabel" name="supplierSC">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel3"/>
+        <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="supplierIdOC">
+    <Component class="javax.swing.JLabel" name="supplierOC">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel4"/>
+        <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="inputPanelText1">
