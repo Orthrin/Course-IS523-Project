@@ -37,64 +37,33 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        createIU = new javax.swing.JButton();
-        updateIU = new javax.swing.JButton();
-        deleteIU = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        catalogIC = new javax.swing.JList<>();
-        authenticatioonSU = new javax.swing.JLabel();
         manageOrdersIU = new javax.swing.JButton();
         manageSuppliersIU = new javax.swing.JButton();
         manageProductsIU = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        descriptionIA = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
+        createIU = new javax.swing.JButton();
+        updateIU = new javax.swing.JButton();
+        deleteIU = new javax.swing.JButton();
         commandSC = new javax.swing.JLabel();
-        firstInputText = new javax.swing.JLabel();
-        firstInputField = new javax.swing.JTextField();
-        secondInputText = new javax.swing.JLabel();
-        secondInputField = new javax.swing.JTextField();
-        thirdInputField = new javax.swing.JTextField();
-        thirdInputText = new javax.swing.JLabel();
+        CatalogICPanel = new javax.swing.JScrollPane();
+        catalogIC = new javax.swing.JList<>();
+        authenticatioonSU = new javax.swing.JLabel();
         idSC = new javax.swing.JLabel();
+        idOC = new javax.swing.JLabel();
+        productIdSC = new javax.swing.JLabel();
+        productIdOC = new javax.swing.JLabel();
+        supplierIdSC = new javax.swing.JLabel();
+        supplierIdOC = new javax.swing.JLabel();
+        inputPanelText1 = new javax.swing.JLabel();
+        inputPanel1 = new javax.swing.JTextField();
+        inputPanelText2 = new javax.swing.JLabel();
+        inputPanel2 = new javax.swing.JTextField();
+        inputPanelText3 = new javax.swing.JLabel();
+        inputPanel3 = new javax.swing.JTextField();
+        inputPanelText4 = new javax.swing.JLabel();
+        inputPanel4 = new javax.swing.JScrollPane();
+        descriptionIA = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        createIU.setText("Add");
-        createIU.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createIUActionPerformed(evt);
-            }
-        });
-
-        updateIU.setText("Update");
-        updateIU.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateIUActionPerformed(evt);
-            }
-        });
-
-        deleteIU.setText("Delete");
-        deleteIU.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteIUActionPerformed(evt);
-            }
-        });
-
-        catalogIC.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        catalogIC.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                catalogICValueChanged(evt);
-            }
-        });
-        jScrollPane3.setViewportView(catalogIC);
-
-        authenticatioonSU.setText("Login Identification Text");
 
         manageOrdersIU.setText("Manage Orders");
         manageOrdersIU.addActionListener(new java.awt.event.ActionListener() {
@@ -117,35 +86,78 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("ID :");
+        createIU.setText("Add");
+        createIU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createIUActionPerformed(evt);
+            }
+        });
+
+        updateIU.setText("Update");
+        updateIU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateIUActionPerformed(evt);
+            }
+        });
+
+        deleteIU.setText("Delete");
+        deleteIU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteIUActionPerformed(evt);
+            }
+        });
+
+        commandSC.setText("Please select an item");
+
+        catalogIC.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        catalogIC.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                catalogICValueChanged(evt);
+            }
+        });
+        CatalogICPanel.setViewportView(catalogIC);
+
+        authenticatioonSU.setText("Login Identification Text");
+
+        idSC.setText("ID :");
+
+        idOC.setText("0");
+
+        productIdSC.setText("Product ID:");
+
+        productIdOC.setText("SupplierID:");
+
+        supplierIdSC.setText("jLabel3");
+
+        supplierIdOC.setText("jLabel4");
+
+        inputPanelText1.setText("Minimum Stock Level");
+
+        inputPanel1.setText("enter minimum stock level");
+        inputPanel1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputPanel1ActionPerformed(evt);
+            }
+        });
+
+        inputPanelText2.setText("Maximum  Stock Level");
+
+        inputPanel2.setText("enter maximum stock level");
+
+        inputPanelText3.setText("Current Stock Level");
+
+        inputPanel3.setText("enter current stock level");
+
+        inputPanelText4.setText("Description");
 
         descriptionIA.setColumns(20);
         descriptionIA.setRows(5);
         descriptionIA.setText("enter description about product\n");
-        jScrollPane1.setViewportView(descriptionIA);
-
-        jLabel2.setText("Description");
-
-        commandSC.setText("Please select an item");
-
-        firstInputText.setText("Minimum Stock Level");
-
-        firstInputField.setText("enter minimum stock level");
-        firstInputField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                firstInputFieldActionPerformed(evt);
-            }
-        });
-
-        secondInputText.setText("Maximum  Stock Level");
-
-        secondInputField.setText("enter maximum stock level");
-
-        thirdInputField.setText("enter current stock level");
-
-        thirdInputText.setText("Current Stock Level");
-
-        idSC.setText("0");
+        inputPanel4.setViewportView(descriptionIA);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,7 +167,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(manageOrdersIU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(manageSuppliersIU, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                    .addComponent(manageSuppliersIU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(manageProductsIU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,27 +182,34 @@ public class MainWindow extends javax.swing.JFrame {
                                 .addComponent(createIU, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(deleteIU, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CatalogICPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(inputPanelText4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inputPanel4)
+                            .addComponent(inputPanelText2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inputPanelText3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inputPanelText1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1)
-                                    .addComponent(firstInputField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(secondInputText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(secondInputField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(thirdInputText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(firstInputText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(inputPanel2)
+                                    .addComponent(inputPanel3)
+                                    .addComponent(inputPanel1)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(updateIU, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(idSC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(idSC, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 150, Short.MAX_VALUE))
-                                    .addComponent(thirdInputField)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(updateIU, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(idOC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(productIdSC)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(supplierIdSC, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(productIdOC)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(supplierIdOC, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap())))))
         );
         layout.setVerticalGroup(
@@ -205,25 +224,31 @@ public class MainWindow extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(idSC))
+                                .addComponent(idSC, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(idOC))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(productIdSC)
+                                .addComponent(productIdOC)
+                                .addComponent(supplierIdSC)
+                                .addComponent(supplierIdOC))
+                            .addGap(25, 25, 25)
+                            .addComponent(inputPanelText1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jScrollPane1)
+                            .addComponent(inputPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(firstInputText, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputPanelText2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(firstInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(secondInputText, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputPanelText3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(secondInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inputPanelText4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(thirdInputText, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(thirdInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(inputPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CatalogICPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(manageProductsIU)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -267,60 +292,60 @@ public class MainWindow extends javax.swing.JFrame {
     public void updateUIFields(String uiType) {
         switch(uiType) {
             case "Product":
-                firstInputText.setText("Minimum Stock Level");
-                firstInputField.setText("enter minimum stock level");
+                inputPanelText1.setText("Minimum Stock Level");
+                inputPanel1.setText("enter minimum stock level");
                 
-                secondInputText.setText("Maximum Stock Level");
-                secondInputField.setText("enter maximum stock level");
+                inputPanelText2.setText("Maximum Stock Level");
+                inputPanel2.setText("enter maximum stock level");
                 
-                thirdInputText.setText("Current Stock Level");
-                thirdInputField.setText("enter current stock level");
+                inputPanelText3.setText("Current Stock Level");
+                inputPanel3.setText("enter current stock level");
                 
                 
-                jLabel2.setVisible(true);
+                inputPanelText4.setVisible(true);
                 descriptionIA.setVisible(true);
-                jLabel2.setText("Description");
+                inputPanelText4.setText("Description");
                 descriptionIA.setText("enter description about product");
                 
-                secondInputText.setVisible(true);
-                secondInputField.setVisible(true);
+                inputPanelText2.setVisible(true);
+                inputPanel2.setVisible(true);
                 
-                thirdInputText.setVisible(true);
-                thirdInputField.setVisible(true);
+                inputPanelText3.setVisible(true);
+                inputPanel3.setVisible(true);
                 break;
             case "Supplier":
-                firstInputText.setText("Product ID");
-                firstInputField.setText("enter Product ID");
+                inputPanelText1.setText("Product ID");
+                inputPanel1.setText("enter Product ID");
                 
-                jLabel2.setVisible(true);
+                inputPanelText4.setVisible(true);
                 descriptionIA.setVisible(true);
-                jLabel2.setText("Name");
+                inputPanelText4.setText("Name");
                 descriptionIA.setText("enter name of the Supplier");
                 
-                secondInputText.setVisible(false);
-                secondInputField.setVisible(false);
+                inputPanelText2.setVisible(false);
+                inputPanel2.setVisible(false);
                 
-                thirdInputText.setVisible(false);
-                thirdInputField.setVisible(false);
+                inputPanelText3.setVisible(false);
+                inputPanel3.setVisible(false);
                 break;
             case "Order":
-                firstInputText.setText("Supplier ID");
-                firstInputField.setText("enter Supplier ID");
+                inputPanelText1.setText("Supplier ID");
+                inputPanel1.setText("enter Supplier ID");
                 
-                secondInputText.setText("Quantity");
-                secondInputField.setText("enter quantity");
+                inputPanelText2.setText("Quantity");
+                inputPanel2.setText("enter quantity");
                 
-                thirdInputText.setText("Order Date");
-                thirdInputField.setText("enter order date");
+                inputPanelText3.setText("Order Date");
+                inputPanel3.setText("enter order date");
                 
-                jLabel2.setVisible(false);
+                inputPanelText4.setVisible(false);
                 descriptionIA.setVisible(false);
                 
-                secondInputText.setVisible(true);
-                secondInputField.setVisible(true);
+                inputPanelText2.setVisible(true);
+                inputPanel2.setVisible(true);
                 
-                thirdInputText.setVisible(true);
-                thirdInputField.setVisible(true);
+                inputPanelText3.setVisible(true);
+                inputPanel3.setVisible(true);
                 break;
             default:
                 break;
@@ -328,25 +353,25 @@ public class MainWindow extends javax.swing.JFrame {
     }
     
     public void presentProductDetails(String id, String desc, int min, int max, int current) {
-        idSC.setText("" + id);
+        idOC.setText("" + id);
         descriptionIA.setText(desc);
-        firstInputField.setText("" + min);
-        secondInputField.setText("" + max);
-        thirdInputField.setText("" + current);
+        inputPanel1.setText("" + min);
+        inputPanel2.setText("" + max);
+        inputPanel3.setText("" + current);
     }
     
     public void presentSupplierDetails(String id, String name, String productId) {
         commandSC.setText("Selected Supplier: " + id);
-        idSC.setText("" + id);
+        idOC.setText("" + id);
         descriptionIA.setText(name);
-        firstInputField.setText("" + productId);
+        inputPanel1.setText("" + productId);
     }
     
     public void presentOrderDetails(String id, String description, int productId, int quantity, String date) {
-        idSC.setText("" + id);
-        firstInputField.setText("" + productId);
-        secondInputField.setText("" + quantity);
-        thirdInputField.setText("" + date);
+        idOC.setText("" + id);
+        inputPanel1.setText("" + productId);
+        inputPanel2.setText("" + quantity);
+        inputPanel3.setText("" + date);
     }
     
     // INPUT UNITS
@@ -372,24 +397,24 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_manageOrdersIUActionPerformed
 
     private void deleteIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteIUActionPerformed
-        String item = idSC.getText();  
+        String item = idOC.getText();  
         inventory.deleteItem(managementMode, item);
 
     }//GEN-LAST:event_deleteIUActionPerformed
 
     private void updateIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateIUActionPerformed
 
-            String a = idSC.getText();
+            String a = idOC.getText();
             String b = descriptionIA.getText();
-            String c = firstInputField.getText();
-            String d = secondInputField.getText();
-            String e = thirdInputField.getText();
+            String c = inputPanel1.getText();
+            String d = inputPanel2.getText();
+            String e = inputPanel3.getText();
          
             inventory.updateItem(managementMode,a,b,c,d,e);
     }//GEN-LAST:event_updateIUActionPerformed
 
     public void orderShowMax (int max) {
-            secondInputText.setText("Quantity [max= " + max + "]");
+            inputPanelText2.setText("Quantity [max= " + max + "]");
     }
     
     public void indicateLow(String item) {
@@ -400,16 +425,16 @@ public class MainWindow extends javax.swing.JFrame {
     private void createIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createIUActionPerformed
 
         String b = descriptionIA.getText();
-        String c = firstInputField.getText();
-        String d = secondInputField.getText();
-        String e = thirdInputField.getText();
+        String c = inputPanel1.getText();
+        String d = inputPanel2.getText();
+        String e = inputPanel3.getText();
         
         inventory.addItem(managementMode,b,c,d,e);    
     }//GEN-LAST:event_createIUActionPerformed
 
-    private void firstInputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstInputFieldActionPerformed
+    private void inputPanel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPanel1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_firstInputFieldActionPerformed
+    }//GEN-LAST:event_inputPanel1ActionPerformed
 
     private void catalogICValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_catalogICValueChanged
         int items[] = catalogIC.getSelectedIndices();
@@ -456,26 +481,30 @@ public class MainWindow extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane CatalogICPanel;
     private javax.swing.JLabel authenticatioonSU;
     private javax.swing.JList<String> catalogIC;
     private javax.swing.JLabel commandSC;
     private javax.swing.JButton createIU;
     private javax.swing.JButton deleteIU;
     private javax.swing.JTextArea descriptionIA;
-    private javax.swing.JTextField firstInputField;
-    private javax.swing.JLabel firstInputText;
+    private javax.swing.JLabel idOC;
     private javax.swing.JLabel idSC;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField inputPanel1;
+    private javax.swing.JTextField inputPanel2;
+    private javax.swing.JTextField inputPanel3;
+    private javax.swing.JScrollPane inputPanel4;
+    private javax.swing.JLabel inputPanelText1;
+    private javax.swing.JLabel inputPanelText2;
+    private javax.swing.JLabel inputPanelText3;
+    private javax.swing.JLabel inputPanelText4;
     private javax.swing.JButton manageOrdersIU;
     private javax.swing.JButton manageProductsIU;
     private javax.swing.JButton manageSuppliersIU;
-    private javax.swing.JTextField secondInputField;
-    private javax.swing.JLabel secondInputText;
-    private javax.swing.JTextField thirdInputField;
-    private javax.swing.JLabel thirdInputText;
+    private javax.swing.JLabel productIdOC;
+    private javax.swing.JLabel productIdSC;
+    private javax.swing.JLabel supplierIdOC;
+    private javax.swing.JLabel supplierIdSC;
     private javax.swing.JButton updateIU;
     // End of variables declaration//GEN-END:variables
 
