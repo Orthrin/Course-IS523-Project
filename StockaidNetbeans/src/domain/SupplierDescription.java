@@ -28,8 +28,8 @@ public class SupplierDescription extends Description {
        
     // Query Functions
     @Override
-    public String getProductId() {
-        return productId;
+    public String getParameter0() {
+        return supplierId;
     }
     
     public String getSupplierId() {
@@ -38,6 +38,46 @@ public class SupplierDescription extends Description {
     
     public String getName() {
         return name;
+    }
+    
+        // Command Functions
+    @Override
+    public void setParameter1(String parameter) {
+        this.name = parameter;
+    }
+    
+    @Override
+    public void setParameter2(String parameter) {
+        this.supplierId = parameter;
+    }
+
+    @Override
+    public void setParameter3(String parameter) {
+    }
+
+    @Override
+    public void setParameter4(String parameter) {
+    }
+
+    // Query Functions
+    @Override
+    public String getParameter1() {
+        return name;
+    }
+    
+    @Override
+    public String getParameter2() {
+        return supplierId;
+    }
+    
+    @Override
+    public String getParameter3() {
+        return null;
+    }
+    
+    @Override
+    public String getParameter4() {
+        return null;
     }
 
 }

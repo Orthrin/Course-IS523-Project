@@ -7,6 +7,7 @@ public class SupplierCatalog extends Catalog {
 
     // Instantiation
     Map<String, SupplierDescription> descriptions;
+    MapFactory mf = MapFactory.getInstance();
 
     // Constructor
     public SupplierCatalog() {
@@ -24,7 +25,7 @@ public class SupplierCatalog extends Catalog {
     }
 
     @Override
-    public void addItem(String b, String c, String d, String e) {
+    public void addItem(int guide) {
         String key = "";
         boolean missing = false;
         for (int iii = 1; iii <= descriptions.size(); iii++) {
@@ -69,9 +70,19 @@ public class SupplierCatalog extends Catalog {
             data = data
                     + getDescriptions("" + iii).getSupplierId() + ", "
                     + getDescriptions("" + iii).getName()       + ", "
-                    + getDescriptions("" + iii).getProductId()  + "\n";
+                    + getDescriptions("" + iii).getParameter0()  + "\n";
         }
         return data;
+    }
+    
+     @Override
+    public void addTest(String a, String b, String c, String d, String e) {
+        a = a.trim();
+        b = b.trim();
+        c = c.trim();
+        SupplierDescription neu = new SupplierDescription(a, b, c);
+        mf.add(2, "" +(mf.getSize(2).size()+1), neu);
+        
     }
 
 }

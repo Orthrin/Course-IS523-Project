@@ -40,11 +40,6 @@ public class ProductDescription extends Description {
     }
 
     // Query Functions
-    @Override
-    public String getProductId() {
-        return productId;
-    }
-    
     public String getDescription() {
         return description;
     }
@@ -61,4 +56,46 @@ public class ProductDescription extends Description {
         return currentStockLevel;
     }
 
+    // Command Functions        
+    @Override
+    public void setParameter1(String parameter) {
+        this.description = parameter;
+    }
+    
+    @Override
+    public void setParameter2(String parameter) {
+        this.minimumStockLevel = Integer.parseInt(parameter);
+    }
+
+    @Override
+    public void setParameter3(String parameter) {
+        this.maximumStockLevel = Integer.parseInt(parameter);
+    }
+
+    @Override
+    public void setParameter4(String parameter) {
+        this.currentStockLevel = Integer.parseInt(parameter);
+    }
+
+    // Query Functions 
+    @Override
+    public String getParameter1() {
+        return description;
+    }
+    
+    @Override
+    public String getParameter2() {
+        return "" + minimumStockLevel;
+    }
+    
+    @Override
+    public String getParameter3() {
+        return "" + maximumStockLevel;
+    }
+    
+    @Override
+    public String getParameter4() {
+        return "" + currentStockLevel;
+    }
 }
+

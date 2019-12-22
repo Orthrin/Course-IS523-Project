@@ -358,7 +358,7 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }
     
-    public void presentProductDetails(String id, String desc, int min, int max, int current) {
+    public void presentProductDetails(String id, String desc, String min, String max, String current) {
         idOC.setText("" + id);
         descriptionIA.setText(desc);
         inputPanel1.setText("" + min);
@@ -403,7 +403,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_manageOrdersIUActionPerformed
 
     private void deleteIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteIUActionPerformed
-        String item = idOC.getText();  
+        String item = idOC.getText();
         inventory.deleteItem(managementMode, item);
 
     }//GEN-LAST:event_deleteIUActionPerformed

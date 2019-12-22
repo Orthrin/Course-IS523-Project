@@ -10,15 +10,21 @@ abstract public class Description {
         this.productId = productId;
     }
 
+    
     // Command Functions
+    abstract public void setParameter1(String p);
+    abstract public void setParameter2(String p);
+    abstract public void setParameter3(String p);
+    abstract public void setParameter4(String p);
     
     // Query Functions
-    public String getProductId() {
+    public String getParameter0() {
         return productId;
-    }
-    
-    // Abstract Functions
-//    abstract public void create();
+    } 
+    abstract public String getParameter1();
+    abstract public String getParameter2();
+    abstract public String getParameter3();
+    abstract public String getParameter4();
 //    abstract public void update();
 //    abstract public void delete();
 }

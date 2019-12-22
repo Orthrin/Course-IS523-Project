@@ -22,7 +22,7 @@ public class CatalogFactory {
     OrderCatalog orderCatalog;
     
     // Query Functions
-    public Catalog getCatalog(int guide) {
+    public Catalog get(int guide) {
         switch(guide) {
             case 1:
                 return productCatalog;

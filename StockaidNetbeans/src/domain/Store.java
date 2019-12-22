@@ -1,6 +1,7 @@
 package domain;
 
 import view.UIFacade;
+import java.util.Set;
 
 public class Store {
 
@@ -16,25 +17,29 @@ public class Store {
         productCatalog = new ProductCatalog();
         supplierCatalog = new SupplierCatalog();
         orderCatalog = new OrderCatalog();
+        loadData(1);
+        loadData(2);
+        loadData(3);
     }
-
-    // Variables
-    String name;
 
     // Instantiation
     PersistentStorage database;
-    Catalog catalog;
     ProductCatalog productCatalog;
     SupplierCatalog supplierCatalog;
     OrderCatalog orderCatalog;
     CatalogFactory cf = CatalogFactory.getInstance();
+    MapFactory mf = MapFactory.getInstance();
     UIFacade ui = UIFacade.getInstance();
 
     // Command Functions
+    //>>safe
     public void loadData(int guide) {
         for (int iii = 0; iii < database.getItemCount(guide); iii++) {
             String line = database.getLineItem(guide, iii);
             String[] p = new String[5];
+            for (int jjj = 0; jjj < p.length; jjj++) {
+                p[jjj] = "";
+            }
             String[] data = line.split(",");
             for (int yyy = 0; yyy < data.length; yyy++) {
                 p[yyy] = data[yyy];
@@ -43,122 +48,86 @@ public class Store {
         }
     }
     
+    //>>repetitive [fixed]
+    public void loadItems(int guide, String a, String b, String c, String d, String e) {
+        try{
+            cf.get(guide).addTest(a, b, c, d, e);
+        } catch(NumberFormatException ex) {}
+    }
+    
+    //>>repetitive [fixed]
     public void manageCatalog(int guide) {
         ui.purgeCatalog();
-        switch (guide) {
-            case 1:
-                loadData(guide);
-                for (String key : productCatalog.descriptions.keySet()) {
-                    int min = productCatalog.getDescriptions(key).getMinimumStockLevel();
-                    int cur = productCatalog.getDescriptions(key).getCurrentStockLevel();
-                    if (min >= cur) {
-                        ui.addItemToCatalog(productCatalog.getDescriptions(key).getDescription() + " [LOW]");
-                        continue;
-                    }
-                    ui.addItemToCatalog(productCatalog.getDescriptions(key).getDescription());
-                }
-                break;
-            case 2:
-                loadData(guide);
-                for (String key : supplierCatalog.descriptions.keySet()) {
-                    ui.addItemToCatalog(supplierCatalog.getDescriptions(key).getName());
-                }
-                break;
-            case 3:
-                loadData(1);
-                loadData(guide);
-                for (String key : orderCatalog.descriptions.keySet()) {
-                    ui.addItemToCatalog(orderCatalog.getDescriptions(key).getProductId());
-                }
-                break;
+        mf.prune(guide);
+        loadData(guide);
+        System.out.println(mf.get(guide));  //!!
+        for(String key : mf.getSize(guide)) {
+            ui.addItemToCatalog(mf.item(guide,key).getParameter1());
         }
+        // case 3: load 1 to
+        // case 1: min-cur add low
     }
-
+    
+    //>>repetitive
     public void getDetails(int guide, int items[], int index) {
         if (items.length == 1) {
-            switch (guide) {
-                case 1:
-                    ui.addProductDetails(productCatalog.getDescriptions("" + index).getProductId(),
-                            productCatalog.getDescriptions("" + index).getDescription(),
-                            productCatalog.getDescriptions("" + index).getMinimumStockLevel(),
-                            productCatalog.getDescriptions("" + index).getMaximumStockLevel(),
-                            productCatalog.getDescriptions("" + index).getCurrentStockLevel()
-                    );
-                    break;
-                case 2:
-                    ui.addSupplierDetails(supplierCatalog.getDescriptions("" + index).getSupplierId(),
-                            supplierCatalog.getDescriptions("" + index).getName(),
-                            supplierCatalog.getDescriptions("" + index).getProductId()
-                    );
-                    break;
-                case 3:
-                    ui.addOrderDetails(orderCatalog.getDescriptions("" + index).getProductId(),
-                            productCatalog.getDescriptions("" + index).getDescription(),
-                            orderCatalog.getDescriptions("" + index).getSupplierId(),
-                            orderCatalog.getDescriptions("" + index).getQuantity(),
-                            orderCatalog.getDescriptions("" + index).getOrderDate()
-                    );
-                    int max = productCatalog.getDescriptions("" + index).getMaximumStockLevel();
-                    int cur = productCatalog.getDescriptions("" + index).getCurrentStockLevel();
-                    ui.orderShowMax(max - cur);
-                    break;
-            }
+            try {
+            ui.addProductDetails(guide, // Bunlarin ayyrimi ui uzerinde yapilacak
+                    mf.item(guide,"" + index).getParameter0(),
+                    mf.item(guide,"" + index).getParameter1(),
+                    mf.item(guide,"" + index).getParameter2(),
+                    mf.item(guide,"" + index).getParameter3(),
+                    mf.item(guide,"" + index).getParameter4()
+            );
+            } catch (NullPointerException ex) {}
+//            switch (guide) {
+//                case 1:
+//                    ui.addProductDetails(guide, productCatalog.getDescriptions("" + index).getParameter0(),
+//                            productCatalog.getDescriptions("" + index).getDescription(),
+//                            ""+productCatalog.getDescriptions("" + index).getMinimumStockLevel(),
+//                            ""+productCatalog.getDescriptions("" + index).getMaximumStockLevel(),
+//                            ""+productCatalog.getDescriptions("" + index).getCurrentStockLevel()
+//                    );
+//                    break;
+//                case 2:
+//                    ui.addSupplierDetails(supplierCatalog.getDescriptions("" + index).getSupplierId(),
+//                            supplierCatalog.getDescriptions("" + index).getName(),
+//                            supplierCatalog.getDescriptions("" + index).getParameter0()
+//                    );
+//                    break;
+//                case 3:
+//                    ui.addOrderDetails(orderCatalog.getDescriptions("" + index).getParameter0(),
+//                            productCatalog.getDescriptions("" + index).getDescription(),
+//                            orderCatalog.getDescriptions("" + index).getSupplierId(),
+//                            orderCatalog.getDescriptions("" + index).getQuantity(),
+//                            orderCatalog.getDescriptions("" + index).getOrderDate()
+//                    );
+//                    int max = productCatalog.getDescriptions("" + index).getMaximumStockLevel();
+//                    int cur = productCatalog.getDescriptions("" + index).getCurrentStockLevel();
+//                    ui.orderShowMax(max - cur);
+//                    break;
+//            }
         }
     }
 
+    //>>repetitive [fixed!]
     public void addItem(int guide, String b, String c, String d, String e) {
         ui.purgeCatalog();
-        switch (guide) {
-            case 1:
-                productCatalog.addItem(b, c, d, e);
-                saveData(guide, getWriteData(guide));
-                ;
-                break;
-            case 2:
-                supplierCatalog.addItem(b, c, d, e);
-                saveData(guide, getWriteData(guide));
-                break;
-            case 3:
-                if (productCatalog.descriptions.size() > orderCatalog.descriptions.size()) {
-                    orderCatalog.addItem(b, c, d, e);
-                    saveData(guide, getWriteData(guide));
-                } else {
-                    ui.inform("You already have orders for all products!");
-                }
-                break;
-        }
+        cf.get(guide).addItem(guide);
+        saveData(guide, getWriteData(guide));
+        // case 3: you already have orders for all products
         manageCatalog(guide);
     }
 
+    //>>repetitive [fixed!]
     public void deleteItem(int guide, String item) {
-        ui.purgeCatalog();
-        switch (guide) {
-            case 1:
-                try {
-                productCatalog.deleteItem(item);
-                saveData(guide, getWriteData(guide));
-            } catch (Exception e) {
-            }
-            break;
-            case 2:
-                try {
-                supplierCatalog.deleteItem(item);
-                saveData(guide, getWriteData(guide));
-            } catch (Exception e) {
-            }
-            break;
-            case 3:
-                try {
-                System.out.println(item);
-                orderCatalog.deleteItem(item);
-                saveData(guide, getWriteData(guide));
-            } catch (Exception e) {
-            }
-            break;
-        }
+        ui.purgeCatalog(); // Item catalog id number
+        mf.delete(guide, item);
+        saveData(guide,getWriteData(guide));
         manageCatalog(guide);
     }
 
+    //>>repetitive
     public void updateItem(int guide, String a, String b, String c, String d, String e) {
         switch (guide) {
             case 1:
@@ -187,36 +156,28 @@ public class Store {
         }
         manageCatalog(guide);
     }
-
-    public void loadItems(int guide, String a, String b, String c, String d, String e) {
-        switch (guide) {
-            case 1:
-                productCatalog.createItem(a, b, c, d, e);
-                break;
-            case 2:
-                supplierCatalog.createItem(a, b, c, "", "");
-                break;
-            case 3:
-                orderCatalog.createItem(a, b, c, d, "");
-                break;
-        }
-    }
     
+    //>>safe
     public void saveData(int guide, String data) {
         database.saveData(guide, data);
     }
 
     // Query Functions
+    //>>repetitive [fixed!]
     public String getWriteData(int guide) {
-        switch (guide) {
-            case 1:
-                return productCatalog.getSaveData();
-            case 2:
-                return supplierCatalog.getSaveData();
-            case 3:
-                return orderCatalog.getSaveData();
+        String data = "";
+        for (String key : mf.getSize(guide)) {
+            data = data + mf.item(guide, key).getParameter0() + ", "
+                        + mf.item(guide, key).getParameter1() + ", "
+                        + mf.item(guide, key).getParameter2();
+            if(guide != 2){
+            data = data + ", " 
+                        + mf.item(guide, key).getParameter3() + ", "
+                        + mf.item(guide, key).getParameter4();
+            }
+            data = data + "\n";
         }
-        return productCatalog.getSaveData();
+        return data;
     }
 
 }
