@@ -32,6 +32,7 @@ public class MainWindow extends javax.swing.JFrame {
         supplierOC.setVisible(false);
         inputPanelText5.setVisible(false);
         inputPanel5.setVisible(false);
+        sendOrderIU.setVisible(false);
     }
 
     /**
@@ -49,6 +50,7 @@ public class MainWindow extends javax.swing.JFrame {
         createIU = new javax.swing.JButton();
         updateIU = new javax.swing.JButton();
         deleteIU = new javax.swing.JButton();
+        sendOrderIU = new javax.swing.JButton();
         commandSC = new javax.swing.JLabel();
         CatalogICPanel = new javax.swing.JScrollPane();
         catalogIC = new javax.swing.JList<>();
@@ -114,6 +116,8 @@ public class MainWindow extends javax.swing.JFrame {
                 deleteIUActionPerformed(evt);
             }
         });
+
+        sendOrderIU.setText("Send Order");
 
         commandSC.setText("Please select an item");
 
@@ -212,7 +216,10 @@ public class MainWindow extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(updateIU, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(sendOrderIU, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(updateIU, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(idSC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -278,7 +285,9 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(manageOrdersIU)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(updateIU)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(updateIU)
+                        .addComponent(sendOrderIU))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(createIU)
@@ -340,6 +349,7 @@ public class MainWindow extends javax.swing.JFrame {
                 
                 inputPanelText5.setVisible(false);
                 inputPanel5.setVisible(false);
+                sendOrderIU.setVisible(false);
                 break;
             case "Supplier":
                 productSC.setVisible(true);
@@ -363,6 +373,7 @@ public class MainWindow extends javax.swing.JFrame {
                 
                 inputPanelText5.setVisible(false);
                 inputPanel5.setVisible(false);
+                sendOrderIU.setVisible(false);
                 break;
             case "Order":
                 productSC.setVisible(true);
@@ -393,6 +404,7 @@ public class MainWindow extends javax.swing.JFrame {
                 
                 inputPanelText5.setVisible(true);
                 inputPanel5.setVisible(true);
+                sendOrderIU.setVisible(true);
                 break;
             default:
                 break;
@@ -580,6 +592,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton manageSuppliersIU;
     private javax.swing.JLabel productOC;
     private javax.swing.JLabel productSC;
+    private javax.swing.JButton sendOrderIU;
     private javax.swing.JLabel supplierOC;
     private javax.swing.JLabel supplierSC;
     private javax.swing.JButton updateIU;

@@ -46,6 +46,7 @@ public class OrderCatalog extends Catalog{
 
     @Override
     public void deleteItem(String item) {
+        maps.delete(3, item);
     }
     
     @Override

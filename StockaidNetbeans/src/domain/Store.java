@@ -121,7 +121,7 @@ public class Store {
     //>>repetitive [fixed!]
     public void deleteItem(int guide, String item) {
         ui.purgeCatalog(); // Item catalog id number
-        maps.delete(guide, item);
+        cats.get(guide).deleteItem(item);
         saveData(guide, getWriteData(guide));
         manageCatalog(guide);
     }
@@ -158,5 +158,5 @@ public class Store {
         }
         return data;
     }
-
+    
 }

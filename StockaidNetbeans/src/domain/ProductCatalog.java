@@ -41,6 +41,7 @@ public class ProductCatalog extends Catalog {
     
     @Override
     public void deleteItem(String item) {
+        maps.delete(1, item);
     }
     
     @Override
