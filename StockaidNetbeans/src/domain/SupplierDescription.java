@@ -8,9 +8,8 @@ public class SupplierDescription extends Description {
     String name;
 
     // Constructor
-    public SupplierDescription(String supplierId, String name, String productId) {
+    public SupplierDescription(String productId, String name, String supplierId) {
         super(productId);
-        this.productId = productId;
         this.supplierId = supplierId;
         this.name = name;
 

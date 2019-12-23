@@ -1,7 +1,7 @@
 package domain;
 
 import view.UIFacade;
-import java.util.Set;
+import java.lang.String;
 
 public class Store {
 
@@ -82,29 +82,35 @@ public class Store {
                     maps.item(guide, "" + index).getParameter3(),
                     maps.item(guide, "" + index).getParameter4()
             );
-            if (guide == 2) {
-                additionalInformation(guide, index, false);
-            } else if (guide == 3) {
-                additionalInformation(guide, index, true);
+            if (guide == 2 || guide == 3) {
+                additionalInformation(guide, index);
             }
-
         } catch (NullPointerException ex) {
         }
         // min maax case 3
     }
 
     // 
-    public void additionalInformation(int guide, int index, boolean order) {
-        String product = maps.item(1, "" + maps.item(guide, "" + index).getParameter0()).getParameter1();
-        String supp = maps.item(2, "" + maps.item(guide, "" + index).getParameter2()).getParameter1();
-        if (supp == null && product == null) {
-            ui.additionalInfo(product, "enter existent supplier");
-        }
-        if (!order) {
-            ui.additionalInfo(product, "0");
-        } else {
-            ui.additionalInfo(product, supp);
-        }
+    public void additionalInformation(int guide, int index) {
+        try {
+        String product = null;
+        product = maps.item(1, maps.item(guide, "" + index).getParameter0()).getParameter1();
+        
+        String x = maps.item(guide, "" + index).getParameter0();
+        String y = maps.item(2, maps.item(guide, "" + index).getParameter0()).getParameter0();
+            System.out.println(y);
+        String supp = null;
+//        if(x==y){ 
+            supp = maps.item(2, "" + maps.item(guide, "" + index).getParameter2()).getParameter1();
+//        }
+        if (product == null) {
+            product = "ProductID is not valid";
+        } 
+//        if (supp == null) {
+            supp = "Not Yet Implemented";
+//        } 
+        ui.additionalInfo(product, supp, index);
+        } catch (Exception ex){}
     }
 
     //>>repetitive [fixed!]

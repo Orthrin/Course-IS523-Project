@@ -60,9 +60,9 @@ public class UIFacade {
         }
     }
     
-    public void additionalInfo(String product, String supplier) {
+    public void additionalInfo(String product, String supplier, int index) {
         if (mainWindow != null) {
-            mainWindow.additionalInfo(product, supplier);
+            mainWindow.additionalInfo(product, supplier, index);
         }
     }
     

@@ -400,27 +400,65 @@ public class MainWindow extends javax.swing.JFrame {
 
     public void presentProductDetails(String a, String b, String c, String d, String e) {
         if(managementMode == 3) {
-            idOC.setText("" + a);
-            inputPanel1.setText("" + b);
-            inputPanel2.setText("" + c);
-            inputPanel3.setText("" + d);
-            inputPanel5.setText("" + e);
+            idOC.setText("" + b); // order Id
+            inputPanel1.setText("" + a); // product id
+            inputPanel2.setText("" + c); // supp id
+            inputPanel3.setText("" + d); // quantity
+            inputPanel5.setText("" + e); // date
         
-        } else {
-        idOC.setText("" + a);
-        inputPanel4.setText(b);
-        inputPanel1.setText("" + c);
-        inputPanel2.setText("" + d);
-        inputPanel3.setText("" + e);
+        } else if(managementMode == 2){
+            idOC.setText("" + c); // ProductID
+            inputPanel4.setText(b); // Name
+            inputPanel1.setText("" + a); // Supp Id       
+        } else if (managementMode == 1) {
+            idOC.setText("" + a);
+            inputPanel4.setText(b);
+            inputPanel1.setText("" + c);
+            inputPanel2.setText("" + d);
+            inputPanel3.setText("" + e);
         }
     }
     
-    public void additionalInfo(String product, String supplier) {
+    public void additionalInfo(String product, String supplier, int index) {
         productOC.setText(product);
         supplierOC.setText(supplier);
+        //catalogIC.setSelectedIndex(index);
     
     }
 
+        private void updateIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateIUActionPerformed
+            String a = "";
+            String b = "";
+            String c = "";
+            String d = "";  
+            String e = "";
+
+            if (catalogIC.getSelectedIndex() != -1) {
+                
+                if (managementMode == 3) {
+                    b = idOC.getText();
+                    a = inputPanel1.getText();
+                    c = inputPanel2.getText();
+                    d = inputPanel3.getText();
+                    e = inputPanel5.getText();
+                } else if (managementMode == 2) {
+                    c = idOC.getText();
+                    b = inputPanel4.getText();
+                    a = inputPanel1.getText();
+                    d = inputPanel2.getText();
+                    e = inputPanel3.getText();
+                } else if (managementMode == 1) {
+                    a = idOC.getText();
+                    b = inputPanel4.getText();
+                    c = inputPanel1.getText();
+                    d = inputPanel2.getText();
+                    e = inputPanel3.getText();
+                }
+
+                inventory.updateItem(managementMode, a, b, c, d, e);
+            } //else { System.out.println("select item");}
+
+    }//GEN-LAST:event_updateIUActionPerformed
 
     // INPUT UNITS
 
@@ -449,34 +487,6 @@ public class MainWindow extends javax.swing.JFrame {
         inventory.deleteItem(managementMode, item);
 
     }//GEN-LAST:event_deleteIUActionPerformed
-
-    private void updateIUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateIUActionPerformed
-            String a;
-            String b;
-            String c;
-            String d;
-            String e;
-            
-        if (catalogIC.getSelectedIndex() != -1) {
-            if (managementMode == 3) {
-                a = idOC.getText();
-                b = inputPanel1.getText();
-                c = inputPanel2.getText();
-                d = inputPanel3.getText();
-                e = inputPanel5.getText();
-
-            } else {
-                a = idOC.getText();
-                b = inputPanel4.getText();
-                c = inputPanel1.getText();
-                d = inputPanel2.getText();
-                e = inputPanel3.getText();
-            }
-
-            inventory.updateItem(managementMode, a, b, c, d, e);
-        } //else { System.out.println("select item");}
-        
-    }//GEN-LAST:event_updateIUActionPerformed
 
     public void orderShowMax(int max) {
         inputPanelText2.setText("Quantity [max= " + max + "]");

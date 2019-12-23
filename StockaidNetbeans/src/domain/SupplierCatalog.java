@@ -44,11 +44,11 @@ public class SupplierCatalog extends Catalog {
     }
     
     @Override
-    public void updateItem(String a, String b, String c, String d, String e) {
-        maps.item(2, a).setParameter1(b.trim());
-        maps.item(2, a).setParameter0(c.trim());
-        maps.item(2, a).setParameter3(d.trim());
-        maps.item(2, a).setParameter4(e.trim());
+    public void updateItem(String productId, String name, String suppId, String d, String e) {
+        System.out.println(suppId + name + productId + d + e);
+        // 1 supplieID[base] 2 name 3 pid
+        maps.item(2, suppId).setParameter0(productId.trim());
+        maps.item(2, suppId).setParameter1(name.trim());
     }
     
 }

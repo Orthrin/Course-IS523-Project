@@ -10,9 +10,8 @@ public class OrderDescription extends Description {
     String date;
 
     // Constructor
-    public OrderDescription(int orderId, String productId, int supplierId, int quantity, String date) {
+    public OrderDescription(String productId, int orderId, int supplierId, int quantity, String date) {
         super(productId);
-        this.productId = productId;
         this.supplierId = supplierId;
         this.orderId = orderId;
         this.quantity = quantity;

@@ -22,7 +22,7 @@ public class OrderCatalog extends Catalog{
         b = b.trim();
         c = c.trim();
         d = d.trim();
-        OrderDescription neu = new OrderDescription(Integer.parseInt(a), b, Integer.parseInt(c), Integer.parseInt(d), e);
+        OrderDescription neu = new OrderDescription(a, Integer.parseInt(b), Integer.parseInt(c), Integer.parseInt(d), e);
         maps.add(3, "" +(maps.getSize(3).size()+1), neu);
     }
     
@@ -41,7 +41,7 @@ public class OrderCatalog extends Catalog{
               key = "" + (maps.get(guide).size() + 1);
           }
           System.out.println(key);
-          createItem("1", key, "1", "1", formatter.format(date).toString().trim());
+          createItem(key, "1", "1", "1", formatter.format(date).toString().trim());
     }
 
     @Override
@@ -49,11 +49,11 @@ public class OrderCatalog extends Catalog{
     }
     
     @Override
-    public void updateItem(String a, String b, String c, String d, String e) {
-        maps.item(3, a).setParameter0(b.trim());
-        maps.item(3, a).setParameter2(c.trim());
-        maps.item(3, a).setParameter3(d.trim());
-        maps.item(3, a).setParameter4(e.trim());
+    public void updateItem(String product, String order, String supp, String quantity, String date) {
+        maps.item(3, order).setParameter0(product.trim());
+        maps.item(3, order).setParameter2(supp.trim());
+        maps.item(3, order).setParameter3(quantity.trim());
+        maps.item(3, order).setParameter4(date.trim());
     }
     
 }
