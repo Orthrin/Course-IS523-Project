@@ -24,7 +24,7 @@ public class SupplierDescription extends Description {
     
     @Override
     public void setParameter2(String parameter) {
-        this.supplierId = parameter;
+//        this.supplierId = parameter;
     }
 
     @Override

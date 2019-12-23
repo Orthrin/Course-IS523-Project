@@ -46,7 +46,7 @@ public class SupplierCatalog extends Catalog {
     @Override
     public void updateItem(String a, String b, String c, String d, String e) {
         maps.item(2, a).setParameter1(b.trim());
-        maps.item(2, a).setParameter2(c.trim());
+        maps.item(2, a).setParameter0(c.trim());
         maps.item(2, a).setParameter3(d.trim());
         maps.item(2, a).setParameter4(e.trim());
     }
