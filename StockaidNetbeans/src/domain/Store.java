@@ -58,15 +58,7 @@ public class Store {
         maps.prune(guide);
         loadData(guide);
         for (String key : maps.getSize(guide)) {
-//            if (guide == 3) {
-//                String x = maps.item(2, "" + maps.item(guide, "" + key).getParameter2()).getParameter1();
-//                System.out.println(x);
-//                if (x != null) {
-//                    ui.addItemToCatalog(x);
-//                }
-//            } else {
                 ui.addItemToCatalog(maps.item(guide, key).getParameter1());
-//            }
         }
         // case 3: load 1 to
         // case 1: min-cur add low
@@ -91,26 +83,30 @@ public class Store {
     }
 
     // 
-    public void additionalInformation(int guide, int index) {
+    synchronized public void additionalInformation(int guide, int index) {
         try {
-        String product = null;
-        product = maps.item(1, maps.item(guide, "" + index).getParameter0()).getParameter1();
-        
-        String x = maps.item(guide, "" + index).getParameter0();
-        String y = maps.item(2, maps.item(guide, "" + index).getParameter0()).getParameter0();
-            System.out.println(y);
-        String supp = null;
-//        if(x==y){ 
-            supp = maps.item(2, "" + maps.item(guide, "" + index).getParameter2()).getParameter1();
-//        }
-        if (product == null) {
-            product = "ProductID is not valid";
-        } 
-//        if (supp == null) {
-            supp = "Not Yet Implemented";
-//        } 
-        ui.additionalInfo(product, supp, index);
-        } catch (Exception ex){}
+            String product = "";
+            if (maps.item(1, maps.item(guide, "" + index).getParameter0()) != null) {
+                product = maps.item(1, maps.item(guide, "" + index).getParameter0()).getParameter1();
+            }
+            
+            String supp = "";
+            if (maps.item(2, maps.item(guide, "" + index).getParameter2()) != null) {
+                String x = maps.item(guide, "" + index).getParameter0(); // get selected productid
+                String y = maps.item(2, maps.item(guide, "" + index).getParameter2()).getParameter0(); // 
+                if (Integer.parseInt(x) == Integer.parseInt(y)) {
+                    supp = maps.item(2, "" + x).getParameter1();
+                }
+            }
+            if (product.isBlank()) {
+                product = "ProductID is not valid";
+            }
+            if (supp.isBlank()) {
+                supp = "Supplier is not valid";
+            }
+            ui.additionalInfo(product, supp, index);
+        } catch (Exception ex) {
+        }
     }
 
     //>>repetitive [fixed!]

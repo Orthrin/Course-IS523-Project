@@ -27,7 +27,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="manageOrdersIU" alignment="0" max="32767" attributes="0"/>
-                  <Component id="manageSuppliersIU" alignment="0" max="32767" attributes="0"/>
+                  <Component id="manageSuppliersIU" alignment="0" pref="148" max="32767" attributes="0"/>
                   <Component id="manageProductsIU" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -59,30 +59,32 @@
                                   <Component id="inputPanel2" alignment="0" max="32767" attributes="0"/>
                                   <Component id="inputPanel3" alignment="0" max="32767" attributes="0"/>
                                   <Component id="inputPanel1" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="updateIU" min="-2" pref="108" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="idSC" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="idOC" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="productOC" max="32767" attributes="0"/>
-                                          <Component id="productSC" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="supplierSC" pref="192" max="32767" attributes="0"/>
-                                          <Component id="supplierOC" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Component id="inputPanel4Panel" alignment="0" pref="382" max="32767" attributes="0"/>
+                                  <Component id="inputPanel4Panel" alignment="0" max="32767" attributes="0"/>
                                   <Component id="inputPanel5" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="updateIU" alignment="1" min="-2" pref="108" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="idSC" min="-2" pref="30" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="idOC" min="-2" pref="362" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="productOC" max="32767" attributes="0"/>
+                                  <Component id="productSC" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="supplierOC" min="-2" pref="192" max="-2" attributes="0"/>
+                                  <Component id="supplierSC" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
