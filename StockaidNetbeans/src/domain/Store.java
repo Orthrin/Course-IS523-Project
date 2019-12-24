@@ -115,6 +115,11 @@ public class Store {
             ui.additionalInfo(product, supp, index);
         } catch (Exception ex) {
         }
+        if (guide == 3) {
+            String max = maps.item(1, maps.item(guide, "" + index).getParameter0()).getParameter3();
+            String cur = maps.item(1, maps.item(guide, "" + index).getParameter0()).getParameter4();
+            ui.orderShowMax(Integer.parseInt(max) - Integer.parseInt(cur));
+        }
     }
 
     //>>repetitive [fixed!]
