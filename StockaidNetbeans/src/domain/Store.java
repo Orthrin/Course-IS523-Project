@@ -44,7 +44,7 @@ public class Store {
         }
     }
 
-    //>>repetitive [fixed]
+    //>>safe
     public void loadItems(int guide, String a, String b, String c, String d, String e) {
         try {
             cats.get(guide).createItem(a, b, c, d, e);
@@ -52,19 +52,27 @@ public class Store {
         }
     }
 
-    //>>repetitive [fixed]
+    //>>repetitive
     public void manageCatalog(int guide) {
         ui.purgeCatalog();
         maps.prune(guide);
         loadData(guide);
         for (String key : maps.getSize(guide)) {
-                ui.addItemToCatalog(maps.item(guide, key).getParameter1());
+            if (guide == 1) {
+                int min = Integer.parseInt(maps.item(guide, key).getParameter2());
+                int cur = Integer.parseInt(maps.item(guide, key).getParameter4());
+                if (min >= cur) {
+                    ui.addItemToCatalog("[Low] " + maps.item(guide, key).getParameter1());
+                    continue;
+                }
+            }
+            ui.addItemToCatalog(maps.item(guide, key).getParameter1());
         }
         // case 3: load 1 to
         // case 1: min-cur add low
     }
 
-    //>>repetitive [fixed] >> needs to be set on descriptins
+    //>>repetitive [semi fixed] >> needs to be set on descriptins
     public void getDetails(int guide, int index) {
         try {
             ui.addProductDetails(guide, // Bunlarin ayrimi ui uzerinde yapilacak
