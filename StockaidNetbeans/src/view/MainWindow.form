@@ -155,10 +155,8 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="updateIU" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="sendOrderIU" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="sendOrderIU" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="updateIU" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="createIU" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -224,6 +222,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Send Order"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sendOrderIUActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="commandSC">
       <Properties>
