@@ -232,6 +232,10 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(manageOrdersIU)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< Updated upstream
+=======
+                    .addComponent(sendOrderIU)
+>>>>>>> Stashed changes
                     .addComponent(updateIU)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

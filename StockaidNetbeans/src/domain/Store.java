@@ -104,7 +104,33 @@ public class Store {
                     ui.orderShowMax(max - cur);
                     break;
             }
+<<<<<<< Updated upstream
+=======
+
+            String supp = "";
+            if (maps.item(2, maps.item(guide, "" + index).getParameter2()) != null) {
+                String x = maps.item(guide, "" + index).getParameter0(); // get selected productid
+                String y = maps.item(2, maps.item(guide, "" + index).getParameter2()).getParameter0(); // 
+                if (Integer.parseInt(x) == Integer.parseInt(y)) {
+                    supp = maps.item(2, "" + x).getParameter1();
+                }
+            }
+            if (product.isBlank()) {
+                product = "ProductID is not valid";
+            }
+            if (supp.isBlank()) {
+                supp = "Supplier is not valid";
+            }
+            ui.additionalInfo(product, supp, index);
+        } catch (Exception ex) {
+>>>>>>> Stashed changes
         }
+        if (guide == 3) {
+            String max = maps.item(1, maps.item(guide, "" + index).getParameter0()).getParameter3();
+            String cur = maps.item(1, maps.item(guide, "" + index).getParameter0()).getParameter4();
+            ui.orderShowMax(Integer.parseInt(max) - Integer.parseInt(cur));
+        }
+
     }
 
     public void addItem(int guide, String b, String c, String d, String e) {
